@@ -5,191 +5,191 @@ package domain
 
 import "errors"
 
-// UserAccount represents a row from public.user_account.
-type UserAccount struct {
-	Username  string // username
-	FirstName string // first_name
-	SecondNam string // second_nam
-	LastName  string // last_name
-	BirthDate Date   // birth_date
-	Gender    uint8  // gender
-	Country   string // country
-	Email     string // email
-	Erased    uint8  // erased
+// Useraccount represents a row from public.useraccount.
+type Useraccount struct {
+	Username   string // username
+	FirstName  string // first_name
+	SecondName string // second_name
+	LastName   string // last_name
+	BirthDate  Date   // birth_date
+	Gender     uint8  // gender
+	Country    string // country
+	Email      string // email
+	Erased     bool   // erased
 
 	// xo fields
 	_exists, _deleted bool
 }
 
-// Exists determines if the UserAccount exists in the database.
-func (ua *UserAccount) Exists() bool {
-	return ua._exists
+// Exists determines if the Useraccount exists in the database.
+func (u *Useraccount) Exists() bool {
+	return u._exists
 }
 
-// Deleted provides information if the UserAccount has been deleted from the database.
-func (ua *UserAccount) Deleted() bool {
-	return ua._deleted
+// Deleted provides information if the Useraccount has been deleted from the database.
+func (u *Useraccount) Deleted() bool {
+	return u._deleted
 }
 
-// Insert inserts the UserAccount to the database.
-func (ua *UserAccount) Insert(db XODB) error {
+// Insert inserts the Useraccount to the database.
+func (u *Useraccount) Insert(db XODB) error {
 	var err error
 
 	// if already exist, bail
-	if ua._exists {
+	if u._exists {
 		return errors.New("insert failed: already exists")
 	}
 
 	// sql query
-	const sqlstr = `INSERT INTO public.user_account (` +
-		`first_name, second_nam, last_name, birth_date, gender, country, email, erased` +
+	const sqlstr = `INSERT INTO public.useraccount (` +
+		`first_name, second_name, last_name, birth_date, gender, country, email, erased` +
 		`) VALUES (` +
 		`$1, $2, $3, $4, $5, $6, $7, $8` +
 		`) RETURNING username`
 
 	// run query
-	XOLog(sqlstr, ua.FirstName, ua.SecondNam, ua.LastName, ua.BirthDate, ua.Gender, ua.Country, ua.Email, ua.Erased)
-	err = db.QueryRow(sqlstr, ua.FirstName, ua.SecondNam, ua.LastName, ua.BirthDate, ua.Gender, ua.Country, ua.Email, ua.Erased).Scan(&ua.Username)
+	XOLog(sqlstr, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Country, u.Email, u.Erased)
+	err = db.QueryRow(sqlstr, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Country, u.Email, u.Erased).Scan(&u.Username)
 	if err != nil {
 		return err
 	}
 
 	// set existence
-	ua._exists = true
+	u._exists = true
 
 	return nil
 }
 
-// Update updates the UserAccount in the database.
-func (ua *UserAccount) Update(db XODB) error {
+// Update updates the Useraccount in the database.
+func (u *Useraccount) Update(db XODB) error {
 	var err error
 
 	// if doesn't exist, bail
-	if !ua._exists {
+	if !u._exists {
 		return errors.New("update failed: does not exist")
 	}
 
 	// if deleted, bail
-	if ua._deleted {
+	if u._deleted {
 		return errors.New("update failed: marked for deletion")
 	}
 
 	// sql query
-	const sqlstr = `UPDATE public.user_account SET (` +
-		`first_name, second_nam, last_name, birth_date, gender, country, email, erased` +
+	const sqlstr = `UPDATE public.useraccount SET (` +
+		`first_name, second_name, last_name, birth_date, gender, country, email, erased` +
 		`) = ( ` +
 		`$1, $2, $3, $4, $5, $6, $7, $8` +
 		`) WHERE username = $9`
 
 	// run query
-	XOLog(sqlstr, ua.FirstName, ua.SecondNam, ua.LastName, ua.BirthDate, ua.Gender, ua.Country, ua.Email, ua.Erased, ua.Username)
-	_, err = db.Exec(sqlstr, ua.FirstName, ua.SecondNam, ua.LastName, ua.BirthDate, ua.Gender, ua.Country, ua.Email, ua.Erased, ua.Username)
+	XOLog(sqlstr, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Country, u.Email, u.Erased, u.Username)
+	_, err = db.Exec(sqlstr, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Country, u.Email, u.Erased, u.Username)
 	return err
 }
 
-// Save saves the UserAccount to the database.
-func (ua *UserAccount) Save(db XODB) error {
-	if ua.Exists() {
-		return ua.Update(db)
+// Save saves the Useraccount to the database.
+func (u *Useraccount) Save(db XODB) error {
+	if u.Exists() {
+		return u.Update(db)
 	}
 
-	return ua.Insert(db)
+	return u.Insert(db)
 }
 
-// Upsert performs an upsert for UserAccount.
+// Upsert performs an upsert for Useraccount.
 //
 // NOTE: PostgreSQL 9.5+ only
-func (ua *UserAccount) Upsert(db XODB) error {
+func (u *Useraccount) Upsert(db XODB) error {
 	var err error
 
 	// if already exist, bail
-	if ua._exists {
+	if u._exists {
 		return errors.New("insert failed: already exists")
 	}
 
 	// sql query
-	const sqlstr = `INSERT INTO public.user_account (` +
-		`username, first_name, second_nam, last_name, birth_date, gender, country, email, erased` +
+	const sqlstr = `INSERT INTO public.useraccount (` +
+		`username, first_name, second_name, last_name, birth_date, gender, country, email, erased` +
 		`) VALUES (` +
 		`$1, $2, $3, $4, $5, $6, $7, $8, $9` +
 		`) ON CONFLICT (username) DO UPDATE SET (` +
-		`username, first_name, second_nam, last_name, birth_date, gender, country, email, erased` +
+		`username, first_name, second_name, last_name, birth_date, gender, country, email, erased` +
 		`) = (` +
-		`EXCLUDED.username, EXCLUDED.first_name, EXCLUDED.second_nam, EXCLUDED.last_name, EXCLUDED.birth_date, EXCLUDED.gender, EXCLUDED.country, EXCLUDED.email, EXCLUDED.erased` +
+		`EXCLUDED.username, EXCLUDED.first_name, EXCLUDED.second_name, EXCLUDED.last_name, EXCLUDED.birth_date, EXCLUDED.gender, EXCLUDED.country, EXCLUDED.email, EXCLUDED.erased` +
 		`)`
 
 	// run query
-	XOLog(sqlstr, ua.Username, ua.FirstName, ua.SecondNam, ua.LastName, ua.BirthDate, ua.Gender, ua.Country, ua.Email, ua.Erased)
-	_, err = db.Exec(sqlstr, ua.Username, ua.FirstName, ua.SecondNam, ua.LastName, ua.BirthDate, ua.Gender, ua.Country, ua.Email, ua.Erased)
+	XOLog(sqlstr, u.Username, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Country, u.Email, u.Erased)
+	_, err = db.Exec(sqlstr, u.Username, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Country, u.Email, u.Erased)
 	if err != nil {
 		return err
 	}
 
 	// set existence
-	ua._exists = true
+	u._exists = true
 
 	return nil
 }
 
-// Delete deletes the UserAccount from the database.
-func (ua *UserAccount) Delete(db XODB) error {
+// Delete deletes the Useraccount from the database.
+func (u *Useraccount) Delete(db XODB) error {
 	var err error
 
 	// if doesn't exist, bail
-	if !ua._exists {
+	if !u._exists {
 		return nil
 	}
 
 	// if deleted, bail
-	if ua._deleted {
+	if u._deleted {
 		return nil
 	}
 
 	// sql query
-	const sqlstr = `DELETE FROM public.user_account WHERE username = $1`
+	const sqlstr = `DELETE FROM public.useraccount WHERE username = $1`
 
 	// run query
-	XOLog(sqlstr, ua.Username)
-	_, err = db.Exec(sqlstr, ua.Username)
+	XOLog(sqlstr, u.Username)
+	_, err = db.Exec(sqlstr, u.Username)
 	if err != nil {
 		return err
 	}
 
 	// set deleted
-	ua._deleted = true
+	u._deleted = true
 
 	return nil
 }
 
-// Root returns the Root associated with the UserAccount's Username (username).
+// Root returns the Root associated with the Useraccount's Username (username).
 //
-// Generated from foreign key 'fk_user_account_root1'.
-func (ua *UserAccount) Root(db XODB) (*Root, error) {
-	return RootByUsername(db, ua.Username)
+// Generated from foreign key 'root_useraccount_fk'.
+func (u *Useraccount) Root(db XODB) (*Root, error) {
+	return RootByUsername(db, u.Username)
 }
 
-// UserAccountByUsername retrieves a row from 'public.user_account' as a UserAccount.
+// UseraccountByUsername retrieves a row from 'public.useraccount' as a Useraccount.
 //
-// Generated from index 'user_account_pkey'.
-func UserAccountByUsername(db XODB, username string) (*UserAccount, error) {
+// Generated from index 'pk_useraccount'.
+func UseraccountByUsername(db XODB, username string) (*Useraccount, error) {
 	var err error
 
 	// sql query
 	const sqlstr = `SELECT ` +
-		`username, first_name, second_nam, last_name, birth_date, gender, country, email, erased ` +
-		`FROM public.user_account ` +
+		`username, first_name, second_name, last_name, birth_date, gender, country, email, erased ` +
+		`FROM public.useraccount ` +
 		`WHERE username = $1`
 
 	// run query
 	XOLog(sqlstr, username)
-	ua := UserAccount{
+	u := Useraccount{
 		_exists: true,
 	}
 
-	err = db.QueryRow(sqlstr, username).Scan(&ua.Username, &ua.FirstName, &ua.SecondNam, &ua.LastName, &ua.BirthDate, &ua.Gender, &ua.Country, &ua.Email, &ua.Erased)
+	err = db.QueryRow(sqlstr, username).Scan(&u.Username, &u.FirstName, &u.SecondName, &u.LastName, &u.BirthDate, &u.Gender, &u.Country, &u.Email, &u.Erased)
 	if err != nil {
 		return nil, err
 	}
 
-	return &ua, nil
+	return &u, nil
 }

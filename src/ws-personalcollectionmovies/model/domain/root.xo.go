@@ -8,7 +8,7 @@ import "errors"
 // Root represents a row from public.root.
 type Root struct {
 	Username string // username
-	Password string // password
+	Pass     string // pass
 
 	// xo fields
 	_exists, _deleted bool
@@ -35,14 +35,14 @@ func (r *Root) Insert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.root (` +
-		`password` +
+		`pass` +
 		`) VALUES (` +
 		`$1` +
 		`) RETURNING username`
 
 	// run query
-	XOLog(sqlstr, r.Password)
-	err = db.QueryRow(sqlstr, r.Password).Scan(&r.Username)
+	XOLog(sqlstr, r.Pass)
+	err = db.QueryRow(sqlstr, r.Pass).Scan(&r.Username)
 	if err != nil {
 		return err
 	}
@@ -69,14 +69,14 @@ func (r *Root) Update(db XODB) error {
 
 	// sql query
 	const sqlstr = `UPDATE public.root SET (` +
-		`password` +
+		`pass` +
 		`) = ( ` +
 		`$1` +
 		`) WHERE username = $2`
 
 	// run query
-	XOLog(sqlstr, r.Password, r.Username)
-	_, err = db.Exec(sqlstr, r.Password, r.Username)
+	XOLog(sqlstr, r.Pass, r.Username)
+	_, err = db.Exec(sqlstr, r.Pass, r.Username)
 	return err
 }
 
@@ -102,18 +102,18 @@ func (r *Root) Upsert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.root (` +
-		`username, password` +
+		`username, pass` +
 		`) VALUES (` +
 		`$1, $2` +
 		`) ON CONFLICT (username) DO UPDATE SET (` +
-		`username, password` +
+		`username, pass` +
 		`) = (` +
-		`EXCLUDED.username, EXCLUDED.password` +
+		`EXCLUDED.username, EXCLUDED.pass` +
 		`)`
 
 	// run query
-	XOLog(sqlstr, r.Username, r.Password)
-	_, err = db.Exec(sqlstr, r.Username, r.Password)
+	XOLog(sqlstr, r.Username, r.Pass)
+	_, err = db.Exec(sqlstr, r.Username, r.Pass)
 	if err != nil {
 		return err
 	}
@@ -156,13 +156,13 @@ func (r *Root) Delete(db XODB) error {
 
 // RootByUsername retrieves a row from 'public.root' as a Root.
 //
-// Generated from index 'root_pkey'.
+// Generated from index 'pk_root'.
 func RootByUsername(db XODB, username string) (*Root, error) {
 	var err error
 
 	// sql query
 	const sqlstr = `SELECT ` +
-		`username, password ` +
+		`username, pass ` +
 		`FROM public.root ` +
 		`WHERE username = $1`
 
@@ -172,7 +172,7 @@ func RootByUsername(db XODB, username string) (*Root, error) {
 		_exists: true,
 	}
 
-	err = db.QueryRow(sqlstr, username).Scan(&r.Username, &r.Password)
+	err = db.QueryRow(sqlstr, username).Scan(&r.Username, &r.Pass)
 	if err != nil {
 		return nil, err
 	}

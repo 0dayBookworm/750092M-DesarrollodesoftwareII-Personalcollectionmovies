@@ -7,10 +7,11 @@ import "errors"
 
 // List represents a row from public.list.
 type List struct {
+	Username    string // username
 	IDList      string // id_list
 	Name        string // name
 	Description string // description
-	Username    string // username
+	Erased      bool   // erased
 
 	// xo fields
 	_exists, _deleted bool
@@ -37,14 +38,14 @@ func (l *List) Insert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.list (` +
-		`id_list, name, description` +
+		`username, name, description, erased` +
 		`) VALUES (` +
-		`$1, $2, $3` +
-		`) RETURNING username`
+		`$1, $2, $3, $4` +
+		`) RETURNING id_list`
 
 	// run query
-	XOLog(sqlstr, l.IDList, l.Name, l.Description)
-	err = db.QueryRow(sqlstr, l.IDList, l.Name, l.Description).Scan(&l.Username)
+	XOLog(sqlstr, l.Username, l.Name, l.Description, l.Erased)
+	err = db.QueryRow(sqlstr, l.Username, l.Name, l.Description, l.Erased).Scan(&l.IDList)
 	if err != nil {
 		return err
 	}
@@ -71,14 +72,14 @@ func (l *List) Update(db XODB) error {
 
 	// sql query
 	const sqlstr = `UPDATE public.list SET (` +
-		`id_list, name, description` +
+		`username, name, description, erased` +
 		`) = ( ` +
-		`$1, $2, $3` +
-		`) WHERE username = $4`
+		`$1, $2, $3, $4` +
+		`) WHERE id_list = $5`
 
 	// run query
-	XOLog(sqlstr, l.IDList, l.Name, l.Description, l.Username)
-	_, err = db.Exec(sqlstr, l.IDList, l.Name, l.Description, l.Username)
+	XOLog(sqlstr, l.Username, l.Name, l.Description, l.Erased, l.IDList)
+	_, err = db.Exec(sqlstr, l.Username, l.Name, l.Description, l.Erased, l.IDList)
 	return err
 }
 
@@ -104,18 +105,18 @@ func (l *List) Upsert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.list (` +
-		`id_list, name, description, username` +
+		`username, id_list, name, description, erased` +
 		`) VALUES (` +
-		`$1, $2, $3, $4` +
-		`) ON CONFLICT (username) DO UPDATE SET (` +
-		`id_list, name, description, username` +
+		`$1, $2, $3, $4, $5` +
+		`) ON CONFLICT (id_list) DO UPDATE SET (` +
+		`username, id_list, name, description, erased` +
 		`) = (` +
-		`EXCLUDED.id_list, EXCLUDED.name, EXCLUDED.description, EXCLUDED.username` +
+		`EXCLUDED.username, EXCLUDED.id_list, EXCLUDED.name, EXCLUDED.description, EXCLUDED.erased` +
 		`)`
 
 	// run query
-	XOLog(sqlstr, l.IDList, l.Name, l.Description, l.Username)
-	_, err = db.Exec(sqlstr, l.IDList, l.Name, l.Description, l.Username)
+	XOLog(sqlstr, l.Username, l.IDList, l.Name, l.Description, l.Erased)
+	_, err = db.Exec(sqlstr, l.Username, l.IDList, l.Name, l.Description, l.Erased)
 	if err != nil {
 		return err
 	}
@@ -141,11 +142,11 @@ func (l *List) Delete(db XODB) error {
 	}
 
 	// sql query
-	const sqlstr = `DELETE FROM public.list WHERE username = $1`
+	const sqlstr = `DELETE FROM public.list WHERE id_list = $1`
 
 	// run query
-	XOLog(sqlstr, l.Username)
-	_, err = db.Exec(sqlstr, l.Username)
+	XOLog(sqlstr, l.IDList)
+	_, err = db.Exec(sqlstr, l.IDList)
 	if err != nil {
 		return err
 	}
@@ -156,32 +157,32 @@ func (l *List) Delete(db XODB) error {
 	return nil
 }
 
-// UserAccount returns the UserAccount associated with the List's Username (username).
+// Useraccount returns the Useraccount associated with the List's Username (username).
 //
-// Generated from foreign key 'fk_list_user_account1'.
-func (l *List) UserAccount(db XODB) (*UserAccount, error) {
-	return UserAccountByUsername(db, l.Username)
+// Generated from foreign key 'useraccount_list_fk'.
+func (l *List) Useraccount(db XODB) (*Useraccount, error) {
+	return UseraccountByUsername(db, l.Username)
 }
 
-// ListByIDListUsername retrieves a row from 'public.list' as a List.
+// ListByUsernameIDList retrieves a row from 'public.list' as a List.
 //
-// Generated from index 'list_pkey'.
-func ListByIDListUsername(db XODB, idList string, username string) (*List, error) {
+// Generated from index 'pk_list'.
+func ListByUsernameIDList(db XODB, username string, idList string) (*List, error) {
 	var err error
 
 	// sql query
 	const sqlstr = `SELECT ` +
-		`id_list, name, description, username ` +
+		`username, id_list, name, description, erased ` +
 		`FROM public.list ` +
-		`WHERE id_list = $1 AND username = $2`
+		`WHERE username = $1 AND id_list = $2`
 
 	// run query
-	XOLog(sqlstr, idList, username)
+	XOLog(sqlstr, username, idList)
 	l := List{
 		_exists: true,
 	}
 
-	err = db.QueryRow(sqlstr, idList, username).Scan(&l.IDList, &l.Name, &l.Description, &l.Username)
+	err = db.QueryRow(sqlstr, username, idList).Scan(&l.Username, &l.IDList, &l.Name, &l.Description, &l.Erased)
 	if err != nil {
 		return nil, err
 	}
