@@ -9,4 +9,6 @@ import (
 func init() {
     // Index or home.
     beego.Router("/", &controllers.HomeController{})
+    // Formulario de registro.
+    beego.Router("/register", &controllers.RegisterController{})
 }
