@@ -4,12 +4,12 @@ import (
 	"github.com/astaxie/beego"
 )
 
-type HomeController struct {
+type RegisterController struct {
 	beego.Controller
 }
-func (pController *HomeController) Get() {
+func (pController *RegisterController) Get() {
 	// Para insertar datos en los templates usamos: pController.Data["Identificador en el template"] = "Valor que queremos que tome"
 	
 	// Servimos la pagina.
-	pController.TplName = "home.html"
+	pController.TplName = "register.html"
 }
