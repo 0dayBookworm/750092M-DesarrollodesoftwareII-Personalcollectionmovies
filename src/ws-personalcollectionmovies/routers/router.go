@@ -8,5 +8,7 @@ import (
 // Aquí inicializamos todas las rutas del servicio.
 func init() {
     // Index or home.
-    beego.Router("/", &controllers.RegisterController{})
+    beego.Router("/", &controllers.HomeController{})
+    // Formulario de registro.
+    beego.Router("/register", &controllers.RegisterController{})
 }
