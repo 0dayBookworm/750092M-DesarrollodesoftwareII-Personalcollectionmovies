@@ -12,7 +12,7 @@ type Useraccount struct {
 	SecondName string // second_name
 	LastName   string // last_name
 	BirthDate  Date   // birth_date
-	Gender     uint8  // gender
+	Gender     string // gender
 	Country    string // country
 	Email      string // email
 	Erased     bool   // erased

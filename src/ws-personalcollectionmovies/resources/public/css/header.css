@@ -1,0 +1,82 @@
+/**
+Color de la Barra de navegación.
+*/
+.navbar-inverse {
+	background-color: #292c2f;
+	border-color: transparent;
+	border-style: none;
+	border-radius: 0px;
+}
+/**
+Color letras barra de navegación.
+*/
+.navbar-inverse .navbar-brand {
+	color: white;
+}
+.navbar-inverse .navbar-nav li a{
+	color: white;
+}
+/**
+Propiedades al pasar el cursor sobre la clase nav-bar.
+*/
+.navbar-inverse .navbar-nav li a:hover{
+	color: #FFFFFF;
+}
+
+.navbar-inverse i{
+	color: #FFFFFF;
+}
+/**
+header
+*/
+header {
+    /**
+    background: url(../img/header-bg.jpg) no-repeat center;
+	background-size: cover;
+    */
+    background-color: transparent;
+	width: 100%;
+	padding-top: 100px;
+    
+}
+header h1 {
+	margin-bottom: 15px;
+	letter-spacing: 1px;
+	margin-top: 20%;
+	margin-right: 4%;
+}
+header p {
+	margin-right: 4%;
+}
+@media screen and (max-width: 768px){
+	 header h1 {
+	 	margin: 15px 0;
+	 	font-size: 24px;
+	 }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
