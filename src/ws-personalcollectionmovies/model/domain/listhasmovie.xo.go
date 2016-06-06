@@ -160,7 +160,7 @@ func (lhm *ListHasMovie) Delete(db XODB) error {
 //
 // Generated from foreign key 'list_list_has_movie_fk'.
 func (lhm *ListHasMovie) List(db XODB) (*List, error) {
-	return ListByIDList(db, lhm.Username)
+	return ListByUsernameIDList(db, lhm.Username, lhm.IDList)
 }
 
 // MovieMapping returns the MovieMapping associated with the ListHasMovie's ImdbID (imdb_id).
