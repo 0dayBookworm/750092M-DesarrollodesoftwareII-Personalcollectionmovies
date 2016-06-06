@@ -4,23 +4,29 @@
     <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0"> 
-    <title>PersonalCollectionMovies [WSPCM]</title>
+    <title>{{.Title}} - PersonalCollectionMovies [WSPCM]</title>
         <!-- Estilos CSS vinculados -->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="//getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.min.css" />
         <!-- Estilos propios -->
         <link href="//personalcollectionmovies-alobaton.c9users.io/public/css/footer.css" rel="stylesheet">
         <link href="//personalcollectionmovies-alobaton.c9users.io/public/css/footer-basic-centered.css" rel="stylesheet">
+        <link href="//personalcollectionmovies-alobaton.c9users.io/public/css/header.css" rel="stylesheet">
     </head>
     <body>
         <!-- Barra de navegación estatica-->
         <!-- Debe contener inicio de seión y registro -->
-        <nav class="navbar navbar-default navbar navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-fixed-top navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="#" class="navbar-brand"><strong>PersonalCollectionMovies</strong></a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse" aria-expanded="true">
+                        <i class="glyphicon glyphicon-menu-hamburger"></i>
+                    </button>
+                    <a href="//personalcollectionmovies-alobaton.c9users.io/" class="navbar-brand"><strong>PersonlCollectionMovies</strong></a>
                 </div>
-                <div class="navbar-collapse collapse">
+                <div id="navbarCollapse"  class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><i class="glyphicon glyphicon-log-in"></i> INICIAR SESIÓN</a></li>
                         <li><a href="//personalcollectionmovies-alobaton.c9users.io/register"><i class="glyphicon glyphicon-user"></i> REGISTRATE</a></li> 
@@ -28,45 +34,49 @@
                 </div>
             </div>
         </nav>
-        <!-- Separador -->
-        <hr class="container">
         <!-- Fin barra de navegacion -->
         <!-- Información empresa -->
-        <header>
-            <div class="container">
-                <!-- Para diferentes contenidos dentro de un container usamos row -->
-                <div class="row" align=right> 
-                    <div class=""> 
+        <div class="container">
+            <header>
+                <div class="container">
+                    <!-- Para diferentes contenidos dentro de un container usamos row -->
+                    <div class="row" align=right> 
                         <h1><strong>LOGO</strong></h1>
-                    </div>
-                    <div class="">
                         <p>Personal Collection Movies</p>
                     </div>
                 </div>
-            </div>
-        </header>
+            </header>
+        </div>
         <!-- Fin información empresa -->
         <!-- Barra de navegación de pagínas -->
         <div class="container">
-            <nav class="navbar navbar-default navbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="//personalcollectionmovies-alobaton.c9users.io/">INICIO</a></li>
-                    <li><a href="#">RECIENTES</a></li>
-                    <li><a href="#">CARTELERA</a></li> 
-                    <li><a href="#">ESTRENOS</a></li> 
-                    <li><a href="#">POPULARES</a></li> 
-                    <li><a href="#">CONOCENOS</a></li> 
-                    <li><a href="#">CONTACTENOS</a></li> 
-                </ul>
+            <nav class="navbar navbar-inverse navbar">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarMainMenu" aria-expanded="true">
+                            <i class="glyphicon glyphicon-menu-hamburger"></i>
+                        </button>
+                    </div>
+                    <div id="navbarMainMenu"  class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="//personalcollectionmovies-alobaton.c9users.io/">INICIO</a></li>
+                            <li><a href="#">RECIENTES</a></li>
+                            <li><a href="#">CARTELERA</a></li> 
+                            <li><a href="#">ESTRENOS</a></li> 
+                            <li><a href="#">POPULARES</a></li> 
+                            <li><a href="#">CONOCENOS</a></li> 
+                            <li><a href="#">CONTACTENOS</a></li> 
+                        </ul>
+                    </div>
+                </div>
             </nav>
-            
         </div>
         <!-- Fin barra de navegacion paginas -->
         <!-- Buscar pelicula -->
         <div class="container">
             <div class="input-group">
                 <span class="input-group-btn">
-                   <button class="btn btn-default" type="button">BUSCAR PELICULA</button>
+                   <button class="btn btn-primary" type="button">BUSCAR PELICULA</button>
                 </span>
                 <input type="text" class="form-control" placeholder="Nombre de la pelicula">
             </div>
