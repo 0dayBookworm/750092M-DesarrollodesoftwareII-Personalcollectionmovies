@@ -2,12 +2,12 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/validation"
-	"time"
 	"ws-personalcollectionmovies/log"
+	"ws-personalcollectionmovies/util"
+	"ws-personalcollectionmovies/error_"
 	"ws-personalcollectionmovies/model/database"
 	"ws-personalcollectionmovies/model/domain"
-	"ws-personalcollectionmovies/model/form"
+	"ws-personalcollectionmovies/model/services"
 )
 
 type RegisterController struct {
@@ -29,50 +29,59 @@ func (pController *RegisterController) Get() {
 func (pController *RegisterController) CreateUseraccount() {
 	// Extraemos los datos del usuario a partir del formulario.
 	// Esto se realiza mediante un parseo, se debe crear una estructura refente al modulo en l paquete 'form'.
-	useraccount := form.Useraccount{}
-	err := pController.ParseForm(&useraccount)
+	// Además es importante conocer que el parseo se realiza a partir de un JSon, es decir el formulario es traducido a un JSon.
+	request := services.RegistrationRequest{}
+	err := pController.ParseForm(&request)
+	
 	// Si ha ocurrido un error al parsear.
 	if err != nil {
-		log.Error("CreateUseraccount(): Error occurs while try parsing useraccount from form.")
+		log.Error("CreateUseraccount: "+error_.ERR_0012) 
+		RegistrationResponse := services.RegistrationResponse{error_.KO, error_.ERR_0012}
+        pController.Data["json"] = &RegistrationResponse
+    	pController.ServeJSON()
+    	return
 	}
-	log.Info("CreateUseraccount(): Record attempt [" + form.UseraccountToString(useraccount) + "]")
 	
-	// Realizamos las validaciones.
-	valid := validation.Validation{}
-	// customErr es un error personalizado despues de validar los tags de la estructura. Remitirse a 'model/form/useraccount.go'
-    customErr, err := valid.Valid(&useraccount)
-    if err != nil {
-        // Handle error.
-        log.Error("CreateUseraccount(): Error occurs while try validating useraccount from form.")
-        return 
-    }
-	if !customErr {
-        // Validation does not pass.
-        log.Error("CreateUseraccount(): Validation does not pass.")
-        // Obtenemos todos los errores capturados.
-        for _, err := range valid.Errors {
-        	log.Error("CreateUseraccount(): ["+err.Key+"] "+err.Message)
-        }
-        return 
-    }
-    // Si se pasan las validaciones entonces:
-	// Creamos el objeto de dominio que sera almacenado en base de datos.
-	domainUseraccount := domain.Useraccount{}
-	domainUseraccount.Username = useraccount.Username
-	domainUseraccount.FirstName = useraccount.FirstName
-	domainUseraccount.SecondName = useraccount.SecondName
-	domainUseraccount.LastName = useraccount.LastName
-	domainUseraccount.BirthDate, _ = time.Parse("dd/mm/yyyy", useraccount.BirthDate)
-	domainUseraccount.Gender = useraccount.Gender
-	domainUseraccount.Country = ""
-	domainUseraccount.Email = useraccount.Email
-	domainUseraccount.Erased = false
+	log.Info("CreateUseraccount: Record attempt [" + request.ToString() + "]")
 	
-	err = domainUseraccount.Insert(database.OpenDataBase())
+    // Dado el diseño debemos primero insertar el usuario en la tabla ROOT.
+    // Además esto nos ahorrara procesamiento de no poderse llevar acabo.
+    domainRoot := domain.Root{
+     	Username: request.Username,
+     	// Pass: util.Encrypt(request.Password)}
+     	Pass: request.Password}
+     	
+	err = domainRoot.Insert(database.OpenDataBase())
 	if err != nil {
-		log.Error("CreateUseraccount(): Useraccount could not be created."+err.Error())
-		return 
+		log.Error(error_.ERR_0010+err.Error())
+		RegistrationResponse := services.RegistrationResponse{error_.KO, error_.ERR_0013}
+        pController.Data["json"] = &RegistrationResponse
+    	pController.ServeJSON()
+	 	return 
 	}
-	// Para redireccionar a otra pagina. En este caso a home.
-	pController.Ctx.Redirect(302, "/")
+    
+	// Creamos el objeto de dominio que sera almacenado en base de datos.
+	useraccount := domain.Useraccount{
+	 	Username: request.Username, 
+	 	FirstName: request.FirstName, 
+	 	SecondName: request.SecondName, 
+	 	LastName: request.LastName, 
+	 	BirthDate: util.ParseDate(request.BirthDate), 
+	 	Gender: request.Gender,
+	 	Email: request.Email, 
+	 	Erased: false}
+	
+	err = useraccount.Insert(database.OpenDataBase())
+	if err != nil {
+	 	log.Error(error_.ERR_0011+err.Error())
+	 	RegistrationResponse := services.RegistrationResponse{error_.KO, error_.ERR_0013}
+        pController.Data["json"] = &RegistrationResponse
+    	pController.ServeJSON()
+	 	return 
+	}
+	// Si el proceso se llevo a cabo respondemos con el mensaje de exito asociado
+    RegistrationResponse := services.RegistrationResponse{error_.OK, "Te has registrado con exito, te hemos enviado un mail de confirmación."}
+    pController.Data["json"] = &RegistrationResponse
+    pController.ServeJSON()
 }
+

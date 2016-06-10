@@ -16,7 +16,6 @@ type Useraccount struct {
 	LastName   string // last_name
 	BirthDate  time.Time   // birth_date
 	Gender     string // gender
-	Country    string // country
 	Email      string // email
 	Erased     bool   // erased
 
@@ -45,14 +44,14 @@ func (u *Useraccount) Insert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.useraccount (` +
-		`first_name, second_name, last_name, birth_date, gender, country, email, erased` +
+		`username, first_name, second_name, last_name, birth_date, gender, email, erased` +
 		`) VALUES (` +
 		`$1, $2, $3, $4, $5, $6, $7, $8` +
 		`) RETURNING username`
 
 	// run query
-	XOLog(sqlstr, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Country, u.Email, u.Erased)
-	err = db.QueryRow(sqlstr, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Country, u.Email, u.Erased).Scan(&u.Username)
+	XOLog(sqlstr, u.Username, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Email, u.Erased)
+	err = db.QueryRow(sqlstr, u.Username, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Email, u.Erased).Scan(&u.Username)
 	if err != nil {
 		return err
 	}
@@ -79,14 +78,14 @@ func (u *Useraccount) Update(db XODB) error {
 
 	// sql query
 	const sqlstr = `UPDATE public.useraccount SET (` +
-		`first_name, second_name, last_name, birth_date, gender, country, email, erased` +
+		`first_name, second_name, last_name, birth_date, gender, email, erased` +
 		`) = ( ` +
 		`$1, $2, $3, $4, $5, $6, $7, $8` +
 		`) WHERE username = $9`
 
 	// run query
-	XOLog(sqlstr, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Country, u.Email, u.Erased, u.Username)
-	_, err = db.Exec(sqlstr, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Country, u.Email, u.Erased, u.Username)
+	XOLog(sqlstr, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Email, u.Erased, u.Username)
+	_, err = db.Exec(sqlstr, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Email, u.Erased, u.Username)
 	return err
 }
 
@@ -112,18 +111,18 @@ func (u *Useraccount) Upsert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.useraccount (` +
-		`username, first_name, second_name, last_name, birth_date, gender, country, email, erased` +
+		`username, first_name, second_name, last_name, birth_date, gender, email, erased` +
 		`) VALUES (` +
-		`$1, $2, $3, $4, $5, $6, $7, $8, $9` +
+		`$1, $2, $3, $4, $5, $6, $7, $8` +
 		`) ON CONFLICT (username) DO UPDATE SET (` +
-		`username, first_name, second_name, last_name, birth_date, gender, country, email, erased` +
+		`username, first_name, second_name, last_name, birth_date, gender, email, erased` +
 		`) = (` +
-		`EXCLUDED.username, EXCLUDED.first_name, EXCLUDED.second_name, EXCLUDED.last_name, EXCLUDED.birth_date, EXCLUDED.gender, EXCLUDED.country, EXCLUDED.email, EXCLUDED.erased` +
+		`EXCLUDED.username, EXCLUDED.first_name, EXCLUDED.second_name, EXCLUDED.last_name, EXCLUDED.birth_date, EXCLUDED.gender, EXCLUDED.email, EXCLUDED.erased` +
 		`)`
 
 	// run query
-	XOLog(sqlstr, u.Username, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Country, u.Email, u.Erased)
-	_, err = db.Exec(sqlstr, u.Username, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Country, u.Email, u.Erased)
+	XOLog(sqlstr, u.Username, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Email, u.Erased)
+	_, err = db.Exec(sqlstr, u.Username, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Email, u.Erased)
 	if err != nil {
 		return err
 	}
@@ -179,7 +178,7 @@ func UseraccountByUsername(db XODB, username string) (*Useraccount, error) {
 
 	// sql query
 	const sqlstr = `SELECT ` +
-		`username, first_name, second_name, last_name, birth_date, gender, country, email, erased ` +
+		`username, first_name, second_name, last_name, birth_date, gender, email, erased ` +
 		`FROM public.useraccount ` +
 		`WHERE username = $1`
 
@@ -189,7 +188,7 @@ func UseraccountByUsername(db XODB, username string) (*Useraccount, error) {
 		_exists: true,
 	}
 
-	err = db.QueryRow(sqlstr, username).Scan(&u.Username, &u.FirstName, &u.SecondName, &u.LastName, &u.BirthDate, &u.Gender, &u.Country, &u.Email, &u.Erased)
+	err = db.QueryRow(sqlstr, username).Scan(&u.Username, &u.FirstName, &u.SecondName, &u.LastName, &u.BirthDate, &u.Gender, &u.Email, &u.Erased)
 	if err != nil {
 		return nil, err
 	}

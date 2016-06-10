@@ -1,25 +1,160 @@
-INFO: 2016/06/06 22:25:06 main.go:24: Log information load correctly.
-INFO: 2016/06/06 22:25:06 main.go:27: The system is set up correctly.
-INFO: 2016/06/06 22:25:06 main.go:32: Listen and serve at 8080
-INFO: 2016/06/06 22:25:50 registercontroller.go:38: CreateUseraccount(): Record attempt [Username:alobaton, Email:alobaton.restrepo@gmail.com, Password:1, FirstName:Alvaro, SecondName:Jose, LastName:Lobaton Restrepo, BirthDate:21/01/1994, Gender:male, TermsAndConditions:agree]
-ERROR: 2016/06/06 22:25:50 database.go:13: sql: unknown driver "postgres" (forgotten import?)
-INFO: 2016/06/06 22:29:25 main.go:24: Log information load correctly.
-INFO: 2016/06/06 22:29:25 main.go:27: The system is set up correctly.
-INFO: 2016/06/06 22:29:25 main.go:32: Listen and serve at 8080
-INFO: 2016/06/06 22:30:37 registercontroller.go:38: CreateUseraccount(): Record attempt [Username:alobaton, Email:alobaton.restrepo@gmail.com, Password:1, FirstName:Alvaro, SecondName:Jose, LastName:Lobaton Restrepo, BirthDate:21/01/1994, Gender:male, TermsAndConditions:agree]
-INFO: 2016/06/06 22:37:05 main.go:24: Log information load correctly.
-INFO: 2016/06/06 22:37:05 main.go:27: The system is set up correctly.
-INFO: 2016/06/06 22:37:05 main.go:32: Listen and serve at 8080
-INFO: 2016/06/06 22:37:10 main.go:24: Log information load correctly.
-INFO: 2016/06/06 22:37:10 main.go:27: The system is set up correctly.
-INFO: 2016/06/06 22:37:10 main.go:32: Listen and serve at 8080
-INFO: 2016/06/06 22:38:50 main.go:24: Log information load correctly.
-INFO: 2016/06/06 22:38:50 main.go:27: The system is set up correctly.
-INFO: 2016/06/06 22:38:50 main.go:32: Listen and serve at 8080
-INFO: 2016/06/06 22:39:18 registercontroller.go:38: CreateUseraccount(): Record attempt [Username:alobaton, Email:alobaton@innova4j.com, Password:1, FirstName:Alvaro, SecondName:Jose, LastName:Lobaton Restrepo, BirthDate:21/01/1994, Gender:male, TermsAndConditions:agree]
-ERROR: 2016/06/06 22:39:18 registercontroller.go:73: CreateUseraccount(): Useraccount could not be created.
-INFO: 2016/06/06 22:43:30 main.go:24: Log information load correctly.
-INFO: 2016/06/06 22:43:30 main.go:27: The system is set up correctly.
-INFO: 2016/06/06 22:43:30 main.go:32: Listen and serve at 8080
-INFO: 2016/06/06 22:43:57 registercontroller.go:38: CreateUseraccount(): Record attempt [Username:alobaton, Email:alvaro.lobaton@correounivalle.edu.co, Password:1, FirstName:Alvaro, SecondName:Jose, LastName:Lobaton Restrepo, BirthDate:21/01/1994, Gender:male, TermsAndConditions:agree]
-ERROR: 2016/06/06 22:43:58 registercontroller.go:73: CreateUseraccount(): Useraccount could not be created.pq: null value in column "username" violates not-null constraint
+INFO: 2016/06/08 02:15:00 main.go:24: Log information load correctly.
+INFO: 2016/06/08 02:15:00 main.go:27: The system is set up correctly.
+INFO: 2016/06/08 02:15:00 main.go:32: Listen and serve at 8080
+INFO: 2016/06/08 02:15:11 registercontroller.go:41: CreateUseraccount(): Record attempt [Username:whatever, Email:a@a.com, Password:Pass, FirstName:F, SecondName:, LastName:L, BirthDate:1994-01-21, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/08 02:15:48 registercontroller.go:41: CreateUseraccount(): Record attempt [Username:whatever, Email:a@a.com, Password:Pass, FirstName:F, SecondName:, LastName:L, BirthDate:1994-01-21, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/08 02:16:33 registercontroller.go:41: CreateUseraccount(): Record attempt [Username:, Email:a@a.com, Password:Pass, FirstName:F, SecondName:, LastName:L, BirthDate:1994-01-21, Gender:male, TermsAndConditions:agree]
+ERROR: 2016/06/08 02:16:33 registercontroller.go:54: CreateUseraccount(): Validation does not pass.
+ERROR: 2016/06/08 02:16:33 registercontroller.go:57: CreateUseraccount(): [Username.Required] Can not be empty
+INFO: 2016/06/08 02:18:16 main.go:24: Log information load correctly.
+INFO: 2016/06/08 02:18:16 main.go:27: The system is set up correctly.
+INFO: 2016/06/08 02:18:16 main.go:32: Listen and serve at 8080
+INFO: 2016/06/08 02:25:26 main.go:24: Log information load correctly.
+INFO: 2016/06/08 02:25:26 main.go:27: The system is set up correctly.
+INFO: 2016/06/08 02:25:26 main.go:32: Listen and serve at 8080
+INFO: 2016/06/08 02:25:31 main.go:24: Log information load correctly.
+INFO: 2016/06/08 02:25:31 main.go:27: The system is set up correctly.
+INFO: 2016/06/08 02:25:31 main.go:32: Listen and serve at 8080
+INFO: 2016/06/08 02:26:06 main.go:24: Log information load correctly.
+INFO: 2016/06/08 02:26:06 main.go:27: The system is set up correctly.
+INFO: 2016/06/08 02:26:06 main.go:32: Listen and serve at 8080
+INFO: 2016/06/08 02:28:17 main.go:24: Log information load correctly.
+INFO: 2016/06/08 02:28:17 main.go:27: The system is set up correctly.
+INFO: 2016/06/08 02:28:17 main.go:32: Listen and serve at 8080
+INFO: 2016/06/08 02:28:56 main.go:24: Log information load correctly.
+INFO: 2016/06/08 02:28:56 main.go:27: The system is set up correctly.
+INFO: 2016/06/08 02:28:56 main.go:32: Listen and serve at 8080
+INFO: 2016/06/08 02:31:17 main.go:24: Log information load correctly.
+INFO: 2016/06/08 02:31:17 main.go:27: The system is set up correctly.
+INFO: 2016/06/08 02:31:17 main.go:32: Listen and serve at 8080
+INFO: 2016/06/08 02:31:34 registercontroller.go:44: CreateUseraccount: Record attempt [Username:, Email:a@a.com, Password:Pass, FirstName:F, SecondName:, LastName:L, BirthDate:1994-01-21, Gender:male, TermsAndConditions:agree]
+ERROR: 2016/06/08 02:31:34 registercontroller.go:60: CreateUseraccount: [Username.Required] Can not be empty
+INFO: 2016/06/08 02:32:47 registercontroller.go:44: CreateUseraccount: Record attempt [Username:, Email:a@a.com, Password:Pass, FirstName:F, SecondName:, LastName:L, BirthDate:1994-01-21, Gender:male, TermsAndConditions:agree]
+ERROR: 2016/06/08 02:32:47 registercontroller.go:60: CreateUseraccount: [Username.Required] Can not be empty
+INFO: 2016/06/08 02:34:56 main.go:24: Log information load correctly.
+INFO: 2016/06/08 02:34:56 main.go:27: The system is set up correctly.
+INFO: 2016/06/08 02:34:56 main.go:32: Listen and serve at 8080
+INFO: 2016/06/08 02:35:17 registercontroller.go:45: CreateUseraccount: Record attempt [Username:, Email:a@a.com, Password:Pass, FirstName:F, SecondName:, LastName:L, BirthDate:1994-01-21, Gender:male, TermsAndConditions:agree]
+ERROR: 2016/06/08 02:35:17 registercontroller.go:62: CreateUseraccount: [Username.Required] Can not be empty
+INFO: 2016/06/08 02:36:32 main.go:24: Log information load correctly.
+INFO: 2016/06/08 02:36:32 main.go:27: The system is set up correctly.
+INFO: 2016/06/08 02:36:32 main.go:32: Listen and serve at 8080
+INFO: 2016/06/08 02:53:14 main.go:24: Log information load correctly.
+INFO: 2016/06/08 02:53:14 main.go:27: The system is set up correctly.
+INFO: 2016/06/08 02:53:14 main.go:32: Listen and serve at 8080
+INFO: 2016/06/08 02:56:38 registercontroller.go:44: CreateUseraccount: Record attempt [Username:, Email:, Password:, FirstName:, SecondName:, LastName:, BirthDate:, Gender:, TermsAndConditions:]
+ERROR: 2016/06/08 02:56:38 registercontroller.go:61: CreateUseraccount: [Username.Required] Can not be empty
+ERROR: 2016/06/08 02:56:38 registercontroller.go:61: CreateUseraccount: [Email.Required] Can not be empty
+ERROR: 2016/06/08 02:56:38 registercontroller.go:61: CreateUseraccount: [Email.Email] Must be a valid email address
+ERROR: 2016/06/08 02:56:38 registercontroller.go:61: CreateUseraccount: [Password.Required] Can not be empty
+ERROR: 2016/06/08 02:56:38 registercontroller.go:61: CreateUseraccount: [ConfirmPassword.Required] Can not be empty
+ERROR: 2016/06/08 02:56:38 registercontroller.go:61: CreateUseraccount: [FirstName.Required] Can not be empty
+ERROR: 2016/06/08 02:56:38 registercontroller.go:61: CreateUseraccount: [LastName.Required] Can not be empty
+ERROR: 2016/06/08 02:56:38 registercontroller.go:61: CreateUseraccount: [BirthDate.Required] Can not be empty
+ERROR: 2016/06/08 02:56:38 registercontroller.go:61: CreateUseraccount: [Gender.Required] Can not be empty
+ERROR: 2016/06/08 02:56:38 registercontroller.go:61: CreateUseraccount: [TermsAndConditions.Required] Can not be empty
+INFO: 2016/06/08 02:57:57 registercontroller.go:44: CreateUseraccount: Record attempt [Username:, Email:, Password:, FirstName:, SecondName:, LastName:, BirthDate:, Gender:, TermsAndConditions:]
+ERROR: 2016/06/08 02:57:57 registercontroller.go:61: CreateUseraccount: [Username.Required] Can not be empty
+ERROR: 2016/06/08 02:57:57 registercontroller.go:61: CreateUseraccount: [Email.Required] Can not be empty
+ERROR: 2016/06/08 02:57:57 registercontroller.go:61: CreateUseraccount: [Email.Email] Must be a valid email address
+ERROR: 2016/06/08 02:57:57 registercontroller.go:61: CreateUseraccount: [Password.Required] Can not be empty
+ERROR: 2016/06/08 02:57:57 registercontroller.go:61: CreateUseraccount: [ConfirmPassword.Required] Can not be empty
+ERROR: 2016/06/08 02:57:57 registercontroller.go:61: CreateUseraccount: [FirstName.Required] Can not be empty
+ERROR: 2016/06/08 02:57:57 registercontroller.go:61: CreateUseraccount: [LastName.Required] Can not be empty
+ERROR: 2016/06/08 02:57:57 registercontroller.go:61: CreateUseraccount: [BirthDate.Required] Can not be empty
+ERROR: 2016/06/08 02:57:57 registercontroller.go:61: CreateUseraccount: [Gender.Required] Can not be empty
+ERROR: 2016/06/08 02:57:57 registercontroller.go:61: CreateUseraccount: [TermsAndConditions.Required] Can not be empty
+INFO: 2016/06/08 03:04:08 registercontroller.go:44: CreateUseraccount: Record attempt [Username:, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2000-02-08, Gender:male, TermsAndConditions:agree"]
+ERROR: 2016/06/08 03:04:08 registercontroller.go:61: CreateUseraccount: [Username.Required] Can not be empty
+INFO: 2016/06/08 23:49:17 main.go:24: Log information load correctly.
+INFO: 2016/06/08 23:49:17 main.go:27: The system is set up correctly.
+INFO: 2016/06/08 23:49:17 main.go:32: Listen and serve at 8080
+INFO: 2016/06/08 23:58:07 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/08 23:59:06 main.go:24: Log information load correctly.
+INFO: 2016/06/08 23:59:06 main.go:27: The system is set up correctly.
+INFO: 2016/06/08 23:59:06 main.go:32: Listen and serve at 8080
+INFO: 2016/06/08 23:59:34 main.go:24: Log information load correctly.
+INFO: 2016/06/08 23:59:34 main.go:27: The system is set up correctly.
+INFO: 2016/06/08 23:59:34 main.go:32: Listen and serve at 8080
+INFO: 2016/06/09 00:00:18 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 00:21:36 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 00:21:40 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 00:30:55 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 00:30:57 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 00:31:40 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 00:32:01 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 00:32:29 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 00:32:36 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 00:38:03 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 00:41:52 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 00:46:15 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 00:46:23 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 00:51:54 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:aaaaaaaa, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 00:52:34 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 00:57:01 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 01:19:22 registercontroller.go:44: CreateUseraccount: Record attempt [Username:, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+ERROR: 2016/06/09 01:19:22 registercontroller.go:61: CreateUseraccount: [Username.Required] Can not be empty
+INFO: 2016/06/09 01:19:51 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 01:20:17 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 01:20:36 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 01:22:37 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2000-01-31, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 01:27:44 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:1994-01-21, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 01:30:54 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 01:39:03 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 01:39:41 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 01:43:28 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 01:47:37 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 01:48:56 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 01:49:37 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2000-02-01, Gender:female, TermsAndConditions:agree]
+INFO: 2016/06/09 01:50:58 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2000-02-01, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 01:52:12 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2000-02-02, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 01:54:47 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 01:56:32 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 02:03:01 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 02:03:20 main.go:24: Log information load correctly.
+INFO: 2016/06/09 02:03:20 main.go:27: The system is set up correctly.
+INFO: 2016/06/09 02:03:20 main.go:32: Listen and serve at 8080
+INFO: 2016/06/09 02:04:46 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 02:06:12 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 02:17:01 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2000-02-22, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 02:18:48 registercontroller.go:44: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2000-02-07, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 19:38:05 main.go:24: Log information load correctly.
+INFO: 2016/06/09 19:38:05 main.go:27: The system is set up correctly.
+INFO: 2016/06/09 19:38:05 main.go:32: Listen and serve at 8080
+INFO: 2016/06/09 19:41:32 main.go:24: Log information load correctly.
+INFO: 2016/06/09 19:41:32 main.go:27: The system is set up correctly.
+INFO: 2016/06/09 19:41:32 main.go:32: Listen and serve at 8080
+INFO: 2016/06/09 19:42:29 main.go:24: Log information load correctly.
+INFO: 2016/06/09 19:42:29 main.go:27: The system is set up correctly.
+INFO: 2016/06/09 19:42:29 main.go:32: Listen and serve at 8080
+INFO: 2016/06/09 19:46:35 main.go:24: Log information load correctly.
+INFO: 2016/06/09 19:46:35 main.go:27: The system is set up correctly.
+INFO: 2016/06/09 19:46:35 main.go:32: Listen and serve at 8080
+INFO: 2016/06/09 22:03:48 main.go:24: Log information load correctly.
+INFO: 2016/06/09 22:03:48 main.go:27: The system is set up correctly.
+INFO: 2016/06/09 22:03:48 main.go:32: Listen and serve at 8080
+INFO: 2016/06/09 23:06:00 registercontroller.go:45: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-09, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 23:06:49 registercontroller.go:45: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2000-02-01, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 23:07:13 registercontroller.go:45: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2000-02-08, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 23:08:25 registercontroller.go:45: CreateUseraccount: Record attempt [Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2000-01-31, Gender:male, TermsAndConditions:agree]
+INFO: 2016/06/09 23:28:55 main.go:24: Log information load correctly.
+INFO: 2016/06/09 23:28:55 main.go:27: The system is set up correctly.
+INFO: 2016/06/09 23:28:55 main.go:32: Listen and serve at 8080
+INFO: 2016/06/09 23:31:49 registercontroller.go:45: CreateUseraccount: Record attempt [{Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2016-06-09, Gender:male, TermsAndConditions:agree}]
+ERROR: 2016/06/09 23:31:49 registercontroller.go:56: ERR_0010 Root could not be created.pq: duplicate key value violates unique constraint "pk_root"
+INFO: 2016/06/09 23:33:54 main.go:24: Log information load correctly.
+INFO: 2016/06/09 23:33:54 main.go:27: The system is set up correctly.
+INFO: 2016/06/09 23:33:54 main.go:32: Listen and serve at 8080
+INFO: 2016/06/09 23:36:07 main.go:24: Log information load correctly.
+INFO: 2016/06/09 23:36:07 main.go:27: The system is set up correctly.
+INFO: 2016/06/09 23:36:07 main.go:32: Listen and serve at 8080
+INFO: 2016/06/09 23:36:49 registercontroller.go:45: CreateUseraccount: Record attempt [{Username:vivaho, Email:alobaton.restrepo@gmail.com, Password:12345, FirstName:Alvaro, SecondName:Alvaro, LastName:Lobaton Restrepo, BirthDate:2000-02-02, Gender:male, TermsAndConditions:agree}]
+INFO: 2016/06/09 23:37:55 registercontroller.go:45: CreateUseraccount: Record attempt [{Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2000-02-01, Gender:male, TermsAndConditions:agree}]
+ERROR: 2016/06/09 23:37:55 registercontroller.go:56: ERR_0010 Root could not be created.pq: duplicate key value violates unique constraint "pk_root"
+INFO: 2016/06/09 23:38:28 registercontroller.go:45: CreateUseraccount: Record attempt [{Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2000-02-01, Gender:male, TermsAndConditions:agree}]
+ERROR: 2016/06/09 23:38:28 registercontroller.go:56: ERR_0010 Root could not be created.pq: duplicate key value violates unique constraint "pk_root"
+INFO: 2016/06/09 23:41:46 registercontroller.go:45: CreateUseraccount: Record attempt [{Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2000-02-01, Gender:male, TermsAndConditions:agree}]
+ERROR: 2016/06/09 23:41:47 registercontroller.go:56: ERR_0010 Root could not be created.pq: duplicate key value violates unique constraint "pk_root"
+INFO: 2016/06/09 23:42:06 registercontroller.go:45: CreateUseraccount: Record attempt [{Username:alobaton, Email:alvaro.lobaton@cooreounivalle.edu.co, Password:a, FirstName:Alvaro, SecondName:Alvaro, LastName:Alvaro, BirthDate:2000-02-01, Gender:male, TermsAndConditions:agree}]
+ERROR: 2016/06/09 23:42:07 registercontroller.go:56: ERR_0010 Root could not be created.pq: duplicate key value violates unique constraint "pk_root"
+INFO: 2016/06/09 23:48:59 registercontroller.go:45: CreateUseraccount: Record attempt [{Username:vicaho, Email:vicaho1@gmail.com, Password:123456789, FirstName:viviana, SecondName:angelica, LastName:castro, BirthDate:1995-09-14, Gender:female, TermsAndConditions:agree}]
