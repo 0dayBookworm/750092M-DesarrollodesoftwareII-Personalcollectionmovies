@@ -35,14 +35,14 @@ func (r *Root) Insert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.root (` +
-		`pass` +
+		`username, pass` +
 		`) VALUES (` +
-		`$1` +
+		`$1, $2` +
 		`) RETURNING username`
 
 	// run query
-	XOLog(sqlstr, r.Pass)
-	err = db.QueryRow(sqlstr, r.Pass).Scan(&r.Username)
+	XOLog(sqlstr, r.Username, r.Pass)
+	err = db.QueryRow(sqlstr, r.Username, r.Pass).Scan(&r.Username)
 	if err != nil {
 		return err
 	}

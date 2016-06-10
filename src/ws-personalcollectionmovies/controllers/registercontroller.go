@@ -2,10 +2,12 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
-	//"github.com/astaxie/beego/validation"
 	"ws-personalcollectionmovies/log"
-	//"ws-personalcollectionmovies/model/domain"
-	"ws-personalcollectionmovies/model/form"
+	"ws-personalcollectionmovies/util"
+	"ws-personalcollectionmovies/error_"
+	"ws-personalcollectionmovies/model/database"
+	"ws-personalcollectionmovies/model/domain"
+	"ws-personalcollectionmovies/model/services"
 )
 
 type RegisterController struct {
@@ -23,21 +25,63 @@ func (pController *RegisterController) Get() {
 	// Servimos la pagina.
 	pController.TplName = "register.html"
 }
-
+// CreateUseraccount [Metodo encargado de procesar una petición de registro de una nueva cuenta de usuario.]
 func (pController *RegisterController) CreateUseraccount() {
 	// Extraemos los datos del usuario a partir del formulario.
 	// Esto se realiza mediante un parseo, se debe crear una estructura refente al modulo en l paquete 'form'.
-	useraccount := form.Useraccount{}
-	err := pController.ParseForm(&useraccount)
+	// Además es importante conocer que el parseo se realiza a partir de un JSon, es decir el formulario es traducido a un JSon.
+	request := services.RegistrationRequest{}
+	err := pController.ParseForm(&request)
+	
 	// Si ha ocurrido un error al parsear.
 	if err != nil {
-		log.Info("CreateUseraccount(): Error occurs while try parsing useraccount from form.")
+		log.Error("CreateUseraccount: "+error_.ERR_0012) 
+		RegistrationResponse := services.RegistrationResponse{error_.KO, error_.ERR_0012}
+        pController.Data["json"] = &RegistrationResponse
+    	pController.ServeJSON()
+    	return
 	}
-	log.Info("CreateUseraccount(): Se obtuvieron los datos del usuario correctamente [" + form.UseraccountToString(useraccount) + "]")
+	
+	log.Info("CreateUseraccount: Record attempt [" + request.ToString() + "]")
+	
+    // Dado el diseño debemos primero insertar el usuario en la tabla ROOT.
+    // Además esto nos ahorrara procesamiento de no poderse llevar acabo.
+    domainRoot := domain.Root{
+     	Username: request.Username,
+     	// Pass: util.Encrypt(request.Password)}
+     	Pass: request.Password}
+     	
+	err = domainRoot.Insert(database.OpenDataBase())
+	if err != nil {
+		log.Error(error_.ERR_0010+err.Error())
+		RegistrationResponse := services.RegistrationResponse{error_.KO, error_.ERR_0013}
+        pController.Data["json"] = &RegistrationResponse
+    	pController.ServeJSON()
+	 	return 
+	}
+    
 	// Creamos el objeto de dominio que sera almacenado en base de datos.
+	useraccount := domain.Useraccount{
+	 	Username: request.Username, 
+	 	FirstName: request.FirstName, 
+	 	SecondName: request.SecondName, 
+	 	LastName: request.LastName, 
+	 	BirthDate: util.ParseDate(request.BirthDate), 
+	 	Gender: request.Gender,
+	 	Email: request.Email, 
+	 	Erased: false}
 	
-	
-	
-	// Para redireccionar a otra pagina. En este caso a home.
-	pController.Ctx.Redirect(302, "/")
+	err = useraccount.Insert(database.OpenDataBase())
+	if err != nil {
+	 	log.Error(error_.ERR_0011+err.Error())
+	 	RegistrationResponse := services.RegistrationResponse{error_.KO, error_.ERR_0013}
+        pController.Data["json"] = &RegistrationResponse
+    	pController.ServeJSON()
+	 	return 
+	}
+	// Si el proceso se llevo a cabo respondemos con el mensaje de exito asociado
+    RegistrationResponse := services.RegistrationResponse{error_.OK, "Te has registrado con exito, te hemos enviado un mail de confirmación."}
+    pController.Data["json"] = &RegistrationResponse
+    pController.ServeJSON()
 }
+
