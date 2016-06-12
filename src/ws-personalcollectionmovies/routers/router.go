@@ -9,10 +9,12 @@ import (
 func init() {
     // Index or home.
     beego.Router("/", &controllers.HomeController{})
-    // Modulo: Perfil de usuario.
-    initProfileModule()
+    // Modulo: Inicio y cierre de sesión.
+    initLoginModule()
     // Modulo: Registro de cuentas de usuario.
     initRegistrationModule()
+    // Modulo: Perfil de usuario.
+    initProfileModule()
 }
 
 
@@ -26,4 +28,9 @@ func initRegistrationModule() {
 func initProfileModule() {
     // Datos de usuario.
     beego.Router("/profile", &controllers.ProfileController{})
+}
+
+func initLoginModule() {
+    // Iniciar sesión.
+    beego.Router("/login", &controllers.SessionController{}, "post:Login")
 }

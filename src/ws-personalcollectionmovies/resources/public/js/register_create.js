@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#Useraccount')
+    $('#RegisterForm')
         .bootstrapValidator({
             message: 'Este valor no es valido',
             feedbackIcons: {
@@ -96,7 +96,8 @@ $(document).ready(function() {
         // Cancels the form submission
         event.preventDefault();
         // Estructura de la peticion.
-        var RegistrationRequest = $('#Useraccount').serialize();
+        var RegistrationRequest = $('#RegisterForm').serialize();
+        var Title ="Registro";
         // Send data to back-end
         $.ajax({
             type: 'post',
@@ -108,7 +109,7 @@ $(document).ready(function() {
                 // Mostramos el o los mensajes de error.
                 bootbox.dialog({
                     message: response.Message,
-                    title: "Registro",
+                    title: Title,
                     buttons: {
                         close: {
                             label: "Cerrar",
@@ -122,7 +123,7 @@ $(document).ready(function() {
             else {
                 bootbox.dialog({
                     message: response.Message,
-                    title: "Registro",
+                    title: Title,
                     buttons: {
                         close: {
                             label: "Cerrar",

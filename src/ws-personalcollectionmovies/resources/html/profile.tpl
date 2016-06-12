@@ -1,0 +1,135 @@
+{{template "header" .}}
+<div class="container">
+    <div class="page-header">
+        <center>
+            <h1><strong>DATOS DE USUARIO</strong></h1>
+        </center>
+    </div>
+    <form class="form-horizontal">
+        <!-- Username and mail-->
+        <div class="form-group">
+            <label class="control-label col-xs-3">Nombre de usuario:</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" placeholder={{.Username}} readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3">Email:</label>
+            <div class="col-xs-9">
+                <input type="email" class="form-control" id="inputEmail" placeholder={{.Email}} readonly>
+            </div>
+        </div>
+        <hr class="container">
+        <!-- Fin username and mail -->
+        <!-- Primer nombre -->
+        <div class="form-group">
+            <label class="control-label col-xs-3">Primer nombre:</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" placeholder={{.FirstName}}>
+            </div>
+        </div>
+        <!-- Segundo nombre -->
+        <div class="form-group">
+            <label class="control-label col-xs-3">Segundo nombre:</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" placeholder={{.SecondName}}>
+            </div>
+        </div>
+        <!-- Apellidos -->
+        <div class="form-group">
+            <label class="control-label col-xs-3">Apellidos:</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" placeholder={{.LastName}}>
+            </div>
+        </div>
+        <!-- Fecha de nacimiento -->
+        <div class="form-group">
+            <label class="control-label col-xs-3">F. Nacimiento:</label>
+            <div class="col-xs-9">
+                <div class="input-group date" id="Date">
+                        <span class="input-group-addon" >
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        <input type="text" class="form-control" placeholder={{.BirthDate}}> 
+                </div>
+            </div>
+        </div>
+        <!-- Genero -->
+        <div class="form-group">
+            <label class="control-label col-xs-3">Genero:</label>
+            <div class="col-xs-9">
+                <div class="col-xs-9">
+                    <label class="radio-inline">
+                        <input type="radio" name="genderRadios" value="male"> Masculino
+                    </label>
+                </div>
+                <div class="col-xs-9">
+                    <label class="radio-inline">
+                        <input type="radio" name="genderRadios" value="female"> Femenino
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- Fin genero -->
+        <!-- Guardar cambios -->
+        <br>
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <button type="button" class="btn btn-primary" aria-label="Left Align">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    Guardar Cambios
+                </button>
+            </div>
+        </div>
+        <hr class="container">
+        <!-- Contraseña y confirmación-->
+        <div class="form-group">
+            <label class="control-label col-xs-3">Contraseña actual:</label>
+            <div class="col-xs-9">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña actual">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3">Contraseña nueva:</label>
+            <div class="col-xs-9">
+                <input type="password" class="form-control" placeholder="Contraseña nueva">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3">Confirmar contraseña:</label>
+            <div class="col-xs-9">
+                <input type="password" class="form-control" placeholder="Confirmar Contraseña">
+            </div>
+        </div>
+        <div class="container">
+            <small><i>La contraseña debe contener almenos una mayuscula y un numero.</i></small>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <button type="button" class="btn btn-primary" aria-label="Left Align">
+                    <i class="glyphicon glyphicon-lock"></i>
+                    Actualizar Contraseña
+                </button>
+            </div>
+        </div>
+        <hr class="container">
+        <!-- Fin contraseña y confirmación -->
+        <!-- Eliminar cuenta -->
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Eliminar tu cuenta </strong><i class="glyphicon glyphicon-alert"></i></div>
+            <div class="panel-body">
+                <div class="panel">
+                    <small>Si crees que no volveras a usar tu cuenta y la quieres eliminar, podemos ayudarte a hacerlo. Ten en cuenta que no podras volver a activarla ni recuperar ningun dato. Si quieres que se elimine tu cuenta haz clic en el boton Eliminar Cuenta.</small>
+                </div>
+                <button type="button" class="btn btn-danger" aria-label="Left Align">
+                    <i class="glyphicon glyphicon-remove"></i>
+                    Eliminar Cuenta
+                </button>
+            </div>
+            
+        </div>
+    </form>
+</div>
+
+{{template "footer" .}}

@@ -1,6 +1,9 @@
 /**
 Color de la Barra de navegación.
 */
+img {
+    width:100%;
+}
 .navbar-inverse {
 	background-color: #292c2f;
 	border-color: transparent;
@@ -27,6 +30,26 @@ Propiedades al pasar el cursor sobre la clase nav-bar.
 	color: #FFFFFF;
 }
 /**
+navbar-login
+*/
+.navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}
 header
 */
 header {
@@ -47,6 +70,21 @@ header h1 {
 }
 header p {
 	margin-right: 4%;
+}
+/**
+dropdown
+*/
+.dropdown .dropdown-menu i{
+	color:#000000;
+}
+.dropdown .dropdown-menu div {
+	margin-left: 4%;
+}
+.dropdown .dropdown-menu li a{
+	color:#000000;
+}
+.dropdown .dropdown-menu li a:hover{
+	color:#000000;
 }
 @media screen and (max-width: 768px){
 	 header h1 {
