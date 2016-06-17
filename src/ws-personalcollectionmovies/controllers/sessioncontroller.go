@@ -6,8 +6,9 @@ import (
 	"ws-personalcollectionmovies/log"
 	"ws-personalcollectionmovies/util"
 	"ws-personalcollectionmovies/error_"
-	"ws-personalcollectionmovies/model/database"
-	"ws-personalcollectionmovies/model/domain"
+	"ws-personalcollectionmovies/model/database/connection"
+	"ws-personalcollectionmovies/model/database/domain"
+	"ws-personalcollectionmovies/model/wsinterface"
 	"ws-personalcollectionmovies/model/session"
 )
 // Controlador.
@@ -17,7 +18,7 @@ type SessionController struct {
 
 func (pController *SessionController) Login() {
     
-	request := domain.LoginRequest{}
+	request := wsinterface.LoginRequest{}
 	err := pController.ParseForm(&request)
 	// Si ha ocurrido un error al parsear.
 	if err != nil {
@@ -47,7 +48,7 @@ func (pController *SessionController) Login() {
     }
 	
 	// Verificamos que el usuario no haya sido registrado.
-    rootVerification, err := domain.RootByUsername(database.OpenDataBase(), request.Username)
+    rootVerification, err := domain.RootByUsername(connection.OpenDataBase(), request.Username)
     // En caso de que el usuario ya exista.
 	if err != nil || rootVerification.Username == "" {
 		log.Error("SessionController.go: "+error_.ERR_0022+err.Error())
@@ -83,7 +84,7 @@ func (pController *SessionController) Logout() {
 }
 
 func (pController *SessionController) ServeMessage(pErrorCode, pErrorMessage string) {
-    loginResponse := domain.LoginResponse{pErrorCode, pErrorMessage}
+    loginResponse := wsinterface.LoginResponse{pErrorCode, pErrorMessage}
     pController.Data["json"] = &loginResponse
     pController.ServeJSON()
 }

@@ -1,4 +1,4 @@
-package domain
+package wsinterface
 
 import (
 	"github.com/astaxie/beego/validation"

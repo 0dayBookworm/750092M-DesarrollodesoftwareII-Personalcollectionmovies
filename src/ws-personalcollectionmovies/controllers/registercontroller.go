@@ -7,8 +7,9 @@ import (
 	"ws-personalcollectionmovies/log"
 	"ws-personalcollectionmovies/util"
 	"ws-personalcollectionmovies/error_"
-	"ws-personalcollectionmovies/model/database"
-	"ws-personalcollectionmovies/model/domain"
+	"ws-personalcollectionmovies/model/database/connection"
+	"ws-personalcollectionmovies/model/database/domain"
+	"ws-personalcollectionmovies/model/wsinterface"
 	"ws-personalcollectionmovies/model/session"
 )
 
@@ -38,7 +39,7 @@ func (pController *RegisterController) CreateUseraccount() {
 	// Extraemos los datos del usuario a partir del formulario.
 	// Esto se realiza mediante un parseo, se debe crear una estructura refente al modulo en l paquete 'form'.
 	// Además es importante conocer que el parseo se realiza a partir de un JSon, es decir el formulario es traducido a un JSon.
-	request := domain.RegistrationRequest{}
+	request := wsinterface.RegistrationRequest{}
 	err := pController.ParseForm(&request)
 	
 	// Si ha ocurrido un error al parsear.
@@ -72,7 +73,7 @@ func (pController *RegisterController) CreateUseraccount() {
     	return
     }
 	// Verificamos que el usuario no haya sido registrado.
-    rootVerification, err := domain.RootByUsername(database.OpenDataBase(), request.Username)
+    rootVerification, err := domain.RootByUsername(connection.OpenDataBase(), request.Username)
 	if err == nil && rootVerification.Username != "" {
 		log.Error("registercontroller.go: "+error_.ERR_0014)
 		pController.ServeMessage(error_.KO, error_.ERR_0014)
@@ -85,7 +86,7 @@ func (pController *RegisterController) CreateUseraccount() {
      	Username: strings.ToLower(request.Username),
      	Pass: util.EncryptMD5(request.Password)}
      	
-	err = root.Insert(database.OpenDataBase())
+	err = root.Insert(connection.OpenDataBase())
 	if err != nil {
 		log.Error("registercontroller.go: "+error_.ERR_0010+err.Error())
 		pController.ServeMessage(error_.KO, error_.ERR_0013)
@@ -103,7 +104,7 @@ func (pController *RegisterController) CreateUseraccount() {
 	 	Email: strings.ToLower(request.Email), 
 	 	Erased: false}
 	
-	err = useraccount.Insert(database.OpenDataBase())
+	err = useraccount.Insert(connection.OpenDataBase())
 	if err != nil {
 	 	log.Error("registercontroller.go: "+error_.ERR_0011+err.Error())
     	pController.ServeMessage(error_.KO, error_.ERR_0013)
@@ -127,7 +128,7 @@ func (pController *RegisterController) VerifySession() {
 }
 
 func (pController *RegisterController) ServeMessage(pErrorCode, pErrorMessage string) {
-	registrationResponse := domain.RegistrationResponse{pErrorCode, pErrorMessage}
+	registrationResponse := wsinterface.RegistrationResponse{pErrorCode, pErrorMessage}
     pController.Data["json"] = &registrationResponse
     pController.ServeJSON()
 }

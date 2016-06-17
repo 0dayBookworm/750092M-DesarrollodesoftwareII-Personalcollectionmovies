@@ -6,8 +6,9 @@ import (
 	"ws-personalcollectionmovies/log"
 	"ws-personalcollectionmovies/error_"
 	"ws-personalcollectionmovies/model/session"
-	"ws-personalcollectionmovies/model/database"
-	"ws-personalcollectionmovies/model/domain"
+	"ws-personalcollectionmovies/model/database/connection"
+	"ws-personalcollectionmovies/model/database/domain"
+	"ws-personalcollectionmovies/model/wsinterface"
 	"ws-personalcollectionmovies/util"
 )
 
@@ -37,7 +38,7 @@ func (pController *ProfileController) Get() {
     
 		// Obtenemos el usuario de base de datos.
 		// Verificamos que el usuario exista y obtenemos la información de base de datos.
-		Useraccount, err := domain.UseraccountByUsername(database.OpenDataBase(), _username)
+		Useraccount, err := domain.UseraccountByUsername(connection.OpenDataBase(), _username)
 		if err != nil {
 			log.Error("profilecontroller.go: "+error_.ERR_0031)
 			// Se debería redireccionar a una pagina de error.
@@ -64,7 +65,7 @@ func (pController *ProfileController) Get() {
 
 // Metodo encargado de actualizar la información de perfil de usuario.
 func (pController *ProfileController) Update() {
-	request := domain.UpdateProfileRequest{}
+	request := wsinterface.UpdateProfileRequest{}
 	err := pController.ParseForm(&request)
 	
 	if err != nil {
@@ -116,7 +117,7 @@ func (pController *ProfileController) Update() {
 	 	Email: request.Email, 
 	 	Erased: false}
 	 	
-	err = useraccount.Update(database.OpenDataBase())
+	err = useraccount.Update(connection.OpenDataBase())
 	if err != nil {
 	 	log.Error("profilecontroller.go: "+error_.ERR_0033+err.Error())
     	pController.ServeMessage(error_.KO, error_.ERR_0033)
@@ -128,7 +129,7 @@ func (pController *ProfileController) Update() {
 
 // Metodo encargado de cambiar la contraseña de un usuario.
 func (pController *ProfileController) ChangePassword() {
-	request := domain.ChangePasswordRequest{}
+	request := wsinterface.ChangePasswordRequest{}
 	err := pController.ParseForm(&request)
 	
 	if err != nil {
@@ -146,7 +147,7 @@ func (pController *ProfileController) ChangePassword() {
 	}
 	_username := sessionVal.(session.UserSession).Username
 	
-	root, err := domain.RootByUsername(database.OpenDataBase(), _username)
+	root, err := domain.RootByUsername(connection.OpenDataBase(), _username)
 	if err != nil {
 		//modifique el numero del error antes tenia el 31 preguntar si esta bien
 		log.Error("profilecontroller.go: "+error_.ERR_0013+err.Error())
@@ -159,7 +160,7 @@ func (pController *ProfileController) ChangePassword() {
 		// Actualizamos la contraseña.
 		root.Pass = util.EncryptMD5(request.NewPassword)
 		log.Info(root)
-		err = root.Update(database.OpenDataBase())
+		err = root.Update(connection.OpenDataBase())
 		if err != nil {
 		 	log.Error("profilecontroller.go: "+error_.ERR_0034+err.Error())
 	    	pController.ServeMessage(error_.KO, error_.ERR_0034)
@@ -179,7 +180,7 @@ func (pController *ProfileController) Delete() {
 }
 
 func (pController *ProfileController) ServeMessage(pErrorCode, pErrorMessage string) {
-	profileResponse := domain.ProfileResponse{pErrorCode, pErrorMessage}
+	profileResponse := wsinterface.ProfileResponse{pErrorCode, pErrorMessage}
     pController.Data["json"] = &profileResponse
     pController.ServeJSON()
 }

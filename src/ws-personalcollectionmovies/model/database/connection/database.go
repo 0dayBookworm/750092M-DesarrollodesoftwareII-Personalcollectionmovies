@@ -1,10 +1,10 @@
-package database
+package connection
 
 import (
     "github.com/knq/dburl"
     _ "github.com/lib/pq"
     "ws-personalcollectionmovies/log"
-    "ws-personalcollectionmovies/model/domain"
+    "ws-personalcollectionmovies/model/database/domain"
     )
     
 type DataBase struct {
