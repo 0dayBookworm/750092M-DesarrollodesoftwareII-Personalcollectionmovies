@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#Useraccount')
+    $('#RegisterForm')
         .bootstrapValidator({
             message: 'Este valor no es valido',
             feedbackIcons: {
@@ -12,11 +12,11 @@ $(document).ready(function() {
                     validators: {
                         notEmpty: {
                             message: 'El nombre de usuario es requerido'
+                        },
+                        regexp: {
+                            regexp: /^[A-Za-z][A-Za-z0-9]*$/,
+                            message: 'El nombre de usuario sólo puede contener caracteres alfabéticos, numericos y puntos'
                         }
-                    },
-                    regexp: {
-                        regexp: /^[A-Za-z][A-Za-z0-9]*$/,
-                        message: 'El nombre de usuario sólo puede contener caracteres alfabéticos, numericos y puntos'
                     }
                 },
                 Email: {
@@ -35,7 +35,7 @@ $(document).ready(function() {
                             message: 'La contraseña es requerida'
                         },
                         stringLength: {
-                            min: 1,
+                            min: 8,
                             message: 'El password debe contener al menos 8 caracteres'
                         }
                     }
@@ -91,12 +91,13 @@ $(document).ready(function() {
                     }
                 }
             }
-        })
+        });
     $("#CreateUseraccount").click(function() {
         // Cancels the form submission
         event.preventDefault();
         // Estructura de la peticion.
-        var RegistrationRequest = $('#Useraccount').serialize();
+        var RegistrationRequest = $('#RegisterForm').serialize();
+        var Title ="Registro";
         // Send data to back-end
         $.ajax({
             type: 'post',
@@ -108,7 +109,7 @@ $(document).ready(function() {
                 // Mostramos el o los mensajes de error.
                 bootbox.dialog({
                     message: response.Message,
-                    title: "Registro",
+                    title: Title,
                     buttons: {
                         close: {
                             label: "Cerrar",
@@ -122,7 +123,7 @@ $(document).ready(function() {
             else {
                 bootbox.dialog({
                     message: response.Message,
-                    title: "Registro",
+                    title: Title,
                     buttons: {
                         close: {
                             label: "Cerrar",

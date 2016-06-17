@@ -1,5 +1,5 @@
 /**
-Color de la Barra de navegación.
+Estilos de navegación para las barras de navegación.
 */
 .navbar-inverse {
 	background-color: #292c2f;
@@ -8,45 +8,25 @@ Color de la Barra de navegación.
 	border-radius: 0px;
 }
 /**
-Color letras barra de navegación.
+navbar-brand
 */
 .navbar-inverse .navbar-brand {
 	color: white;
 }
-.navbar-inverse .navbar-nav li a{
-	color: white;
-}
 /**
-Propiedades al pasar el cursor sobre la clase nav-bar.
+navbar-login
 */
-.navbar-inverse .navbar-nav li a:hover{
-	color: #FFFFFF;
+.navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
 }
-
-.navbar-inverse i{
-	color: #FFFFFF;
-}
-/**
-header
-*/
-header {
-    /**
-    background: url(../img/header-bg.jpg) no-repeat center;
-	background-size: cover;
-    */
-    background-color: transparent;
-	width: 100%;
-	padding-top: 100px;
-    
-}
-header h1 {
-	margin-bottom: 15px;
-	letter-spacing: 1px;
-	margin-top: 20%;
-	margin-right: 4%;
-}
-header p {
-	margin-right: 4%;
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
 }
 @media screen and (max-width: 768px){
 	 header h1 {

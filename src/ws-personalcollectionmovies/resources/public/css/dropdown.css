@@ -1,0 +1,7 @@
+/**
+Estilos personalizados para la clase dropdown.
+*/
+
+.dropdown .dropdown-menu div {
+	margin-left: 4%;
+}

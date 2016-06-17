@@ -35,3 +35,7 @@ Si la base de datos sufrio alguna modificación y es necesario generar nuevament
 xo pgsql://sotilstfjbrplf:pr-JQDyUOTCcm8FzQRmpm8a_g0@ec2-54-243-62-211.compute-1.amazonaws.com/d59ne6oopddc7q -o /home/ubuntu/workspace/src/ws-personalcollectionmovies/model/domain 
 ```
 **NOTE:** Las clases de dominio NO deberan ser modificadas, si necesitamos añadir una funcionalidad adicional debemos crearlas en la ruta /home/ubuntu/workspace/src/ws-personalcollectionmovies/model/domain/custom. Bajo el siguiente estandar para el nombramiento de este tipoi de archivos nombre_del_ objeto_de_dominio_custom.go
+
+# Algunos métodos JS utiles #
+
+$("html").html("Texto html");

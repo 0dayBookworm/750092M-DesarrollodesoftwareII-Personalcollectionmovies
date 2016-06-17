@@ -1,0 +1,48 @@
+/*
+Generales a todo el proyecto 
+*/
+ul {
+    list-style:none;
+}
+/**
+a {
+    color: #FFFFFF;
+}
+
+a:hover {
+    color: #FFFFFF;
+}
+*/
+
+a:link {
+    text-decoration:none;   
+}
+
+textarea {
+    resize: none;
+}
+
+img {
+    width:100%;
+}
+
+.panel .panel-body h1 {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.panel .panel-footer h1 {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+table {
+    text-align:center; 
+    vertical-align:middle;
+}
+
+th, td {
+    text-align:center; 
+    vertical-align:middle;
+}
+

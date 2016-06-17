@@ -57,11 +57,6 @@ func (r *Root) Insert(db XODB) error {
 func (r *Root) Update(db XODB) error {
 	var err error
 
-	// if doesn't exist, bail
-	if !r._exists {
-		return errors.New("update failed: does not exist")
-	}
-
 	// if deleted, bail
 	if r._deleted {
 		return errors.New("update failed: marked for deletion")
