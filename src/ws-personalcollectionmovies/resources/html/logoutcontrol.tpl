@@ -7,12 +7,14 @@
         </a>
         <ul class="dropdown-menu">
             <li>
+            
                 <a href="//personalcollectionmovies-alobaton.c9users.io/profile" id="Profile" name="Profile">
-                    <div class="row">
+                <!--
+                <a href="//personalcollectionmovies-alobaton.c9users.io/profile" id="Profile" name="Profile">
+                <a href="#" id="Profile" name="Profile">
+                -->
+                    <div class="row" id="ProfileUsername" name ="ProfileUsername">
                         <strong>{{.Username}}</strong>
-                    </div>
-                    <div class="row">
-                        {{.Email}}
                     </div>
                     <div class="row">
                         <small>Actualizar datos</small>

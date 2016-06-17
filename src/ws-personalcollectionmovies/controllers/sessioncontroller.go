@@ -2,13 +2,13 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/validation"
 	"ws-personalcollectionmovies/log"
 	"ws-personalcollectionmovies/util"
 	"ws-personalcollectionmovies/error_"
 	"ws-personalcollectionmovies/model/database"
 	"ws-personalcollectionmovies/model/domain"
 	"ws-personalcollectionmovies/model/session"
-	"fmt"
 )
 // Controlador.
 type SessionController struct {
@@ -25,9 +25,28 @@ func (pController *SessionController) Login() {
 		pController.ServeMessage(error_.KO, error_.ERR_0020)
     	return
 	}
-	fmt.Println("aqui estoy")
-    // Verificamos que el usuario no haya sido registrado.
-    
+	// Validamos los campos.
+	valid := validation.Validation{}
+	b, err := valid.Valid(&request)
+    if err != nil {
+        log.Error("registercontroller.go: "+error_.ERR_0015+err.Error()) 
+		pController.ServeMessage(error_.KO, error_.ERR_0015+err.Error())
+    	return
+    }
+    if !b {
+        // Vaidation does not pass.
+        log.Error("registercontroller.go: Validation does not pass.") 
+        var errorMessage string
+        for _, err := range valid.Errors {
+        	errorMessage += `
+        	`+err.Key+":"+err.Message+". "
+        }
+        log.Error("registercontroller.go: "+errorMessage) 
+        pController.ServeMessage(error_.KO, errorMessage)
+    	return
+    }
+	
+	// Verificamos que el usuario no haya sido registrado.
     rootVerification, err := domain.RootByUsername(database.OpenDataBase(), request.Username)
     // En caso de que el usuario ya exista.
 	if err != nil || rootVerification.Username == "" {
@@ -47,24 +66,20 @@ func (pController *SessionController) Login() {
 	
 	// Se realiza el inicio de sesión almacenando el username en memoria.
  	sessionVal := pController.GetSession(session.USERSESSION)
- 	fmt.Println(sessionVal)
  	// Si es nulo significa que no esta en una sesión activa e iniciamos la sesión.
     if sessionVal == nil {
     	newSessionVal := session.UserSession{rootVerification.Username}
         pController.SetSession(session.USERSESSION, newSessionVal)
-        fmt.Println(session.USERSESSION)
     }
-    fmt.Println(pController.GetSession(session.USERSESSION))
 	// Si el proceso se llevo a cabo respondemos con el mensaje de exito asociado
     pController.ServeMessage(error_.OK, "El usuario "+rootVerification.Username+" ha iniciado sesión.")
 }
 
 func (pController *SessionController) Logout() {
-	sessionVal := pController.GetSession(session.USERSESSION)
-	if sessionVal != nil {
-		pController.DelSession(sessionVal)
-		//sessionVal:=nil
+	if pController.GetSession(session.USERSESSION) != nil {
+		pController.DelSession(session.USERSESSION)
 	}
+	pController.Redirect("/", 302)
 }
 
 func (pController *SessionController) ServeMessage(pErrorCode, pErrorMessage string) {

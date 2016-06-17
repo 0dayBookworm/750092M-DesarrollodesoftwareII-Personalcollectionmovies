@@ -8,18 +8,18 @@
     <!--
     <form class="form-horizontal" id="Useraccount" name="Useraccount"  action="https://personalcollectionmovies-alobaton.c9users.io/register/create" method="post">
     -->
-    <form class="form-horizontal" id="RegisterForm" name="Useraccount">
+    <form class="form-horizontal" id="RegisterForm" name="RegisterForm" data-toggle="bootstrapValidator">
         <!-- Username and mail-->
         <div class="form-group">
             <label class="control-label col-xs-3">Nombre de usuario:</label>
             <div class="col-xs-9">
-                <input type="text" id="Username" name="Username" class="form-control" placeholder="Nombre de usuario">
+                <input type="text" id="Username" name="Username" class="form-control text-lowercase" placeholder="Nombre de usuario">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-3">Email:</label>
             <div class="col-xs-9">
-                <input type="email" id="Email" name="Email" class="form-control" placeholder="Email">
+                <input type="email" id="Email" name="Email" class="form-control text-lowercase" placeholder="Email">
             </div>
         </div>
         <hr class="container">
@@ -104,7 +104,7 @@
                 <!--
                 <button type="submit" class="btn btn-primary" aria-label="Left Align">
                 -->
-                <button type="button" id="CreateUseraccount" class="btn btn-primary" aria-label="Left Align">
+                <button type="submit" id="CreateUseraccount" class="btn btn-primary" aria-label="Left Align" disabled>
                     <i class="glyphicon glyphicon-ok"></i>
                     Registrarse
                 </button>

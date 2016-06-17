@@ -1,7 +1,9 @@
 package controllers
 
 import (
+	"strings"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/validation"
 	"ws-personalcollectionmovies/log"
 	"ws-personalcollectionmovies/util"
 	"ws-personalcollectionmovies/error_"
@@ -48,6 +50,27 @@ func (pController *RegisterController) CreateUseraccount() {
 	
 	log.Info("registercontroller.go: Record attempt [" + request.ToString() + "]")
 	
+	
+	// Validamos los campos.
+	valid := validation.Validation{}
+	b, err := valid.Valid(&request)
+    if err != nil {
+        log.Error("registercontroller.go: "+error_.ERR_0015+err.Error()) 
+		pController.ServeMessage(error_.KO, error_.ERR_0015+err.Error())
+    	return
+    }
+    if !b {
+        // Vaidation does not pass.
+        log.Error("registercontroller.go: Validation does not pass.") 
+        var errorMessage string
+        for _, err := range valid.Errors {
+        	errorMessage += `
+        	`+err.Key+":"+err.Message+". "
+        }
+        log.Error("registercontroller.go: "+errorMessage) 
+        pController.ServeMessage(error_.KO, errorMessage)
+    	return
+    }
 	// Verificamos que el usuario no haya sido registrado.
     rootVerification, err := domain.RootByUsername(database.OpenDataBase(), request.Username)
 	if err == nil && rootVerification.Username != "" {
@@ -59,7 +82,7 @@ func (pController *RegisterController) CreateUseraccount() {
 	// Si el usuario no existe entonces:
     // Dado el diseño debemos primero insertar el usuario en la tabla ROOT.
     root := domain.Root{
-     	Username: request.Username,
+     	Username: strings.ToLower(request.Username),
      	Pass: util.EncryptMD5(request.Password)}
      	
 	err = root.Insert(database.OpenDataBase())
@@ -71,13 +94,13 @@ func (pController *RegisterController) CreateUseraccount() {
     
 	// Creamos el objeto de dominio que sera almacenado en la tabla USEACCOUNT.
 	useraccount := domain.Useraccount{
-	 	Username: request.Username, 
+	 	Username: strings.ToLower(request.Username), 
 	 	FirstName: request.FirstName, 
 	 	SecondName: request.SecondName, 
 	 	LastName: request.LastName, 
-	 	BirthDate: util.ParseDate(request.BirthDate), 
+	 	BirthDate: request.BirthDate, 
 	 	Gender: request.Gender,
-	 	Email: request.Email, 
+	 	Email: strings.ToLower(request.Email), 
 	 	Erased: false}
 	
 	err = useraccount.Insert(database.OpenDataBase())

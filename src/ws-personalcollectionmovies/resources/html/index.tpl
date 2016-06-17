@@ -1,3 +1,6 @@
 {{template "header" .}}
 
+
+
+
 {{template "footer" .}}

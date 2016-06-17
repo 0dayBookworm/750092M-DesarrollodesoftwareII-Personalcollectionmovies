@@ -1,4 +1,29 @@
 $(document).ready(function() {
+    $('#LoginForm')
+        .bootstrapValidator({
+            message: 'Este valor no es valido',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                Username: {
+                    validators: {
+                        notEmpty: {
+                            message: 'El nombre de usuario es requerido'
+                        }
+                    }
+                },
+                Password: {
+                    validators: {
+                        notEmpty: {
+                            message: 'La contraseña es requerida'
+                        }
+                    }
+                }
+            }
+        });
     $('#LoginButton').click(function(){
         // Cancels the form submission
         event.preventDefault();
@@ -32,6 +57,7 @@ $(document).ready(function() {
                 // Redireccionamos a la pagina de inicio.
                 location.href = 'https://personalcollectionmovies-alobaton.c9users.io/';
             }
-        });
+        }
+        );
     });
 });

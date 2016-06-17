@@ -5,7 +5,7 @@ package domain
 
 import (
 	"errors"
-	"time"
+	//"time"
 )
 
 // Useraccount represents a row from public.useraccount.
@@ -14,7 +14,7 @@ type Useraccount struct {
 	FirstName  string // first_name
 	SecondName string // second_name
 	LastName   string // last_name
-	BirthDate  time.Time   // birth_date
+	BirthDate  string   // birth_date
 	Gender     string // gender
 	Email      string // email
 	Erased     bool   // erased
@@ -66,11 +66,6 @@ func (u *Useraccount) Insert(db XODB) error {
 func (u *Useraccount) Update(db XODB) error {
 	var err error
 
-	// if doesn't exist, bail
-	if !u._exists {
-		return errors.New("update failed: does not exist")
-	}
-
 	// if deleted, bail
 	if u._deleted {
 		return errors.New("update failed: marked for deletion")
@@ -80,8 +75,8 @@ func (u *Useraccount) Update(db XODB) error {
 	const sqlstr = `UPDATE public.useraccount SET (` +
 		`first_name, second_name, last_name, birth_date, gender, email, erased` +
 		`) = ( ` +
-		`$1, $2, $3, $4, $5, $6, $7, $8` +
-		`) WHERE username = $9`
+		`$1, $2, $3, $4, $5, $6, $7` +
+		`) WHERE username = $8`
 
 	// run query
 	XOLog(sqlstr, u.FirstName, u.SecondName, u.LastName, u.BirthDate, u.Gender, u.Email, u.Erased, u.Username)

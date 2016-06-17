@@ -1,9 +1,6 @@
 /**
-Color de la Barra de navegación.
+Estilos de navegación para las barras de navegación.
 */
-img {
-    width:100%;
-}
 .navbar-inverse {
 	background-color: #292c2f;
 	border-color: transparent;
@@ -11,23 +8,10 @@ img {
 	border-radius: 0px;
 }
 /**
-Color letras barra de navegación.
+navbar-brand
 */
 .navbar-inverse .navbar-brand {
 	color: white;
-}
-.navbar-inverse .navbar-nav li a{
-	color: white;
-}
-/**
-Propiedades al pasar el cursor sobre la clase nav-bar.
-*/
-.navbar-inverse .navbar-nav li a:hover{
-	color: #FFFFFF;
-}
-
-.navbar-inverse i{
-	color: #FFFFFF;
 }
 /**
 navbar-login
@@ -38,53 +22,11 @@ navbar-login
     padding: 10px;
     padding-bottom: 0px;
 }
-
 .navbar-login-session
 {
     padding: 10px;
     padding-bottom: 0px;
     padding-top: 0px;
-}
-
-.icon-size
-{
-    font-size: 87px;
-}
-header
-*/
-header {
-    /**
-    background: url(../img/header-bg.jpg) no-repeat center;
-	background-size: cover;
-    */
-    background-color: transparent;
-	width: 100%;
-	padding-top: 100px;
-    
-}
-header h1 {
-	margin-bottom: 15px;
-	letter-spacing: 1px;
-	margin-top: 20%;
-	margin-right: 4%;
-}
-header p {
-	margin-right: 4%;
-}
-/**
-dropdown
-*/
-.dropdown .dropdown-menu i{
-	color:#000000;
-}
-.dropdown .dropdown-menu div {
-	margin-left: 4%;
-}
-.dropdown .dropdown-menu li a{
-	color:#000000;
-}
-.dropdown .dropdown-menu li a:hover{
-	color:#000000;
 }
 @media screen and (max-width: 768px){
 	 header h1 {

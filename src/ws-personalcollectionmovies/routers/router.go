@@ -15,6 +15,12 @@ func init() {
     initRegistrationModule()
     // Modulo: Perfil de usuario.
     initProfileModule()
+    // Modulo: Errores
+    initErrorModule()
+    // Modulo: Peliculas
+    initMovieModule()
+    
+    initCollectionsModule()
 }
 
 
@@ -26,11 +32,31 @@ func initRegistrationModule() {
 }
 
 func initProfileModule() {
-    // Datos de usuario.
+    // Formulario
     beego.Router("/profile", &controllers.ProfileController{})
+    // Actualizar información
+    beego.Router("profile/update", &controllers.ProfileController{}, "post:Update")
+    // Cambiar contraseña.
+    beego.Router("/profile/password", &controllers.ProfileController{}, "post:ChangePassword")
+    // Eliminar cuenta de usuario.
+    beego.Router("/profile/delete", &controllers.ProfileController{}, "post:Delete")
 }
 
 func initLoginModule() {
     // Iniciar sesión.
     beego.Router("/login", &controllers.SessionController{}, "post:Login")
+    // Cerrar sesión.
+    beego.Router("/logout", &controllers.SessionController{}, "get:Logout")
+}
+
+func initErrorModule() {
+    beego.Router("/error", &controllers.ErrorController{}, "get:HandleError")
+}
+
+func initMovieModule() {
+    beego.Router("/movie", &controllers.MovieController{}, "get:GetMovie")
+}
+
+func initCollectionsModule() {
+    beego.Router("/collection", &controllers.CollectionController{})
 }

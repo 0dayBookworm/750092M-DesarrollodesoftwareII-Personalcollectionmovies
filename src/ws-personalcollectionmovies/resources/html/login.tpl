@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <form class="login-form" id="LoginForm" name="LoginForm">
                     <div class="form-group ">
-                        <input type="text" id="Username" name="Username" class="form-control" placeholder="Nombre de usuario ">
+                        <input type="text" id="Username" name="Username" class="form-control text-lowercase" placeholder="Nombre de usuario">
                     </div>
                     <div class="form-group">
                         <input type="password" id="Password" name="Password" class="form-control" placeholder="Contraseña" >
