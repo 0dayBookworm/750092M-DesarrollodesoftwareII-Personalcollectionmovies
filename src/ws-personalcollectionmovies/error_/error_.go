@@ -21,3 +21,7 @@ const ERR_0032 = "ERR_0032 La sesión ha caducado."
 const ERR_0033 = "ERR_0033 La cuenta de usuario no puede ser modificada."
 const ERR_0034 = "ERR_0034 Lo sentimos ha ocurrido un error al actualizar tu contraseña."
 const ERR_0035 = "ERR_0035 Lo sentimos ha ocurrido un error al actualizar tus datos personales."
+// Errores para la busqueda de una película.
+const ERR_0040 = "ERR_0040 Error al obtener resultados para la busqueda."
+const ERR_0041 = "ERR_0041 No se obtuvo trailer para esta pelicula."
+const ERR_0042 = "ERR_0042 Error al parsear el JSON para obtener el trailer de la pelicula."

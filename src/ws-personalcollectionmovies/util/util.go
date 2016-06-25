@@ -6,9 +6,14 @@ import (
 	"crypto/md5"
 	"io"
 	"bytes"
-	"fmt"
+	// "fmt"
 	"ws-personalcollectionmovies/log"
 	)
+	
+var(
+	MONTHS = [...]string{"ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"}
+	)
+	
 // ParseDate [Método encargado de parsear una fecha de tipo string a tipo time.Time]
 func ParseDate (pDate string) time.Time {
 	const shortForm = "2006-01-02"
@@ -28,6 +33,10 @@ func EncryptMD5 (pData string) string {
 	md5Data := md5.New()
     io.WriteString(md5Data, pData)
     buffer := bytes.NewBuffer(nil)
-    fmt.Fprintf(buffer, "%x", md5Data.Sum(nil))
     return buffer.String()
+}
+
+func GetMonth(pMonth int) string {
+	// fmt.Println(pMonth)
+	return MONTHS[pMonth-1]
 }

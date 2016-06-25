@@ -52,7 +52,7 @@
                     <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                     </span>
-                    <input type="text" id="BirthDate" name="BirthDate" class="form-control" value={{.BirthDate}}>
+                    <input type="text" id="BirthDate" name="BirthDate" class="form-control" value={{dateformat .BirthDate}}>
                 </div>
             </div>
         </div>

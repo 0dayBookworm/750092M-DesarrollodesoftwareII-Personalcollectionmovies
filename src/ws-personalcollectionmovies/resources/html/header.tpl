@@ -6,23 +6,16 @@
     <meta name="viewport" content="width=device-width; initial-scale=1.0"> 
     <title>{{.Title}} - PersonalCollectionMovies [WSPCM]</title>
         <!-- Estilos CSS vinculados -->
-         <link href="//getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel='stylesheet' type='text/css'>
-        <!--
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        -->
+        <link href="//getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel='stylesheet' type='text/css'>
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.min.css" />
         <link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet"/>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rating/1.3.2/bootstrap-rating.css" rel="stylesheet"/>
-        <link href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
+        <link href="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet"/>
         <link href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet"/>
-        <!--
-        <link href="//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/css/formValidation.min.css" rel="stylesheet"/>
-        <link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet"/>
-        -->
+        <!-- Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <!-- Estilos propios -->
         <link href="//personalcollectionmovies-alobaton.c9users.io/public/css/footer.css" rel="stylesheet">
         <link href="//personalcollectionmovies-alobaton.c9users.io/public/css/footer-basic-centered.css" rel="stylesheet">
@@ -30,6 +23,9 @@
         <link href="//personalcollectionmovies-alobaton.c9users.io/public/css/login.css" rel="stylesheet">
         <link href="//personalcollectionmovies-alobaton.c9users.io/public/css/general.css" rel="stylesheet">
         <link href="//personalcollectionmovies-alobaton.c9users.io/public/css/dropdown.css" rel="stylesheet">
+        <link href="//personalcollectionmovies-alobaton.c9users.io/public/css/panel-horizontal.css" rel="stylesheet">
+        <link href="//personalcollectionmovies-alobaton.c9users.io/public/css/meta-date.css" rel="stylesheet">
+        <link href="//personalcollectionmovies-alobaton.c9users.io/public/css/movies.css" rel="stylesheet">
     </head>
     <body onload="checkCookies()">
         <section id="preloader">
@@ -98,12 +94,11 @@
                     <div id="navbarMainMenu"  class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
                             <li><a href="//personalcollectionmovies-alobaton.c9users.io/">INICIO</a></li>
-                            <li><a href="#">RECIENTES</a></li>
-                            <li><a href="#">CARTELERA</a></li> 
-                            <li><a href="#">ESTRENOS</a></li> 
+                            <li><a href="//personalcollectionmovies-alobaton.c9users.io/movie/nowplaying?Page=1">CARTELERA</a></li> 
+                            <li><a href="//personalcollectionmovies-alobaton.c9users.io/movie/upcoming?Page=1">ESTRENOS</a></li> 
                             <li><a href="#">POPULARES</a></li> 
                             <li><a href="#">CONOCENOS</a></li> 
-                            <li><a href="#">CONTACTENOS</a></li> 
+                            <li><a href="//personalcollectionmovies-alobaton.c9users.io/contact">CONTACTENOS</a></li> 
                         </ul>
                     </div>
                 </div>
@@ -112,14 +107,27 @@
         <!-- Fin barra de navegacion paginas -->
         <!-- Buscar pelicula -->
         <div class="container">
-            <div class="input-group">
-                <span class="input-group-btn">
-                   <button class="btn btn-primary" type="button">BUSCAR PELICULA</button>
-                </span>
-                <input type="text" class="form-control" placeholder="Nombre de la pelicula">
-            </div>
-            <div class="container">
-            </div>
+            <!--
+            <form class="form-horizontal" action="https://personalcollectionmovies-alobaton.c9users.io/movie/search" method="get">
+            -->
+            <form class="form-horizontal" id="SearchForm" name="SearchForm">
+               <div class="input-group" >
+                    <span class="input-group-btn">
+                        <!--
+                        <button class="btn btn-primary" type="submit" id="Search" name="Search">
+                        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#SearchModal">
+                        <button class="btn btn-primary" type="button" id="Search" name="Search">
+                        -->
+                        <button class="btn btn-primary" type="button" id="Search" name="Search">
+                           <i class="glyphicon glyphicon-search"></i>
+                           BUSCAR PELíCULA
+                        </button>
+                    </span>
+                    <input type="text" name="Title" class="form-control" placeholder="Buscar...">
+                </div>
+            </form>
         </div>
+        <!-- Buscar pelicula modal -->
+        {{template "search" .}}
     <!-- Fin header -->
 {{end}}

@@ -4,5 +4,5 @@ function checkCookies(){
         alert("Debes habilitar las cookies.")
         // Se debe redireccionar a una pagina de error 404...
         
-    } 
+    }
 }

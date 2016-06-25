@@ -1,9 +1,36 @@
 /*
 Generales a todo el proyecto 
 */
-ul {
-    list-style:none;
+/**
+Fuente.
+*/
+p, a, h1, h2, h3, h4, h5, label, input, textarea, button, small, strong, div {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    /*font-family: 'Lato', sans-serif;*/
+    /*font-family: 'Playfair Display SC', serif;*/
 }
+
+span {
+    font-size: 110%;
+}
+
+label, button {
+    font-size: 125%;
+}
+
+small {
+    font-size: 105%;
+}
+
+strong {
+    font-size: 115%;
+}
+
+ul {
+    list-style: none;
+}
+
+
 /**
 a {
     color: #FFFFFF;
@@ -15,7 +42,7 @@ a:hover {
 */
 
 a:link {
-    text-decoration:none;   
+    text-decoration: none;
 }
 
 textarea {
@@ -23,26 +50,58 @@ textarea {
 }
 
 img {
-    width:100%;
+    width: 100%;
 }
 
-.panel .panel-body h1 {
+.panel-body h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: bold;
-    font-size: 20px;
 }
 
-.panel .panel-footer h1 {
+.panel-footer h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: bold;
-    font-size: 20px;
 }
 
 table {
-    text-align:center; 
-    vertical-align:middle;
+    text-align: center;
+    vertical-align: middle;
 }
 
-th, td {
-    text-align:center; 
-    vertical-align:middle;
+th,
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/**
+Inputs
+*/
+.form-control {
+  display: block;
+  /*height: 36px;*/
+  /*width: 100%; */
+  /*border: none;*/
+  border-radius: 0 !important;
+  /*padding-left: 4%;*/
+  /*font-size: 16px;*/
+  font-weight: 300;
+  padding: 1;
+  background-color: transparent;
+  box-shadow: none;
+  border-bottom: 1px solid #757575;
+}
+
+.input-group-addon {
+  /*border: none;*/
+  background: transparent;
 }
 

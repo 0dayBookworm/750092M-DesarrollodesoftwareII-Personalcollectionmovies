@@ -1,4 +1,4 @@
-$(document).ready(function() {
+
     $('#LoginForm')
         .bootstrapValidator({
             message: 'Este valor no es valido',
@@ -60,4 +60,3 @@ $(document).ready(function() {
         }
         );
     });
-});

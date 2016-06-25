@@ -40,7 +40,7 @@ func (pController *ProfileController) Get() {
 		// Verificamos que el usuario exista y obtenemos la información de base de datos.
 		Useraccount, err := domain.UseraccountByUsername(connection.OpenDataBase(), _username)
 		if err != nil {
-			log.Error("profilecontroller.go: "+error_.ERR_0031)
+			log.Error(error_.ERR_0031)
 			// Se debería redireccionar a una pagina de error.
 			pController.Redirect("/error", 302)
 		}
@@ -69,39 +69,39 @@ func (pController *ProfileController) Update() {
 	err := pController.ParseForm(&request)
 	
 	if err != nil {
-		log.Error("registercontroller.go: "+error_.ERR_0012) 
+		log.Error(error_.ERR_0012) 
 		pController.ServeMessage(error_.KO, error_.ERR_0012)
-    	return
+    	pController.StopRun()
 	}
 	
 	// Validamos los campos.
 	valid := validation.Validation{}
 	b, err := valid.Valid(&request)
     if err != nil {
-        log.Error("registercontroller.go: "+error_.ERR_0015+err.Error()) 
+        log.Error(error_.ERR_0015+err.Error()) 
 		pController.ServeMessage(error_.KO, error_.ERR_0015+err.Error())
-    	return
+    	pController.StopRun()
     }
     if !b {
         // Vaidation does not pass.
-        log.Error("registercontroller.go: Validation does not pass.") 
+        log.Error("Validation does not pass.") 
         var errorMessage string
         for _, err := range valid.Errors {
         	errorMessage += `
         	`+err.Key+":"+err.Message+". "
         }
-        log.Error("registercontroller.go: "+errorMessage) 
+        log.Error(errorMessage) 
         pController.ServeMessage(error_.KO, errorMessage)
-    	return
+    	pController.StopRun()
     }
 	
 	// Procedemos a obtener el username a partir de la sesion.
 	sessionVal := pController.GetSession(session.USERSESSION)
 	// Verificamos primero que se encuentre en una sesion activa, es decir que no haya caducado la sesión.
 	if (sessionVal == nil) {
-		log.Error("registercontroller.go: "+error_.ERR_0032) 
+		log.Error(error_.ERR_0032) 
 		pController.ServeMessage(error_.KO, error_.ERR_0032)
-    	return
+    	pController.StopRun()
 	}
 	_username := sessionVal.(session.UserSession).Username
 	
@@ -119,9 +119,9 @@ func (pController *ProfileController) Update() {
 	 	
 	err = useraccount.Update(connection.OpenDataBase())
 	if err != nil {
-	 	log.Error("profilecontroller.go: "+error_.ERR_0033+err.Error())
+	 	log.Error(error_.ERR_0033+err.Error())
     	pController.ServeMessage(error_.KO, error_.ERR_0033)
-	 	return 
+	 	pController.StopRun() 
 	}
 	// Si el proceso se llevo a cabo respondemos con el mensaje de exito asociado
     pController.ServeMessage(error_.OK, "Tus datos personales se han actualizado con exito.")
@@ -133,26 +133,26 @@ func (pController *ProfileController) ChangePassword() {
 	err := pController.ParseForm(&request)
 	
 	if err != nil {
-		log.Error("registercontroller.go: "+error_.ERR_0012) 
+		log.Error(error_.ERR_0012) 
 		pController.ServeMessage(error_.KO, error_.ERR_0012)
-    	return
+    	pController.StopRun()
 	}
 	// Procedemos a obtener el username a partir de la sesion.
 	sessionVal := pController.GetSession(session.USERSESSION)
 	// Verificamos primero que se encuentre en una sesion activa, es decir que no haya caducado la sesión.
 	if (sessionVal == nil) {
-		log.Error("registercontroller.go: "+error_.ERR_0032) 
+		log.Error(error_.ERR_0032) 
 		pController.ServeMessage(error_.KO, error_.ERR_0032)
-    	return
+    	pController.StopRun()
 	}
 	_username := sessionVal.(session.UserSession).Username
 	
 	root, err := domain.RootByUsername(connection.OpenDataBase(), _username)
 	if err != nil {
 		//modifique el numero del error antes tenia el 31 preguntar si esta bien
-		log.Error("profilecontroller.go: "+error_.ERR_0013+err.Error())
+		log.Error(error_.ERR_0013+err.Error())
 	    pController.ServeMessage(error_.KO, error_.ERR_0013)
-		return 
+		pController.StopRun() 
 	}
 	
 	encryptedPass := util.EncryptMD5(request.Password)
@@ -162,9 +162,9 @@ func (pController *ProfileController) ChangePassword() {
 		log.Info(root)
 		err = root.Update(connection.OpenDataBase())
 		if err != nil {
-		 	log.Error("profilecontroller.go: "+error_.ERR_0034+err.Error())
+		 	log.Error(error_.ERR_0034+err.Error())
 	    	pController.ServeMessage(error_.KO, error_.ERR_0034)
-		 	return 
+		 	pController.StopRun() 
 		}
 		// Si el proceso se llevo a cabo respondemos con el mensaje de exito asociado
 	    pController.ServeMessage(error_.OK, "Tu contraseña se ha actualizado con exito.")

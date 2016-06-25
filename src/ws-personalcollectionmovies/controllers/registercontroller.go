@@ -44,40 +44,40 @@ func (pController *RegisterController) CreateUseraccount() {
 	
 	// Si ha ocurrido un error al parsear.
 	if err != nil {
-		log.Error("registercontroller.go: "+error_.ERR_0012) 
+		log.Error(error_.ERR_0012) 
 		pController.ServeMessage(error_.KO, error_.ERR_0012)
-    	return
+    	pController.StopRun()
 	}
 	
-	log.Info("registercontroller.go: Record attempt [" + request.ToString() + "]")
+	log.Info("Record attempt [" + request.ToString() + "]")
 	
 	
 	// Validamos los campos.
 	valid := validation.Validation{}
 	b, err := valid.Valid(&request)
     if err != nil {
-        log.Error("registercontroller.go: "+error_.ERR_0015+err.Error()) 
+        log.Error(error_.ERR_0015+err.Error()) 
 		pController.ServeMessage(error_.KO, error_.ERR_0015+err.Error())
-    	return
+    	pController.StopRun()
     }
     if !b {
         // Vaidation does not pass.
-        log.Error("registercontroller.go: Validation does not pass.") 
+        log.Error("Validation does not pass.") 
         var errorMessage string
         for _, err := range valid.Errors {
         	errorMessage += `
         	`+err.Key+":"+err.Message+". "
         }
-        log.Error("registercontroller.go: "+errorMessage) 
+        log.Error(errorMessage) 
         pController.ServeMessage(error_.KO, errorMessage)
-    	return
+    	pController.StopRun()
     }
 	// Verificamos que el usuario no haya sido registrado.
     rootVerification, err := domain.RootByUsername(connection.OpenDataBase(), request.Username)
 	if err == nil && rootVerification.Username != "" {
-		log.Error("registercontroller.go: "+error_.ERR_0014)
+		log.Error(error_.ERR_0014)
 		pController.ServeMessage(error_.KO, error_.ERR_0014)
-	 	return 
+	 	pController.StopRun() 
 	}
 	
 	// Si el usuario no existe entonces:
@@ -88,9 +88,9 @@ func (pController *RegisterController) CreateUseraccount() {
      	
 	err = root.Insert(connection.OpenDataBase())
 	if err != nil {
-		log.Error("registercontroller.go: "+error_.ERR_0010+err.Error())
+		log.Error(error_.ERR_0010+err.Error())
 		pController.ServeMessage(error_.KO, error_.ERR_0013)
-	 	return 
+	 	pController.StopRun() 
 	}
     
 	// Creamos el objeto de dominio que sera almacenado en la tabla USEACCOUNT.
@@ -106,9 +106,9 @@ func (pController *RegisterController) CreateUseraccount() {
 	
 	err = useraccount.Insert(connection.OpenDataBase())
 	if err != nil {
-	 	log.Error("registercontroller.go: "+error_.ERR_0011+err.Error())
+	 	log.Error(error_.ERR_0011+err.Error())
     	pController.ServeMessage(error_.KO, error_.ERR_0013)
-	 	return 
+	 	pController.StopRun() 
 	}
 	// Si el proceso se llevo a cabo respondemos con el mensaje de exito asociado
     pController.ServeMessage(error_.OK, "Te has registrado con exito, te hemos enviado un mail de confirmación.")

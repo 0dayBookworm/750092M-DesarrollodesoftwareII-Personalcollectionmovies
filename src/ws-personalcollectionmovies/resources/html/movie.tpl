@@ -1,5 +1,4 @@
 {{template "header" .}}
-
 <div class="container">
     <!-- Page header -->
     <div class="page-header">
@@ -7,91 +6,105 @@
             <h1><strong>DETALLES DE PELÍCULA</strong></h1>
         </center>
     </div>
-  
-    <div class="panel panel-default">
+    <div class="container">
+        <!-- 
+            Titulo de la pelicula 
+        <i class="glyphicon glyphicon-bookmark"></i>
+        -->
+        <h2 class="head">
+            {{.Title}}
+            <small>
+                <strong>
+                   ({{.Year}})
+                </strong>
+            </small>
+        </h2> 
+        <h4>
+            {{.OriginalTitle}}
+        </h4>
+    </div>
+    <div class="panel-default">
         <!-- Contenedor: Titulo de pelicula -->
-        <div class="panel-heading">
-            <!-- Titulo de la pelicula -->
-            <h1>TITULO: </h1>
-            <p class="panel-title pull-left">Capitan America: Civil War</p>
-            <!-- Controls -->
-            <div class="row pull-right">
-                <div class ="col-md-1 dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="glyphicon glyphicon-plus"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">
-                                <small> <i class="glyphicon glyphicon-eye-open"></i>  Añadir a vistas </small>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <small> <i class=""></i>  Añadir a películas por ver </small>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <small> <i class=""></i>  Mis listas </small>
-                            </a>
-                        </li>
-                    </ul>
-                </div>   
-                <i class="col-md-1 glyphicon glyphicon-share-alt"></i>
-            </div>
-            <!-- Fix zone -->
-            <div class="clearfix"></div>
-        </div>
         <!-- Fin titulo de la pelicula -->
-        
-        
         <!-- Información de la pelicula -->
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-4">
-                    <center>
-                        <img src="//personalcollectionmovies-alobaton.c9users.io/public/images/CivilWar.jpg">
-                        <h1>CALIFICACIÓN </h1>
-                        <input id="Rating" type="hidden" class="rating"/>
-                    </center>
-                </div>
-                <div class="col-md-8">
-                    <div class=row>
-                        
-                        <div class="col-md-4">
-                            <h1>FICHA TECNICA </h1>
-                            <p class=""><strong>País: </strong> USA, Germany  </p>
-                            <p class=""><strong>Año: </strong>2016</p>
-                            <p class=""><strong>Categoria: </strong>  Action, Adventure </p>
-                            <p class=""><strong>Fecha de lanzamiento: </strong> 06 May 2016 </p>
-                            <p class=""><strong>Director: </strong> Anthony Russo, Joe Russo</p>
-                            <p class="">
-                                <strong>Actores: </strong>
-                                Chris Evans, Robert Downey Jr., Scarlett Johansson, Sebastian Stan
-                            </p>
-                            <p class=""><strong>Edad minima: </strong></p> 
-                            <p><strong>Premios: </strong>N/A</p>
-                        </div>
-                        <div class="col-md-8">
-                            <h1>TRAILER</h1>
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dKrVegVI0Us" frameborder="0" allowfullscreen></iframe>
+                <div class="col-md-6">
+                    <div class="row">
+                        <center class="col-md-4">
+                            <img class="img-thumbnail img-responsive" src={{.Poster}}>
+                            <h4>CALIFICACIÓN </h4>
+                            <input id="Rating" type="hidden" class="rating" />
+                            <!-- Controls -->
+                            <hr>
+                            <div class="btn-group">
+                                <button type="button" class="btn dropdown">
+                                    <i class="dropdown-toggle glyphicon glyphicon-plus" data-toggle="dropdown"></i>
+                                    <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                        <li>
+                                            <a href="#">
+                                                <small> <i class="glyphicon glyphicon-eye-close"></i>  Añadir a vistas</small>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <small> <i class="glyphicon glyphicon-eye-open"></i>  Añadir a películas por ver</small>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <small> <i class="glyphicon glyphicon-list"></i>  Mis listas personalizadas</small>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </button>
+                                <button type="button" class="btn">
+                                    <i class="glyphicon glyphicon-share-alt"></i>
+                                </button>
                             </div>
+                            <!-- End controls -->
+                        </center>
+                        <div class="col-md-8">
+                            <h3>FICHA TECNICA </h3>
+                            <p>
+                                <strong>DURACIÓN: </strong> 
+                                <br>
+                                <strong> {{.Runtime}} </strong>
+                                <br>
+                                mn
+                            </p>
+                            <p>
+                                <strong>FECHA DE ESTRENO: </strong> 
+                            </p>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="meta-date text-center">
+        								<p><span class="date">{{.Released}}{{.Day}}</span><span>{{.Month}}</span><span>{{.Year}}</span></p>
+        							</div>
+							    </div>
+                            </div>
+                            <p><strong>COMPAÑIAS PRODUCTORAS: </strong> {{str2html .ProductionCompanies}}</p>
+                            <p><strong>GENEROS: </strong>{{str2html .Genres}}</p>
+                            <a href={{.Website}} target="_blank">Pagina oficial <i class="glyphicon glyphicon-new-window"></i></a>
                         </div>
                     </div>
-                        <p>
-                            <strong>Descripción de la pelicula: </strong>
-                            Political interference in the Avengers' activities causes a rift between former allies Captain America and Iron Man.
-                        </p>
+                </div>
+                <div class="col-md-6">
+                    <h3>TRAILER</h3>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{.Trailer}}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <br>
+                    <p align="justify">
+                        <strong>SINOPSIS: </strong>
+                        <br> {{.Plot}}
+                    </p>
                 </div>
             </div>
         </div>
         <!-- Fin informacion de la pelicula -->
         <!-- Seccion de comentarios. -->
-    
         <div class="panel-footer">
-            
             <!-- Realizar un comentario -->
             <div class="container">
                 <p id="CommentSection" class="dropdown-toggle" data-toggle="collapse" data-target="#CommentCollapse">
@@ -105,7 +118,7 @@
                         <form class="form-horizontal" id="CommentForm" name="CommentForm">
                             <div class="form-group">
                                 <div class="col-xs-9">
-                                    <textarea type="text" id="Comment" name="Comment" class="form-control" placeholder="¿Que te parecio la pelicula?" row="2" cols="70" ></textarea>
+                                    <textarea type="text" id="Comment" name="Comment" class="form-control" placeholder="¿Que te parecio la pelicula?" row="2" cols="70"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -119,12 +132,12 @@
                         </form>
                     </div>
                     <div class="container">
-                        <h1>COMENTARIOS</h1>
+                        <h3>COMENTARIOS</h3>
                         <!-- Comentarios -->
                         <ul>
                             <li class="col-xs-9">
                                 <div class="panel ">
-                                    <div class ="panel-heading comment-header">
+                                    <div class="panel-heading comment-header">
                                         <strong>
                                             Otro usuario
                                         </strong>
@@ -139,10 +152,9 @@
                                     </div>
                                 </div>
                             </li>
-                            
                             <li class="col-xs-9">
                                 <div class="panel ">
-                                    <div class ="panel-heading comment-header">
+                                    <div class="panel-heading comment-header">
                                         <strong>
                                             Otro usuario
                                         </strong>
@@ -164,9 +176,5 @@
         </div>
         <!-- Fin sección de comentarios. -->
     </div>
-
-
-
 </div>
-
 {{template "footer" .}}

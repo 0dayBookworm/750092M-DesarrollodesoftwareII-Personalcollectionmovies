@@ -1,0 +1,54 @@
+
+.meta-date {
+    /*position: absolute;*/
+    top: 0;
+    left: 0;
+    padding: 10px 10px;
+    background: #336699;
+}
+
+@media screen and (max-width: 768px) {
+    .meta-date {
+        position: relative;
+        float: left;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.meta-date p {
+    margin: 0;
+    display: block;
+    color: #FFFFFF;
+}
+
+.meta-date p span {
+    display: block;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+    .meta-date p span {
+        float: left;
+        margin-right: 10px;
+        margin-top: 8px;
+    }
+}
+
+.meta-date p span.date {
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 28px;
+}
+
+@media screen and (max-width: 768px) {
+    .meta-date p span.date {
+        display: -moz-inline-stack;
+        display: inline-block;
+        zoom: 1;
+        *display: inline;
+        float: left;
+        margin-right: 10px;
+        margin-top: 8px;
+    }
+}

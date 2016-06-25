@@ -24,7 +24,7 @@ func (pController *SessionController) Login() {
 	if err != nil {
 		log.Error("SessionController.go: "+error_.ERR_0020) 
 		pController.ServeMessage(error_.KO, error_.ERR_0020)
-    	return
+    	pController.StopRun()
 	}
 	// Validamos los campos.
 	valid := validation.Validation{}
@@ -32,7 +32,7 @@ func (pController *SessionController) Login() {
     if err != nil {
         log.Error("registercontroller.go: "+error_.ERR_0015+err.Error()) 
 		pController.ServeMessage(error_.KO, error_.ERR_0015+err.Error())
-    	return
+    	pController.StopRun()
     }
     if !b {
         // Vaidation does not pass.
@@ -44,7 +44,7 @@ func (pController *SessionController) Login() {
         }
         log.Error("registercontroller.go: "+errorMessage) 
         pController.ServeMessage(error_.KO, errorMessage)
-    	return
+    	pController.StopRun()
     }
 	
 	// Verificamos que el usuario no haya sido registrado.
@@ -53,7 +53,7 @@ func (pController *SessionController) Login() {
 	if err != nil || rootVerification.Username == "" {
 		log.Error("SessionController.go: "+error_.ERR_0022+err.Error())
 	    pController.ServeMessage(error_.KO, error_.ERR_0022)
-	 	return 
+	 	pController.StopRun() 
 	}
 	
 	// Encriptamos la contraseña para verificarla con la almacenada.
@@ -62,7 +62,7 @@ func (pController *SessionController) Login() {
 	if rootVerification.Pass != encryptedPass {
 	    log.Error("registercontroller.go: "+error_.ERR_0023)
 		pController.ServeMessage(error_.KO, error_.ERR_0023)
-	 	return
+	 	pController.StopRun()
 	}
 	
 	// Se realiza el inicio de sesión almacenando el username en memoria.

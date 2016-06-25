@@ -2,6 +2,7 @@ package main
 
 import (
 	"ws-personalcollectionmovies/log"
+	"ws-personalcollectionmovies/model/tmdb"
 	_ "ws-personalcollectionmovies/routers"
 	"github.com/astaxie/beego"
 )
@@ -25,6 +26,11 @@ func main() {
 	
 	// Aviso de que se ha configurado el contexto correctamente.
 	log.Info("The system is set up correctly.")
+	
+	// Inicializamos la TMDb Api.
+	ApiKey := beego.AppConfig.String("TMDb::ApiKey")
+	Language := beego.AppConfig.String("TMDb::Language")
+	tmdb.Init(ApiKey, Language)
 	
 	// Necesario para levantar el servidor de arvhivos en la ruta public.
 	beego.SetStaticPath("/public", "/home/ubuntu/workspace/src/ws-personalcollectionmovies/resources/public")
