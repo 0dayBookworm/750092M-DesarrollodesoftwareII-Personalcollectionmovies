@@ -62,7 +62,7 @@ $(document).ready(function() {
         // Send data to back-end
         $.ajax({
             type: 'post',
-            url: 'https://personalcollectionmovies-alobaton.c9users.io/profile/update',
+            url: 'https://personalcollectionmovies-alobaton.c9users.io/account/profile/update',
             data: UpdateProfileRequest,
             dataType: 'json'
         }).success(function(response) {
@@ -89,7 +89,7 @@ $(document).ready(function() {
                             label: "Cerrar",
                             className: "btn-success",
                             callback: function() {
-                                location.href = 'https://personalcollectionmovies-alobaton.c9users.io/profile';
+                                location.href = 'https://personalcollectionmovies-alobaton.c9users.io/account/profile';
                             }
                         }
                     }
@@ -108,7 +108,7 @@ $(document).ready(function() {
         // Send data to back-end
         $.ajax({
             type: 'post',
-            url: 'https://personalcollectionmovies-alobaton.c9users.io/profile/password',
+            url: 'https://personalcollectionmovies-alobaton.c9users.io/account/profile/password',
             data: ChangePasswordRequest,
             dataType: 'json'
         }).success(function(response) {
@@ -137,7 +137,7 @@ $(document).ready(function() {
                             className: "btn-success",
                             callback: function() {
                                 // Si el proceso de registro se llevo a cabo correctamente redireccionamos a /.
-                                location.href = 'https://personalcollectionmovies-alobaton.c9users.io/profile';
+                                location.href = 'https://personalcollectionmovies-alobaton.c9users.io/account/profile';
                             }
                         }
                     }

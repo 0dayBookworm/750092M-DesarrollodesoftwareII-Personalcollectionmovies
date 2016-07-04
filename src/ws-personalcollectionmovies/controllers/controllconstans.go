@@ -1,0 +1,35 @@
+package controllers
+
+// Templates
+const INDEX = "index.tpl"
+const REGISTER = "register.tpl"
+const ACCOUNT = "account.tpl"
+const PROFILE = "profile.tpl"
+const MOVIE = "movie.tpl"
+const MOVIES = "movies.tpl"
+const COLLECTIONS = "collections.tpl"
+const COLLECTION = "collection.tpl"
+const CONTACT = "contact.tpl"
+const SECURITY="password.tpl"
+const COMMON_ACCOUNT_CONTROL="commonaccountcontrol.tpl"
+const AUDIT_ACCOUNT_CONTROL="auditaccountcontrol.tpl"
+const COMMON_NAV="commonnav.tpl"
+const AUDIT_NAV="auditnav.tpl"
+const LOGOUT_CONTROL="logoutcontrol.tpl"
+const LOGIN_CONTROL="logincontrol.tpl"
+// Titulos
+const INDEX_TITLE ="Inicio"
+const REGISTER_TITLE = "Registrate"
+const MOVIE_TITLE ="Pelicula"
+const COLLECTION_TITLE ="Mis colecciones"
+const UPCOMING ="Estrenos"
+const UPCOMING_HEAD_TITLE = "PROXIMOS ESTRENOS"
+const NOW_PLAYING = "Cartelera"
+const NOW_PLAYING_HEAD_TITLE = "EN CARTELERA HOY"
+const POPULAR = "Populares"
+const POPULAR_HEAD_TITLE = "PELÍCULAS POPULARES"
+const CONTACT_TITLE ="Contactanos"
+// Peliculas por ver.
+const WATCHLIST_TITLE ="PELÍCULAS POR VER"
+// Paginas
+const PAGE_URI = "https://personalcollectionmovies-alobaton.c9users.io/movie?ID="

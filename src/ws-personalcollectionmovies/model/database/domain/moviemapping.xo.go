@@ -7,21 +7,12 @@ import "errors"
 
 // MovieMapping represents a row from public.movie_mapping.
 type MovieMapping struct {
-	ImdbID   string // imdb_id
-	Title    string // title
-	Year     string // year
-	Released string // released
-	Runtime  string // runtime
-	Genre    string // genre
-	Director string // director
-	Writer   string // writer
-	Actors   string // actors
-	Language string // language
-	Country  string // country
-	Awards   string // awards
-	Poster   string // poster
-	Plot     string // plot
-	Type     string // type
+	ID            string  // id
+	Title         string  // title
+	OriginalTitle string  // original_title
+	ReleaseDate   string    // release_date
+	VoteAverage   float64 // vote_average
+	PosterPath    string  // poster_path
 
 	// xo fields
 	_exists, _deleted bool
@@ -48,14 +39,14 @@ func (mm *MovieMapping) Insert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.movie_mapping (` +
-		`title, year, released, runtime, genre, director, writer, actors, language, country, awards, poster, plot, type` +
+		`id, title, original_title, release_date, vote_average, poster_path` +
 		`) VALUES (` +
-		`$1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14` +
-		`) RETURNING imdb_id`
+		`$1, $2, $3, $4, $5, $6` +
+		`) RETURNING id`
 
 	// run query
-	XOLog(sqlstr, mm.Title, mm.Year, mm.Released, mm.Runtime, mm.Genre, mm.Director, mm.Writer, mm.Actors, mm.Language, mm.Country, mm.Awards, mm.Poster, mm.Plot, mm.Type)
-	err = db.QueryRow(sqlstr, mm.Title, mm.Year, mm.Released, mm.Runtime, mm.Genre, mm.Director, mm.Writer, mm.Actors, mm.Language, mm.Country, mm.Awards, mm.Poster, mm.Plot, mm.Type).Scan(&mm.ImdbID)
+	XOLog(sqlstr, mm.ID, mm.Title, mm.OriginalTitle, mm.ReleaseDate, mm.VoteAverage, mm.PosterPath)
+	err = db.QueryRow(sqlstr, mm.ID, mm.Title, mm.OriginalTitle, mm.ReleaseDate, mm.VoteAverage, mm.PosterPath).Scan(&mm.ID)
 	if err != nil {
 		return err
 	}
@@ -82,14 +73,14 @@ func (mm *MovieMapping) Update(db XODB) error {
 
 	// sql query
 	const sqlstr = `UPDATE public.movie_mapping SET (` +
-		`title, year, released, runtime, genre, director, writer, actors, language, country, awards, poster, plot, type` +
+		`title, original_title, release_date, vote_average, poster_path` +
 		`) = ( ` +
-		`$1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14` +
-		`) WHERE imdb_id = $15`
+		`$1, $2, $3, $4, $5` +
+		`) WHERE id = $6`
 
 	// run query
-	XOLog(sqlstr, mm.Title, mm.Year, mm.Released, mm.Runtime, mm.Genre, mm.Director, mm.Writer, mm.Actors, mm.Language, mm.Country, mm.Awards, mm.Poster, mm.Plot, mm.Type, mm.ImdbID)
-	_, err = db.Exec(sqlstr, mm.Title, mm.Year, mm.Released, mm.Runtime, mm.Genre, mm.Director, mm.Writer, mm.Actors, mm.Language, mm.Country, mm.Awards, mm.Poster, mm.Plot, mm.Type, mm.ImdbID)
+	XOLog(sqlstr, mm.Title, mm.OriginalTitle, mm.ReleaseDate, mm.VoteAverage, mm.PosterPath, mm.ID)
+	_, err = db.Exec(sqlstr, mm.Title, mm.OriginalTitle, mm.ReleaseDate, mm.VoteAverage, mm.PosterPath, mm.ID)
 	return err
 }
 
@@ -115,18 +106,18 @@ func (mm *MovieMapping) Upsert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.movie_mapping (` +
-		`imdb_id, title, year, released, runtime, genre, director, writer, actors, language, country, awards, poster, plot, type` +
+		`id, title, original_title, release_date, vote_average, poster_path` +
 		`) VALUES (` +
-		`$1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15` +
-		`) ON CONFLICT (imdb_id) DO UPDATE SET (` +
-		`imdb_id, title, year, released, runtime, genre, director, writer, actors, language, country, awards, poster, plot, type` +
+		`$1, $2, $3, $4, $5, $6` +
+		`) ON CONFLICT (id) DO UPDATE SET (` +
+		`id, title, original_title, release_date, vote_average, poster_path` +
 		`) = (` +
-		`EXCLUDED.imdb_id, EXCLUDED.title, EXCLUDED.year, EXCLUDED.released, EXCLUDED.runtime, EXCLUDED.genre, EXCLUDED.director, EXCLUDED.writer, EXCLUDED.actors, EXCLUDED.language, EXCLUDED.country, EXCLUDED.awards, EXCLUDED.poster, EXCLUDED.plot, EXCLUDED.type` +
+		`EXCLUDED.id, EXCLUDED.title, EXCLUDED.original_title, EXCLUDED.release_date, EXCLUDED.vote_average, EXCLUDED.poster_path` +
 		`)`
 
 	// run query
-	XOLog(sqlstr, mm.ImdbID, mm.Title, mm.Year, mm.Released, mm.Runtime, mm.Genre, mm.Director, mm.Writer, mm.Actors, mm.Language, mm.Country, mm.Awards, mm.Poster, mm.Plot, mm.Type)
-	_, err = db.Exec(sqlstr, mm.ImdbID, mm.Title, mm.Year, mm.Released, mm.Runtime, mm.Genre, mm.Director, mm.Writer, mm.Actors, mm.Language, mm.Country, mm.Awards, mm.Poster, mm.Plot, mm.Type)
+	XOLog(sqlstr, mm.ID, mm.Title, mm.OriginalTitle, mm.ReleaseDate, mm.VoteAverage, mm.PosterPath)
+	_, err = db.Exec(sqlstr, mm.ID, mm.Title, mm.OriginalTitle, mm.ReleaseDate, mm.VoteAverage, mm.PosterPath)
 	if err != nil {
 		return err
 	}
@@ -152,11 +143,11 @@ func (mm *MovieMapping) Delete(db XODB) error {
 	}
 
 	// sql query
-	const sqlstr = `DELETE FROM public.movie_mapping WHERE imdb_id = $1`
+	const sqlstr = `DELETE FROM public.movie_mapping WHERE id = $1`
 
 	// run query
-	XOLog(sqlstr, mm.ImdbID)
-	_, err = db.Exec(sqlstr, mm.ImdbID)
+	XOLog(sqlstr, mm.ID)
+	_, err = db.Exec(sqlstr, mm.ID)
 	if err != nil {
 		return err
 	}
@@ -167,25 +158,25 @@ func (mm *MovieMapping) Delete(db XODB) error {
 	return nil
 }
 
-// MovieMappingByImdbID retrieves a row from 'public.movie_mapping' as a MovieMapping.
+// MovieMappingByID retrieves a row from 'public.movie_mapping' as a MovieMapping.
 //
 // Generated from index 'pk_movie_mapping'.
-func MovieMappingByImdbID(db XODB, imdbID string) (*MovieMapping, error) {
+func MovieMappingByID(db XODB, id string) (*MovieMapping, error) {
 	var err error
 
 	// sql query
 	const sqlstr = `SELECT ` +
-		`imdb_id, title, year, released, runtime, genre, director, writer, actors, language, country, awards, poster, plot, type ` +
+		`id, title, original_title, release_date, vote_average, poster_path ` +
 		`FROM public.movie_mapping ` +
-		`WHERE imdb_id = $1`
+		`WHERE id = $1`
 
 	// run query
-	XOLog(sqlstr, imdbID)
+	XOLog(sqlstr, id)
 	mm := MovieMapping{
 		_exists: true,
 	}
 
-	err = db.QueryRow(sqlstr, imdbID).Scan(&mm.ImdbID, &mm.Title, &mm.Year, &mm.Released, &mm.Runtime, &mm.Genre, &mm.Director, &mm.Writer, &mm.Actors, &mm.Language, &mm.Country, &mm.Awards, &mm.Poster, &mm.Plot, &mm.Type)
+	err = db.QueryRow(sqlstr, id).Scan(&mm.ID, &mm.Title, &mm.OriginalTitle, &mm.ReleaseDate, &mm.VoteAverage, &mm.PosterPath)
 	if err != nil {
 		return nil, err
 	}

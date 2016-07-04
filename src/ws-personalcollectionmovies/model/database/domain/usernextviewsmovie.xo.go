@@ -8,8 +8,8 @@ import "errors"
 // UserNextviewsMovie represents a row from public.user_nextviews_movies.
 type UserNextviewsMovie struct {
 	Username    string // username
-	ImdbID      string // imdb_id
-	Dateandtime int64  // dateandtime
+	ID          string // id
+	Dateandtime string  // dateandtime int64
 	Erased      bool   // erased
 
 	// xo fields
@@ -37,14 +37,14 @@ func (unm *UserNextviewsMovie) Insert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.user_nextviews_movies (` +
-		`username, dateandtime, erased` +
+		`username, id, dateandtime, erased` +
 		`) VALUES (` +
-		`$1, $2, $3` +
-		`) RETURNING imdb_id`
+		`$1, $2, $3, $4` +
+		`) RETURNING id`
 
 	// run query
-	XOLog(sqlstr, unm.Username, unm.Dateandtime, unm.Erased)
-	err = db.QueryRow(sqlstr, unm.Username, unm.Dateandtime, unm.Erased).Scan(&unm.ImdbID)
+	XOLog(sqlstr, unm.Username, unm.ID, unm.Dateandtime, unm.Erased)
+	err = db.QueryRow(sqlstr, unm.Username, unm.ID, unm.Dateandtime, unm.Erased).Scan(&unm.ID)
 	if err != nil {
 		return err
 	}
@@ -74,11 +74,11 @@ func (unm *UserNextviewsMovie) Update(db XODB) error {
 		`username, dateandtime, erased` +
 		`) = ( ` +
 		`$1, $2, $3` +
-		`) WHERE imdb_id = $4`
+		`) WHERE id = $4`
 
 	// run query
-	XOLog(sqlstr, unm.Username, unm.Dateandtime, unm.Erased, unm.ImdbID)
-	_, err = db.Exec(sqlstr, unm.Username, unm.Dateandtime, unm.Erased, unm.ImdbID)
+	XOLog(sqlstr, unm.Username, unm.Dateandtime, unm.Erased, unm.ID)
+	_, err = db.Exec(sqlstr, unm.Username, unm.Dateandtime, unm.Erased, unm.ID)
 	return err
 }
 
@@ -104,18 +104,18 @@ func (unm *UserNextviewsMovie) Upsert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.user_nextviews_movies (` +
-		`username, imdb_id, dateandtime, erased` +
+		`username, id, dateandtime, erased` +
 		`) VALUES (` +
 		`$1, $2, $3, $4` +
-		`) ON CONFLICT (imdb_id) DO UPDATE SET (` +
-		`username, imdb_id, dateandtime, erased` +
+		`) ON CONFLICT (id) DO UPDATE SET (` +
+		`username, id, dateandtime, erased` +
 		`) = (` +
-		`EXCLUDED.username, EXCLUDED.imdb_id, EXCLUDED.dateandtime, EXCLUDED.erased` +
+		`EXCLUDED.username, EXCLUDED.id, EXCLUDED.dateandtime, EXCLUDED.erased` +
 		`)`
 
 	// run query
-	XOLog(sqlstr, unm.Username, unm.ImdbID, unm.Dateandtime, unm.Erased)
-	_, err = db.Exec(sqlstr, unm.Username, unm.ImdbID, unm.Dateandtime, unm.Erased)
+	XOLog(sqlstr, unm.Username, unm.ID, unm.Dateandtime, unm.Erased)
+	_, err = db.Exec(sqlstr, unm.Username, unm.ID, unm.Dateandtime, unm.Erased)
 	if err != nil {
 		return err
 	}
@@ -141,11 +141,11 @@ func (unm *UserNextviewsMovie) Delete(db XODB) error {
 	}
 
 	// sql query
-	const sqlstr = `DELETE FROM public.user_nextviews_movies WHERE imdb_id = $1`
+	const sqlstr = `DELETE FROM public.user_nextviews_movies WHERE id = $1`
 
 	// run query
-	XOLog(sqlstr, unm.ImdbID)
-	_, err = db.Exec(sqlstr, unm.ImdbID)
+	XOLog(sqlstr, unm.ID)
+	_, err = db.Exec(sqlstr, unm.ID)
 	if err != nil {
 		return err
 	}
@@ -156,11 +156,11 @@ func (unm *UserNextviewsMovie) Delete(db XODB) error {
 	return nil
 }
 
-// MovieMapping returns the MovieMapping associated with the UserNextviewsMovie's ImdbID (imdb_id).
+// MovieMapping returns the MovieMapping associated with the UserNextviewsMovie's ID (id).
 //
 // Generated from foreign key 'movie_user_nextviews_movies_fk'.
 func (unm *UserNextviewsMovie) MovieMapping(db XODB) (*MovieMapping, error) {
-	return MovieMappingByImdbID(db, unm.ImdbID)
+	return MovieMappingByID(db, unm.ID)
 }
 
 // Useraccount returns the Useraccount associated with the UserNextviewsMovie's Username (username).
@@ -170,25 +170,25 @@ func (unm *UserNextviewsMovie) Useraccount(db XODB) (*Useraccount, error) {
 	return UseraccountByUsername(db, unm.Username)
 }
 
-// UserNextviewsMovieByUsernameImdbID retrieves a row from 'public.user_nextviews_movies' as a UserNextviewsMovie.
+// UserNextviewsMovieByUsernameID retrieves a row from 'public.user_nextviews_movies' as a UserNextviewsMovie.
 //
 // Generated from index 'pk_user_next_views_movie'.
-func UserNextviewsMovieByUsernameImdbID(db XODB, username string, imdbID string) (*UserNextviewsMovie, error) {
+func UserNextviewsMovieByUsernameID(db XODB, username string, id string) (*UserNextviewsMovie, error) {
 	var err error
 
 	// sql query
 	const sqlstr = `SELECT ` +
-		`username, imdb_id, dateandtime, erased ` +
+		`username, id, dateandtime, erased ` +
 		`FROM public.user_nextviews_movies ` +
-		`WHERE username = $1 AND imdb_id = $2`
+		`WHERE username = $1 AND id = $2`
 
 	// run query
-	XOLog(sqlstr, username, imdbID)
+	XOLog(sqlstr, username, id)
 	unm := UserNextviewsMovie{
 		_exists: true,
 	}
 
-	err = db.QueryRow(sqlstr, username, imdbID).Scan(&unm.Username, &unm.ImdbID, &unm.Dateandtime, &unm.Erased)
+	err = db.QueryRow(sqlstr, username, id).Scan(&unm.Username, &unm.ID, &unm.Dateandtime, &unm.Erased)
 	if err != nil {
 		return nil, err
 	}

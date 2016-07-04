@@ -13,10 +13,6 @@ import (
 	"ws-personalcollectionmovies/model/session"
 )
 
-// Constantes.
-const REGISTER = "register.tpl"
-const REGISTER_TITLE = "Registrate"
-
 // Controlador.
 type RegisterController struct {
 	beego.Controller
@@ -73,7 +69,7 @@ func (pController *RegisterController) CreateUseraccount() {
     	pController.StopRun()
     }
 	// Verificamos que el usuario no haya sido registrado.
-    rootVerification, err := domain.RootByUsername(connection.OpenDataBase(), request.Username)
+    rootVerification, err := domain.RootByUsername(connection.GetConn(), request.Username)
 	if err == nil && rootVerification.Username != "" {
 		log.Error(error_.ERR_0014)
 		pController.ServeMessage(error_.KO, error_.ERR_0014)
@@ -86,7 +82,7 @@ func (pController *RegisterController) CreateUseraccount() {
      	Username: strings.ToLower(request.Username),
      	Pass: util.EncryptMD5(request.Password)}
      	
-	err = root.Insert(connection.OpenDataBase())
+	err = root.Insert(connection.GetConn())
 	if err != nil {
 		log.Error(error_.ERR_0010+err.Error())
 		pController.ServeMessage(error_.KO, error_.ERR_0013)
@@ -104,7 +100,7 @@ func (pController *RegisterController) CreateUseraccount() {
 	 	Email: strings.ToLower(request.Email), 
 	 	Erased: false}
 	
-	err = useraccount.Insert(connection.OpenDataBase())
+	err = useraccount.Insert(connection.GetConn())
 	if err != nil {
 	 	log.Error(error_.ERR_0011+err.Error())
     	pController.ServeMessage(error_.KO, error_.ERR_0013)

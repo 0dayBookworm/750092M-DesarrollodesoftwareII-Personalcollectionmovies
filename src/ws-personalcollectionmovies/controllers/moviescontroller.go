@@ -10,17 +10,9 @@ import (
 	
  	"ws-personalcollectionmovies/log"
  	"ws-personalcollectionmovies/error_"
-// 	"ws-personalcollectionmovies/util"
  	"ws-personalcollectionmovies/model/session"
-// 	"ws-personalcollectionmovies/model/wsinterface"
  	"ws-personalcollectionmovies/model/tmdb"
 )
-
-const MOVIES = "movies.tpl"
-const UPCOMING ="Estrenos"
-const UPCOMING_HEAD_TITLE = "PROXIMOS ESTRENOS"
-const NOW_PLAYING = "Cartelera"
-const NOW_PLAYING_HEAD_TITLE = "EN CARTELERA HOY"
 
 type MoviesController struct {
 	beego.Controller
@@ -105,6 +97,48 @@ func (pController *MoviesController) GetNowPLayingMovies() {
 
 	// Actualizamos el paginador.
 	pController.SetPaginator(1, res.Page, res.TotalPages, "//personalcollectionmovies-alobaton.c9users.io/movie/nowplaying")
+	
+ 	// Servimos la pagina.
+	pController.TplName = MOVIES
+}
+
+func (pController *MoviesController) GetPopularMovies() {
+	// Inertamos el titulo a la pagina.
+	pController.Data["Title"] = POPULAR
+	// Verificamos la sesión.
+	pController.VerifySession()
+	// Obtenemos la pagina solicitada.
+	page := pController.Input().Get("Page")
+	// Verificamos que sea un entero.
+	_, err := strconv.Atoi(page)
+	// Verificamos que no haya ocurrido un error al parsear.
+	if err != nil {
+		log.Error(error_.ERR_0012) 
+		pController.Redirect("404", 302)
+    	pController.StopRun()
+	}
+	// Realizamos la busqueda en la API.
+ 	res, err := tmdb.GetMovieNowPlaying(page)
+ 	
+ 	if err != nil {
+		log.Error(error_.ERR_0040) 
+		pController.Redirect("404", 302)
+    	pController.StopRun()
+	}
+	// Si todo marcho con exito.
+	pController.Data["PageHeader"] = POPULAR_HEAD_TITLE
+	// Pagina actual.
+	pController.Data["Page"] = res.Page
+	// Total de paginas.
+	pController.Data["TotalPages"] = res.TotalPages
+	// Total de resultados.
+	pController.Data["TotalResults"] = res.TotalResults
+	// Resultados
+	movieShorts := res.Results
+	pController.SetMovieDateResults(movieShorts)
+
+	// Actualizamos el paginador.
+	pController.SetPaginator(1, res.Page, res.TotalPages, "//personalcollectionmovies-alobaton.c9users.io/movie/popular")
 	
  	// Servimos la pagina.
 	pController.TplName = MOVIES

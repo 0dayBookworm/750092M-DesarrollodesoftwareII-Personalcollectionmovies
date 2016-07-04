@@ -9,7 +9,7 @@ import "errors"
 type ListHasMovie struct {
 	Username string // username
 	IDList   string // id_list
-	ImdbID   string // imdb_id
+	ID       string // id
 	Erased   bool   // erased
 
 	// xo fields
@@ -40,11 +40,11 @@ func (lhm *ListHasMovie) Insert(db XODB) error {
 		`username, id_list, erased` +
 		`) VALUES (` +
 		`$1, $2, $3` +
-		`) RETURNING imdb_id`
+		`) RETURNING id`
 
 	// run query
 	XOLog(sqlstr, lhm.Username, lhm.IDList, lhm.Erased)
-	err = db.QueryRow(sqlstr, lhm.Username, lhm.IDList, lhm.Erased).Scan(&lhm.ImdbID)
+	err = db.QueryRow(sqlstr, lhm.Username, lhm.IDList, lhm.Erased).Scan(&lhm.ID)
 	if err != nil {
 		return err
 	}
@@ -74,11 +74,11 @@ func (lhm *ListHasMovie) Update(db XODB) error {
 		`username, id_list, erased` +
 		`) = ( ` +
 		`$1, $2, $3` +
-		`) WHERE imdb_id = $4`
+		`) WHERE id = $4`
 
 	// run query
-	XOLog(sqlstr, lhm.Username, lhm.IDList, lhm.Erased, lhm.ImdbID)
-	_, err = db.Exec(sqlstr, lhm.Username, lhm.IDList, lhm.Erased, lhm.ImdbID)
+	XOLog(sqlstr, lhm.Username, lhm.IDList, lhm.Erased, lhm.ID)
+	_, err = db.Exec(sqlstr, lhm.Username, lhm.IDList, lhm.Erased, lhm.ID)
 	return err
 }
 
@@ -104,18 +104,18 @@ func (lhm *ListHasMovie) Upsert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.list_has_movie (` +
-		`username, id_list, imdb_id, erased` +
+		`username, id_list, id, erased` +
 		`) VALUES (` +
 		`$1, $2, $3, $4` +
-		`) ON CONFLICT (imdb_id) DO UPDATE SET (` +
-		`username, id_list, imdb_id, erased` +
+		`) ON CONFLICT (id) DO UPDATE SET (` +
+		`username, id_list, id, erased` +
 		`) = (` +
-		`EXCLUDED.username, EXCLUDED.id_list, EXCLUDED.imdb_id, EXCLUDED.erased` +
+		`EXCLUDED.username, EXCLUDED.id_list, EXCLUDED.id, EXCLUDED.erased` +
 		`)`
 
 	// run query
-	XOLog(sqlstr, lhm.Username, lhm.IDList, lhm.ImdbID, lhm.Erased)
-	_, err = db.Exec(sqlstr, lhm.Username, lhm.IDList, lhm.ImdbID, lhm.Erased)
+	XOLog(sqlstr, lhm.Username, lhm.IDList, lhm.ID, lhm.Erased)
+	_, err = db.Exec(sqlstr, lhm.Username, lhm.IDList, lhm.ID, lhm.Erased)
 	if err != nil {
 		return err
 	}
@@ -141,11 +141,11 @@ func (lhm *ListHasMovie) Delete(db XODB) error {
 	}
 
 	// sql query
-	const sqlstr = `DELETE FROM public.list_has_movie WHERE imdb_id = $1`
+	const sqlstr = `DELETE FROM public.list_has_movie WHERE id = $1`
 
 	// run query
-	XOLog(sqlstr, lhm.ImdbID)
-	_, err = db.Exec(sqlstr, lhm.ImdbID)
+	XOLog(sqlstr, lhm.ID)
+	_, err = db.Exec(sqlstr, lhm.ID)
 	if err != nil {
 		return err
 	}
@@ -163,32 +163,32 @@ func (lhm *ListHasMovie) List(db XODB) (*List, error) {
 	return ListByUsernameIDList(db, lhm.Username, lhm.IDList)
 }
 
-// MovieMapping returns the MovieMapping associated with the ListHasMovie's ImdbID (imdb_id).
+// MovieMapping returns the MovieMapping associated with the ListHasMovie's ID (id).
 //
 // Generated from foreign key 'movie_list_has_movie_fk'.
 func (lhm *ListHasMovie) MovieMapping(db XODB) (*MovieMapping, error) {
-	return MovieMappingByImdbID(db, lhm.ImdbID)
+	return MovieMappingByID(db, lhm.ID)
 }
 
-// ListHasMovieByUsernameIDListImdbID retrieves a row from 'public.list_has_movie' as a ListHasMovie.
+// ListHasMovieByUsernameIDListID retrieves a row from 'public.list_has_movie' as a ListHasMovie.
 //
 // Generated from index 'pk_list_has_movie'.
-func ListHasMovieByUsernameIDListImdbID(db XODB, username string, idList string, imdbID string) (*ListHasMovie, error) {
+func ListHasMovieByUsernameIDListID(db XODB, username string, idList string, id string) (*ListHasMovie, error) {
 	var err error
 
 	// sql query
 	const sqlstr = `SELECT ` +
-		`username, id_list, imdb_id, erased ` +
+		`username, id_list, id, erased ` +
 		`FROM public.list_has_movie ` +
-		`WHERE username = $1 AND id_list = $2 AND imdb_id = $3`
+		`WHERE username = $1 AND id_list = $2 AND id = $3`
 
 	// run query
-	XOLog(sqlstr, username, idList, imdbID)
+	XOLog(sqlstr, username, idList, id)
 	lhm := ListHasMovie{
 		_exists: true,
 	}
 
-	err = db.QueryRow(sqlstr, username, idList, imdbID).Scan(&lhm.Username, &lhm.IDList, &lhm.ImdbID, &lhm.Erased)
+	err = db.QueryRow(sqlstr, username, idList, id).Scan(&lhm.Username, &lhm.IDList, &lhm.ID, &lhm.Erased)
 	if err != nil {
 		return nil, err
 	}

@@ -25,3 +25,9 @@ const ERR_0035 = "ERR_0035 Lo sentimos ha ocurrido un error al actualizar tus da
 const ERR_0040 = "ERR_0040 Error al obtener resultados para la busqueda."
 const ERR_0041 = "ERR_0041 No se obtuvo trailer para esta pelicula."
 const ERR_0042 = "ERR_0042 Error al parsear el JSON para obtener el trailer de la pelicula."
+// Errores para las colecciones.
+const ERR_0050 = "ERR_0050 Accede a tu cuenta para poder añadir la pelicula a tu colleción."
+const ERR_0051 = "ERR_0051 La pelicula no pudo ser agregada a tu lista de Películas por ver."
+const ERR_0052 = "ERR_0052 La película no pudo ser mapeada a nuestro sistema."
+const ERR_0053 = "ERR_0053 La pelicula ya se encuentra añadida a la lista."
+const ERR_0054 = "ERR_0054 Esta opción dehabilitada para un usuario auditor."

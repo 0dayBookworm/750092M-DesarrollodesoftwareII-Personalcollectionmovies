@@ -8,7 +8,7 @@
         <ul class="dropdown-menu">
             <li>
             
-                <a href="//personalcollectionmovies-alobaton.c9users.io/profile" id="Profile" name="Profile">
+                <a href="//personalcollectionmovies-alobaton.c9users.io/account/profile" id="Profile" name="Profile">
                 <!--
                 <a href="//personalcollectionmovies-alobaton.c9users.io/profile" id="Profile" name="Profile">
                 <a href="#" id="Profile" name="Profile">
@@ -17,7 +17,7 @@
                         <strong>{{.Username}}</strong>
                     </div>
                     <div class="row">
-                        <small>Actualizar datos</small>
+                        <small>Ver perfil</small>
                     </div>
                 </a>
             </li>

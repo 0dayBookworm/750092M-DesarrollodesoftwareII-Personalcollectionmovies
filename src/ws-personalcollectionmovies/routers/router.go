@@ -38,13 +38,15 @@ func initRegistrationModule() {
 // Modulo: Perfil de usuario.
 func initProfileModule() {
     // Formulario
-    beego.Router("/profile", &controllers.ProfileController{})
+    beego.Router("/account/profile", &controllers.ProfileController{})
+    
+    beego.Router("/account/security", &controllers.ProfileController{}, "get:Security")
     // Actualizar información
-    beego.Router("profile/update", &controllers.ProfileController{}, "post:Update")
+    beego.Router("/account/profile/update", &controllers.ProfileController{}, "post:Update")
     // Cambiar contraseña.
-    beego.Router("/profile/password", &controllers.ProfileController{}, "post:ChangePassword")
+    beego.Router("/account/profile/password", &controllers.ProfileController{}, "post:ChangePassword")
     // Eliminar cuenta de usuario.
-    beego.Router("/profile/delete", &controllers.ProfileController{}, "post:Delete")
+    beego.Router("/account/profile/delete", &controllers.ProfileController{}, "post:Delete")
 }
 // Modulo: Inicio y cierre de sesión.
 func initLoginModule() {
@@ -63,10 +65,19 @@ func initMovieModule() {
     beego.Router("/movie/upcoming", &controllers.MoviesController{}, "get:GetUpcomingMovies")
     // Cartelera
     beego.Router("/movie/nowplaying", &controllers.MoviesController{}, "get:GetNowPLayingMovies")
+    // Populares
+    beego.Router("/movie/popular", &controllers.MoviesController{}, "get:GetPopularMovies")
 }
 // Modulo: Colecciones.
 func initCollectionsModule() {
-    beego.Router("/collection", &controllers.CollectionController{})
+    // Peliculas vistas.
+    // Peliculas por Ver.
+    beego.Router("/account/watchlist", &controllers.CollectionController{}, "get:Watchlist")
+    // Añadir y remover de peliculas por ver.
+    beego.Router("/account/watchlist/add", &controllers.CollectionController{}, "get:WatchListAdd")
+    // beego.Router("/account/watchlist/remove", &controllers.CollectionController{}, "post:WatchlistRemove")
+    // Mis colecciones.
+    beego.Router("/account/collection", &controllers.CollectionController{}, "get:Get")
 }
 // Modulo: Contacto.
 func initContactModule() {

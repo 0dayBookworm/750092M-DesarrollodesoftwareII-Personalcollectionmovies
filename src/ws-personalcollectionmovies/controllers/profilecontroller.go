@@ -12,52 +12,110 @@ import (
 	"ws-personalcollectionmovies/util"
 )
 
-
-const PROFILE = "profile.tpl"
-const PROFILE_TITLE ="Perfil"
-
 type ProfileController struct {
 	beego.Controller
 }
 
 // Metodo encargado de servir la pagina de perfil de usuario.
 func (pController *ProfileController) Get() {
-		// Inertamos el titulo a la pagina.
-	pController.Data["Title"] = PROFILE_TITLE
-  
-	pController.Layout = PROFILE
+	pController.Layout = ACCOUNT
     pController.LayoutSections = make(map[string]string)
-    pController.LayoutSections["SessionControl"] = "logincontrol.tpl"
+    pController.LayoutSections["SessionControl"] = LOGIN_CONTROL
     // Se realiza el inicio de sesión almacenando el username en memoria.
  	sessionVal := pController.GetSession(session.USERSESSION)
  	// Si es nulo significa que no esta en una sesión activa e iniciamos la sesión.
     if sessionVal != nil {
-    	 pController.LayoutSections["SessionControl"] = "logoutcontrol.tpl"
-    	 
-    	 _username := sessionVal.(session.UserSession).Username
-    
-		// Obtenemos el usuario de base de datos.
-		// Verificamos que el usuario exista y obtenemos la información de base de datos.
-		Useraccount, err := domain.UseraccountByUsername(connection.OpenDataBase(), _username)
+    	// Actualizamos los layouts.
+    	pController.LayoutSections["SessionControl"] = LOGOUT_CONTROL
+    	// Inertamos el titulo a la pagina.
+		pController.Data["Title"] = sessionVal.(session.UserSession).Username
+    	_, err := domain.AuditorByUsername(connection.GetConn(), sessionVal.(session.UserSession).Username)
 		if err != nil {
-			log.Error(error_.ERR_0031)
-			// Se debería redireccionar a una pagina de error.
-			pController.Redirect("/error", 302)
-		}
-		// Actualizamos los datos del formulario de registro.
-		pController.Data["Username"] = Useraccount.Username
-		pController.Data["Email"] = Useraccount.Email
-		pController.Data["FirstName"] = Useraccount.FirstName
-		pController.Data["SecondName"] = Useraccount.SecondName
-		pController.Data["LastName"] = Useraccount.LastName
-		pController.Data["BirthDate"] = Useraccount.BirthDate
-		if (Useraccount.Gender == "male") {
-			pController.Data["Male"] = "checked"
+    		// Actualizamos el layout de control de cuenta.
+			pController.LayoutSections["AccountControl"] = COMMON_ACCOUNT_CONTROL
+			// Actualizamos la sección de reportes.
+			pController.LayoutSections["Reports"] = COMMON_NAV
+    		pController.LayoutSections["AccountContent"] = PROFILE
+    		
+    		// Obtenemos el usuario de base de datos.
+			// Verificamos que el usuario exista y obtenemos la información de base de datos.
+			useraccount, err := domain.UseraccountByUsername(connection.GetConn(), sessionVal.(session.UserSession).Username)
+			if err != nil {
+				log.Error(error_.ERR_0031)
+				// Se debería redireccionar a una pagina de error.
+				pController.Redirect("/error", 302)
+			}
+			// Actualizamos los datos del formulario de registro.
+			pController.Data["Username"] = useraccount.Username
+			pController.Data["Email"] = useraccount.Email
+			pController.Data["FirstName"] = useraccount.FirstName
+			pController.Data["SecondName"] = useraccount.SecondName
+			pController.Data["LastName"] = useraccount.LastName
+			// pController.Data["BirthDate"] = util.ParseDate(useraccount.BirthDate)
+			pController.Data["BirthDate"] = util.ParseDate(useraccount.BirthDate[:10])
+			// Actualizamos el avatar.
+			if (useraccount.Gender == "male") {
+				pController.Data["Male"] = "checked"
+				pController.Data["Avatar"]="https://personalcollectionmovies-alobaton.c9users.io/public/images/avatar_male.jpg"
+			} else {
+				pController.Data["Female"] = "checked"
+				pController.Data["Avatar"]="https://personalcollectionmovies-alobaton.c9users.io/public/images/avatar_female.jpg"
+			}
+    		
+    	} else {
+    		pController.Redirect("/account/security", 302)
+    	}
+    	
+		// Servimos la pagina.
+		pController.TplName = ACCOUNT
+	} else {
+		pController.Redirect("/", 302)
+	}
+}
+
+func (pController *ProfileController) Security() {
+	pController.Layout = ACCOUNT
+    pController.LayoutSections = make(map[string]string)
+    pController.LayoutSections["SessionControl"] = LOGIN_CONTROL
+    // Se realiza el inicio de sesión almacenando el username en memoria.
+ 	sessionVal := pController.GetSession(session.USERSESSION)
+ 	// Si es nulo significa que no esta en una sesión activa e iniciamos la sesión.
+    if sessionVal != nil {
+    	// Actualizamos los layouts.
+    	pController.LayoutSections["SessionControl"] = LOGOUT_CONTROL
+    		// Inertamos el titulo a la pagina.
+		pController.Data["Title"] = sessionVal.(session.UserSession).Username
+		pController.LayoutSections["AccountContent"] = SECURITY
+		
+		auditor, err := domain.AuditorByUsername(connection.GetConn(), sessionVal.(session.UserSession).Username)
+		if err != nil {
+	    	// Actualizamos el layout de control de cuenta.
+			pController.LayoutSections["AccountControl"] = COMMON_ACCOUNT_CONTROL
+			// Actualizamos la sección de reportes.
+			pController.LayoutSections["Reports"] = COMMON_NAV
+	    	// Actualizamos los datos del formulario de registro.
+			pController.Data["Username"] = sessionVal.(session.UserSession).Username
+			pController.Data["Email"] = sessionVal.(session.UserSession).Email
+			// Actualizamos el avatar.
+			if (sessionVal.(session.UserSession).Gender == "male") {
+				pController.Data["Avatar"]="https://personalcollectionmovies-alobaton.c9users.io/public/images/avatar_male.jpg"
+			} else {
+				pController.Data["Avatar"]="https://personalcollectionmovies-alobaton.c9users.io/public/images/avatar_female.jpg"
+			}
+			pController.Data["EnableSecutiry"]=true
 		} else {
-			pController.Data["Female"] = "checked"
+			pController.LayoutSections["AccountControl"] = AUDIT_ACCOUNT_CONTROL
+    		// Actualizamos el contenido del perfil.
+    		pController.LayoutSections["AccountContent"] = SECURITY
+    		// Actualizamos la sección de reportes.
+    		// Actualizamos los datos del formulario de registro.
+			pController.Data["Username"] = auditor.Username
+			pController.Data["Avatar"]="https://personalcollectionmovies-alobaton.c9users.io/public/images/avatar_audit.jpg"
+			
+			pController.Data["EnableSecutiry"]=false
 		}
 		// Servimos la pagina.
-		pController.TplName = PROFILE
+		pController.TplName = ACCOUNT
 	} else {
 		pController.Redirect("/", 302)
 	}
@@ -117,7 +175,7 @@ func (pController *ProfileController) Update() {
 	 	Email: request.Email, 
 	 	Erased: false}
 	 	
-	err = useraccount.Update(connection.OpenDataBase())
+	err = useraccount.Update(connection.GetConn())
 	if err != nil {
 	 	log.Error(error_.ERR_0033+err.Error())
     	pController.ServeMessage(error_.KO, error_.ERR_0033)
@@ -147,7 +205,7 @@ func (pController *ProfileController) ChangePassword() {
 	}
 	_username := sessionVal.(session.UserSession).Username
 	
-	root, err := domain.RootByUsername(connection.OpenDataBase(), _username)
+	root, err := domain.RootByUsername(connection.GetConn(), _username)
 	if err != nil {
 		//modifique el numero del error antes tenia el 31 preguntar si esta bien
 		log.Error(error_.ERR_0013+err.Error())
@@ -160,7 +218,7 @@ func (pController *ProfileController) ChangePassword() {
 		// Actualizamos la contraseña.
 		root.Pass = util.EncryptMD5(request.NewPassword)
 		log.Info(root)
-		err = root.Update(connection.OpenDataBase())
+		err = root.Update(connection.GetConn())
 		if err != nil {
 		 	log.Error(error_.ERR_0034+err.Error())
 	    	pController.ServeMessage(error_.KO, error_.ERR_0034)

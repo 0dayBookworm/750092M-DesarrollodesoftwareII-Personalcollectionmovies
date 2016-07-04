@@ -13,10 +13,9 @@ import (
 	"ws-personalcollectionmovies/model/session"
 	"ws-personalcollectionmovies/model/wsinterface"
 	"ws-personalcollectionmovies/model/tmdb"
+	"ws-personalcollectionmovies/model/database/domain"
+	"ws-personalcollectionmovies/model/database/connection"
 )
-
-const MOVIE = "movie.tpl"
-const MOVIE_TITLE ="Pelicula"
 
 type MovieController struct {
 	beego.Controller
@@ -24,7 +23,16 @@ type MovieController struct {
 
 func (pController *MovieController) GetMovie() {
 	// Verificamos la sesión.
-	pController.VerifySession()
+	pController.Layout = MOVIE
+    pController.LayoutSections = make(map[string]string)
+    pController.LayoutSections["SessionControl"] = LOGIN_CONTROL
+    // Se realiza el inicio de sesión almacenando el username en memoria.
+ 	sessionVal := pController.GetSession(session.USERSESSION)
+ 	// Si es nulo significa que no esta en una sesión activa e iniciamos la sesión.
+    if sessionVal != nil {
+    	 pController.LayoutSections["SessionControl"] = LOGOUT_CONTROL
+    	 pController.Data["Username"] = sessionVal.(session.UserSession).Username
+    }
 	
 	request := wsinterface.GetMovieRequest{}
 	err := pController.ParseForm(&request)
@@ -95,7 +103,23 @@ func (pController *MovieController) GetMovie() {
  		trailerSrc := res.Videos.Results[0].Key
  		pController.Data["Trailer"]=trailerSrc
  	}
-
+ 	
+ 	// Actualizamos los controles de compartición.
+ 	pController.Data["PageUrl"] =PAGE_URI+strconv.Itoa(res.ID)
+	
+	// Actualizamos los controles de las listas y colecciones.
+	if sessionVal != nil {
+		// Verificamos si la pelicula ya ha sido añadida a la lista de peliculas por ver.
+		_, err = domain.UserNextviewsMovieByUsernameID(connection.GetConn(), sessionVal.(session.UserSession).Username, strconv.Itoa(res.ID))
+		if err != nil {
+			pController.Data["WatchListContent"]=`<a id="WatchListAdd"> <small id="WatchListIndicator"> <i class="glyphicon glyphicon-eye-open"></i> Añadir a Peliculas por ver</small> </a>`
+		} else {
+			pController.Data["WatchListContent"]=`<a id="WatchListRemove"> <small id="WatchListIndicator" style="color: #3F81BF"> <i class="glyphicon glyphicon-eye-open"></i> Remover de Peliculas por ver</small> </a>`
+		}
+	} else {
+		pController.Data["WatchListContent"]=`<a id="WatchListAdd"> <small id="WatchListIndicator"> <i class="glyphicon glyphicon-eye-open"></i> Añadir a Peliculas por ver</small> </a>`
+	}
+	
 	// Servimos la pagina.
 	pController.TplName = MOVIE
 }
@@ -120,18 +144,6 @@ func (pController *MovieController) Search() {
     pController.ServeJSON()
 }
 
-func (pController *MovieController) VerifySession() {
-    pController.Layout = MOVIE
-    pController.LayoutSections = make(map[string]string)
-    pController.LayoutSections["SessionControl"] = "logincontrol.tpl"
-    // Se realiza el inicio de sesión almacenando el username en memoria.
- 	sessionVal := pController.GetSession(session.USERSESSION)
- 	// Si es nulo significa que no esta en una sesión activa e iniciamos la sesión.
-    if sessionVal != nil {
-    	 pController.LayoutSections["SessionControl"] = "logoutcontrol.tpl"
-    	 pController.Data["Username"] = sessionVal.(session.UserSession).Username
-    }
-}
 func (pController *MovieController) ServeMessage(pErrorCode, pErrorMessage string) {
 	searchMovieResponse := wsinterface.SearchMovieResponse{pErrorCode, pErrorMessage}
     pController.Data["json"] = &searchMovieResponse

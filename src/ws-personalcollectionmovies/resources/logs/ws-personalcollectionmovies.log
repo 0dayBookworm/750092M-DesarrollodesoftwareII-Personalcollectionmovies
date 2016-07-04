@@ -1,465 +1,285 @@
-INFO: 2016/06/23 00:54:55 main.go:24: Log information load correctly.
-INFO: 2016/06/23 00:54:55 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 00:54:55 main.go:32: Listen and serve at 8080
-ERROR: 2016/06/23 00:54:57 moviecontroller.go:47: moviecontroller.go: ERR_0040 Error al obtener resultados para la busqueda.
-ERROR: 2016/06/23 00:56:10 moviecontroller.go:102: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.
-ERROR: 2016/06/23 00:57:50 moviecontroller.go:128: moviecontroller.go: ERR_0040 Error al obtener resultados para la busqueda.
-ERROR: 2016/06/23 00:58:08 moviecontroller.go:102: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.
-INFO: 2016/06/23 01:38:42 main.go:24: Log information load correctly.
-INFO: 2016/06/23 01:38:42 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 01:38:42 main.go:32: Listen and serve at 8080
-INFO: 2016/06/23 01:41:33 main.go:24: Log information load correctly.
-INFO: 2016/06/23 01:41:33 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 01:41:33 main.go:32: Listen and serve at 8080
-ERROR: 2016/06/23 01:41:39 moviecontroller.go:107: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Superman vs. Batman: When Heroes Collide]
-INFO: 2016/06/23 02:13:42 main.go:24: Log information load correctly.
-INFO: 2016/06/23 02:13:42 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 02:13:42 main.go:32: Listen and serve at 8080
-INFO: 2016/06/23 02:14:07 main.go:24: Log information load correctly.
-INFO: 2016/06/23 02:14:07 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 02:14:07 main.go:32: Listen and serve at 8080
-INFO: 2016/06/23 02:14:18 main.go:24: Log information load correctly.
-INFO: 2016/06/23 02:14:18 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 02:14:18 main.go:32: Listen and serve at 8080
-INFO: 2016/06/23 02:14:36 main.go:24: Log information load correctly.
-INFO: 2016/06/23 02:14:36 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 02:14:36 main.go:32: Listen and serve at 8080
-ERROR: 2016/06/23 02:14:40 moviecontroller.go:108: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Superman vs. Batman: When Heroes Collide]
-INFO: 2016/06/23 02:15:06 main.go:24: Log information load correctly.
-INFO: 2016/06/23 02:15:06 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 02:15:06 main.go:32: Listen and serve at 8080
-INFO: 2016/06/23 02:15:52 main.go:24: Log information load correctly.
-INFO: 2016/06/23 02:15:52 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 02:15:52 main.go:32: Listen and serve at 8080
-INFO: 2016/06/23 02:17:33 main.go:24: Log information load correctly.
-INFO: 2016/06/23 02:17:33 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 02:17:33 main.go:32: Listen and serve at 8080
-INFO: 2016/06/23 02:17:51 main.go:24: Log information load correctly.
-INFO: 2016/06/23 02:17:51 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 02:17:51 main.go:32: Listen and serve at 8080
-INFO: 2016/06/23 02:18:20 main.go:24: Log information load correctly.
-INFO: 2016/06/23 02:18:20 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 02:18:20 main.go:32: Listen and serve at 8080
-ERROR: 2016/06/23 02:34:32 moviecontroller.go:106: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Italian Spiderman]
-ERROR: 2016/06/23 02:38:12 moviecontroller.go:106: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Italian Spiderman]
-ERROR: 2016/06/23 02:38:49 moviecontroller.go:106: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Italian Spiderman]
-ERROR: 2016/06/23 02:53:40 moviecontroller.go:106: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Atman]
-ERROR: 2016/06/23 02:54:14 moviecontroller.go:106: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Atman]
-ERROR: 2016/06/23 02:54:53 moviecontroller.go:106: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Atman]
-ERROR: 2016/06/23 02:55:06 moviecontroller.go:106: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Atman]
-ERROR: 2016/06/23 02:55:20 moviecontroller.go:106: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Atman]
-ERROR: 2016/06/23 02:56:13 moviecontroller.go:106: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Atman]
-ERROR: 2016/06/23 02:56:28 moviecontroller.go:106: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Atman]
-ERROR: 2016/06/23 02:57:21 moviecontroller.go:106: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Atman]
-ERROR: 2016/06/23 02:58:35 moviecontroller.go:106: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Atman]
-ERROR: 2016/06/23 03:00:07 moviecontroller.go:106: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Atman]
-ERROR: 2016/06/23 03:00:51 moviecontroller.go:106: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Atman]
-ERROR: 2016/06/23 03:01:12 moviecontroller.go:106: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Atman]
-INFO: 2016/06/23 17:50:13 main.go:24: Log information load correctly.
-INFO: 2016/06/23 17:50:13 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 17:50:13 main.go:32: Listen and serve at 8080
-INFO: 2016/06/23 17:57:32 main.go:24: Log information load correctly.
-INFO: 2016/06/23 17:57:32 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 17:57:32 main.go:32: Listen and serve at 8080
-INFO: 2016/06/23 17:58:26 main.go:24: Log information load correctly.
-INFO: 2016/06/23 17:58:26 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 17:58:26 main.go:32: Listen and serve at 8080
-INFO: 2016/06/23 17:58:30 main.go:24: Log information load correctly.
-INFO: 2016/06/23 17:58:30 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 17:58:30 main.go:32: Listen and serve at 8080
-ERROR: 2016/06/23 17:59:00 moviecontroller.go:118: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Italian Spiderman]
-ERROR: 2016/06/23 17:59:00 moviecontroller.go:118: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Italian Spiderman]
-INFO: 2016/06/23 17:59:25 main.go:24: Log information load correctly.
-INFO: 2016/06/23 17:59:25 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 17:59:25 main.go:32: Listen and serve at 8080
-INFO: 2016/06/23 17:59:41 main.go:24: Log information load correctly.
-INFO: 2016/06/23 17:59:41 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 17:59:41 main.go:32: Listen and serve at 8080
-ERROR: 2016/06/23 18:47:19 moviecontroller.go:97: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Atman]
-INFO: 2016/06/23 19:42:30 main.go:24: Log information load correctly.
-INFO: 2016/06/23 19:42:30 main.go:27: The system is set up correctly.
-INFO: 2016/06/23 19:42:30 main.go:32: Listen and serve at 8080
-ERROR: 2016/06/23 19:42:35 moviecontroller.go:99: moviecontroller.go: ERR_0041 No se obtuvo trailer para esta pelicula.[Atman]
-INFO: 2016/06/23 20:38:49 main.go:25: Log information load correctly.
-INFO: 2016/06/23 20:38:49 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 20:38:49 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 20:45:08 main.go:25: Log information load correctly.
-INFO: 2016/06/23 20:45:08 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 20:45:08 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 20:54:46 main.go:25: Log information load correctly.
-INFO: 2016/06/23 20:54:46 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 20:54:46 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:01:54 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:01:54 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:01:54 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:13:35 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:13:35 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:13:35 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:14:20 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:14:20 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:14:20 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:16:19 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:16:19 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:16:19 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:21:56 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:21:56 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:21:56 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:23:10 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:23:10 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:23:10 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:23:50 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:23:50 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:23:50 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:25:46 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:25:46 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:25:46 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:28:12 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:28:12 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:28:12 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:31:31 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:31:31 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:31:31 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:33:20 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:33:20 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:33:20 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:36:52 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:36:52 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:36:52 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:36:56 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:36:56 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:36:56 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:37:13 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:37:13 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:37:13 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:37:26 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:37:26 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:37:26 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 21:52:43 main.go:25: Log information load correctly.
-INFO: 2016/06/23 21:52:43 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 21:52:43 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:01:30 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:01:30 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:01:30 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:02:17 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:02:17 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:02:17 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:03:18 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:03:18 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:03:18 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:03:53 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:03:53 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:03:53 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:08:59 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:08:59 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:08:59 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:09:29 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:09:29 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:09:29 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:15:34 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:15:34 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:15:34 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:16:11 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:16:11 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:16:11 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:18:38 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:18:38 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:18:38 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:21:20 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:21:20 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:21:20 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:22:29 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:22:29 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:22:29 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:25:06 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:25:06 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:25:06 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:27:03 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:27:03 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:27:03 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:28:19 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:28:19 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:28:19 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:28:57 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:28:57 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:28:57 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:32:04 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:32:04 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:32:04 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:34:10 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:34:10 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:34:10 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:34:44 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:34:44 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:34:44 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:34:57 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:34:57 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:34:57 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:35:08 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:35:08 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:35:08 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:35:13 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:35:13 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:35:13 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:35:19 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:35:19 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:35:19 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:35:24 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:35:24 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:35:24 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:38:41 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:38:41 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:38:41 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:39:55 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:39:55 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:39:55 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:40:48 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:40:48 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:40:48 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:49:54 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:49:54 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:49:54 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 22:58:08 main.go:25: Log information load correctly.
-INFO: 2016/06/23 22:58:08 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 22:58:08 main.go:38: Listen and serve at 8080
-INFO: 2016/06/23 23:34:16 main.go:25: Log information load correctly.
-INFO: 2016/06/23 23:34:16 main.go:28: The system is set up correctly.
-INFO: 2016/06/23 23:34:16 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 00:20:47 main.go:25: Log information load correctly.
-INFO: 2016/06/24 00:20:47 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 00:20:47 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 00:21:18 main.go:25: Log information load correctly.
-INFO: 2016/06/24 00:21:18 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 00:21:18 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 00:27:49 main.go:25: Log information load correctly.
-INFO: 2016/06/24 00:27:49 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 00:27:49 main.go:38: Listen and serve at 8080
-ERROR: 2016/06/24 00:28:19 moviecontroller.go:47: moviecontroller.go: ERR_0040 Error al obtener resultados para la busqueda.
-INFO: 2016/06/24 21:49:41 main.go:25: Log information load correctly.
-INFO: 2016/06/24 21:49:41 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 21:49:41 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 21:52:20 main.go:25: Log information load correctly.
-INFO: 2016/06/24 21:52:20 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 21:52:20 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 22:03:34 main.go:25: Log information load correctly.
-INFO: 2016/06/24 22:03:34 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 22:03:34 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 22:04:32 main.go:25: Log information load correctly.
-INFO: 2016/06/24 22:04:32 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 22:04:32 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 22:25:09 main.go:25: Log information load correctly.
-INFO: 2016/06/24 22:25:09 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 22:25:09 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 22:42:36 main.go:25: Log information load correctly.
-INFO: 2016/06/24 22:42:36 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 22:42:36 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 22:43:47 main.go:25: Log information load correctly.
-INFO: 2016/06/24 22:43:47 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 22:43:47 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 22:49:16 main.go:25: Log information load correctly.
-INFO: 2016/06/24 22:49:16 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 22:49:16 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 22:51:00 main.go:25: Log information load correctly.
-INFO: 2016/06/24 22:51:00 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 22:51:00 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 22:51:42 main.go:25: Log information load correctly.
-INFO: 2016/06/24 22:51:42 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 22:51:42 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 22:52:24 main.go:25: Log information load correctly.
-INFO: 2016/06/24 22:52:24 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 22:52:24 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 22:52:39 main.go:25: Log information load correctly.
-INFO: 2016/06/24 22:52:39 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 22:52:39 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 22:52:52 main.go:25: Log information load correctly.
-INFO: 2016/06/24 22:52:52 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 22:52:52 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 22:53:07 main.go:25: Log information load correctly.
-INFO: 2016/06/24 22:53:07 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 22:53:07 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 22:53:15 main.go:25: Log information load correctly.
-INFO: 2016/06/24 22:53:15 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 22:53:15 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 23:43:28 main.go:25: Log information load correctly.
-INFO: 2016/06/24 23:43:28 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 23:43:28 main.go:38: Listen and serve at 8080
-INFO: 2016/06/24 23:44:08 main.go:25: Log information load correctly.
-INFO: 2016/06/24 23:44:08 main.go:28: The system is set up correctly.
-INFO: 2016/06/24 23:44:08 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 01:34:54 main.go:25: Log information load correctly.
-INFO: 2016/06/25 01:34:54 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 01:34:54 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 01:36:07 main.go:25: Log information load correctly.
-INFO: 2016/06/25 01:36:07 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 01:36:07 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 01:38:51 main.go:25: Log information load correctly.
-INFO: 2016/06/25 01:38:51 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 01:38:51 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 01:40:05 main.go:25: Log information load correctly.
-INFO: 2016/06/25 01:40:05 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 01:40:05 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 01:40:52 main.go:25: Log information load correctly.
-INFO: 2016/06/25 01:40:52 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 01:40:52 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 01:41:25 main.go:25: Log information load correctly.
-INFO: 2016/06/25 01:41:25 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 01:41:25 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 01:55:00 main.go:25: Log information load correctly.
-INFO: 2016/06/25 01:55:00 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 01:55:00 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 01:55:52 main.go:25: Log information load correctly.
-INFO: 2016/06/25 01:55:52 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 01:55:52 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 01:56:17 main.go:25: Log information load correctly.
-INFO: 2016/06/25 01:56:17 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 01:56:17 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 01:58:03 main.go:25: Log information load correctly.
-INFO: 2016/06/25 01:58:03 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 01:58:03 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:01:07 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:01:07 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:01:07 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:03:53 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:03:53 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:03:53 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:05:57 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:05:57 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:05:57 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:06:19 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:06:19 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:06:19 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:07:36 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:07:36 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:07:36 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:08:43 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:08:43 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:08:43 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:09:27 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:09:27 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:09:27 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:09:46 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:09:46 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:09:46 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:10:09 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:10:09 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:10:09 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:10:55 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:10:55 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:10:55 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:11:59 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:11:59 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:11:59 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:13:04 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:13:04 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:13:04 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:13:25 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:13:25 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:13:25 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:19:01 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:19:01 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:19:01 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:20:29 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:20:29 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:20:29 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:22:15 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:22:15 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:22:15 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:23:04 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:23:04 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:23:04 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:30:09 registercontroller.go:52: registercontroller.go: Record attempt [{Username:, Email:, Password:, FirstName:, SecondName:, LastName:, BirthDate:2000-02-09, Gender:male, TermsAndConditions:agree}]
-ERROR: 2016/06/25 02:30:09 registercontroller.go:65: registercontroller.go: Validation does not pass.
-ERROR: 2016/06/25 02:30:09 registercontroller.go:71: registercontroller.go: 
-        	Username.Required:Can not be empty. 
-        	Email.Required:Can not be empty. 
-        	Password.Required:Can not be empty. 
-        	ConfirmPassword.Required:Can not be empty. 
-        	FirstName.Required:Can not be empty. 
-        	LastName.Required:Can not be empty. 
-INFO: 2016/06/25 02:57:00 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:57:00 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:57:00 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 02:59:14 main.go:25: Log information load correctly.
-INFO: 2016/06/25 02:59:14 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 02:59:14 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 03:29:48 main.go:25: Log information load correctly.
-INFO: 2016/06/25 03:29:48 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 03:29:48 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 12:38:21 main.go:25: Log information load correctly.
-INFO: 2016/06/25 12:38:21 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 12:38:21 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 12:39:28 main.go:25: Log information load correctly.
-INFO: 2016/06/25 12:39:28 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 12:39:28 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 12:47:26 main.go:25: Log information load correctly.
-INFO: 2016/06/25 12:47:26 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 12:47:26 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 12:53:15 main.go:25: Log information load correctly.
-INFO: 2016/06/25 12:53:15 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 12:53:15 main.go:38: Listen and serve at 8080
-ERROR: 2016/06/25 12:53:20 moviescontroller.go:46: ERR_0040 Error al obtener resultados para la busqueda.
-INFO: 2016/06/25 13:23:08 main.go:25: Log information load correctly.
-INFO: 2016/06/25 13:23:08 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 13:23:08 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 13:24:22 main.go:25: Log information load correctly.
-INFO: 2016/06/25 13:24:22 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 13:24:22 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 13:24:46 main.go:25: Log information load correctly.
-INFO: 2016/06/25 13:24:46 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 13:24:46 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 13:51:04 main.go:25: Log information load correctly.
-INFO: 2016/06/25 13:51:04 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 13:51:04 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:00:02 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:00:02 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:00:02 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:00:19 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:00:19 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:00:19 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:00:43 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:00:43 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:00:43 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:01:14 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:01:14 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:01:14 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:01:36 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:01:36 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:01:36 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:29:08 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:29:08 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:29:08 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:30:14 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:30:14 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:30:14 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:30:48 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:30:48 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:30:48 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:31:47 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:31:47 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:31:47 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:36:40 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:36:40 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:36:40 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:37:27 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:37:27 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:37:27 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:39:43 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:39:43 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:39:43 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:43:08 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:43:08 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:43:08 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:43:21 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:43:21 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:43:21 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:45:17 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:45:17 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:45:17 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:45:22 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:45:22 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:45:22 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:45:49 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:45:49 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:45:49 main.go:38: Listen and serve at 8080
-INFO: 2016/06/25 14:46:00 main.go:25: Log information load correctly.
-INFO: 2016/06/25 14:46:00 main.go:28: The system is set up correctly.
-INFO: 2016/06/25 14:46:00 main.go:38: Listen and serve at 8080
+INFO: 2016/07/03 16:47:21 main.go:26: Log information load correctly.
+INFO: 2016/07/03 16:47:21 main.go:29: The system is set up correctly.
+INFO: 2016/07/03 16:47:21 main.go:47: Listen and serve at 8080
+INFO: 2016/07/03 16:50:29 main.go:26: Log information load correctly.
+INFO: 2016/07/03 16:50:29 main.go:29: The system is set up correctly.
+INFO: 2016/07/03 16:50:29 main.go:47: Listen and serve at 8080
+INFO: 2016/07/03 16:51:35 main.go:26: Log information load correctly.
+INFO: 2016/07/03 16:51:35 main.go:29: The system is set up correctly.
+INFO: 2016/07/03 16:51:35 main.go:47: Listen and serve at 8080
+INFO: 2016/07/03 16:52:06 main.go:26: Log information load correctly.
+INFO: 2016/07/03 16:52:06 main.go:29: The system is set up correctly.
+INFO: 2016/07/03 16:52:06 main.go:47: Listen and serve at 8080
+INFO: 2016/07/03 16:52:12 main.go:26: Log information load correctly.
+INFO: 2016/07/03 16:52:12 main.go:29: The system is set up correctly.
+INFO: 2016/07/03 16:52:12 main.go:47: Listen and serve at 8080
+INFO: 2016/07/03 16:52:33 main.go:26: Log information load correctly.
+INFO: 2016/07/03 16:52:33 main.go:29: The system is set up correctly.
+INFO: 2016/07/03 16:52:33 main.go:47: Listen and serve at 8080
+INFO: 2016/07/03 16:52:43 main.go:26: Log information load correctly.
+INFO: 2016/07/03 16:52:43 main.go:29: The system is set up correctly.
+INFO: 2016/07/03 16:52:43 main.go:47: Listen and serve at 8080
+INFO: 2016/07/03 16:53:25 main.go:26: Log information load correctly.
+INFO: 2016/07/03 16:53:25 main.go:29: The system is set up correctly.
+INFO: 2016/07/03 16:53:25 main.go:47: Listen and serve at 8080
+INFO: 2016/07/03 16:53:34 main.go:26: Log information load correctly.
+INFO: 2016/07/03 16:53:34 main.go:29: The system is set up correctly.
+INFO: 2016/07/03 16:53:34 main.go:47: Listen and serve at 8080
+INFO: 2016/07/03 16:53:43 main.go:26: Log information load correctly.
+INFO: 2016/07/03 16:53:43 main.go:29: The system is set up correctly.
+INFO: 2016/07/03 16:53:43 main.go:47: Listen and serve at 8080
+INFO: 2016/07/03 16:55:00 main.go:26: Log information load correctly.
+INFO: 2016/07/03 16:55:00 main.go:29: The system is set up correctly.
+INFO: 2016/07/03 16:55:00 main.go:47: Listen and serve at 8080
+INFO: 2016/07/03 16:55:04 main.go:26: Log information load correctly.
+INFO: 2016/07/03 16:55:04 main.go:29: The system is set up correctly.
+INFO: 2016/07/03 16:55:04 main.go:47: Listen and serve at 8080
+INFO: 2016/07/03 16:55:26 main.go:26: Log information load correctly.
+INFO: 2016/07/03 16:55:26 main.go:29: The system is set up correctly.
+INFO: 2016/07/03 16:55:26 main.go:47: Listen and serve at 8080
+INFO: 2016/07/03 16:55:39 main.go:26: Log information load correctly.
+INFO: 2016/07/03 16:55:39 main.go:29: The system is set up correctly.
+INFO: 2016/07/03 16:55:39 main.go:47: Listen and serve at 8080
+INFO: 2016/07/04 01:04:01 main.go:26: Log information load correctly.
+INFO: 2016/07/04 01:04:01 main.go:29: The system is set up correctly.
+INFO: 2016/07/04 01:04:01 main.go:47: Listen and serve at 8080
+ERROR: 2016/07/04 01:09:32 sessioncontroller.go:61: ERR_0023 Contraseña incorrecta
+ERROR: 2016/07/04 01:10:01 sessioncontroller.go:61: ERR_0023 Contraseña incorrecta
+INFO: 2016/07/04 01:18:06 main.go:26: Log information load correctly.
+INFO: 2016/07/04 01:18:06 main.go:29: The system is set up correctly.
+INFO: 2016/07/04 01:18:06 main.go:47: Listen and serve at 8080
+ERROR: 2016/07/04 01:18:27 sessioncontroller.go:61: ERR_0023 Contraseña incorrectadd4b21e9ef71e1291183a46b913ae6f2|
+INFO: 2016/07/04 01:19:44 main.go:26: Log information load correctly.
+INFO: 2016/07/04 01:19:44 main.go:29: The system is set up correctly.
+INFO: 2016/07/04 01:19:44 main.go:47: Listen and serve at 8080
+ERROR: 2016/07/04 01:20:02 sessioncontroller.go:61: ERR_0023 Contraseña incorrectadd4b21e9ef71e1291183a46b913ae6f2||00000000
+INFO: 2016/07/04 01:58:21 main.go:22: Log information load correctly.
+INFO: 2016/07/04 01:58:21 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 01:58:21 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 01:58:59 main.go:22: Log information load correctly.
+INFO: 2016/07/04 01:58:59 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 01:58:59 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 01:59:04 main.go:22: Log information load correctly.
+INFO: 2016/07/04 01:59:04 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 01:59:04 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 01:59:26 main.go:22: Log information load correctly.
+INFO: 2016/07/04 01:59:26 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 01:59:26 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 01:59:44 main.go:22: Log information load correctly.
+INFO: 2016/07/04 01:59:44 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 01:59:44 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 01:59:57 main.go:22: Log information load correctly.
+INFO: 2016/07/04 01:59:57 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 01:59:57 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:05:13 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:05:13 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:05:13 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:05:45 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:05:45 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:05:45 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:06:40 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:06:40 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:06:40 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:07:02 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:07:02 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:07:02 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:07:11 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:07:11 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:07:11 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:09:00 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:09:00 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:09:00 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:11:31 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:11:31 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:11:31 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:11:54 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:11:54 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:11:54 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:13:40 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:13:40 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:13:40 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:15:07 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:15:07 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:15:07 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:16:40 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:16:40 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:16:40 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:19:21 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:19:21 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:19:21 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:19:47 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:19:47 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:19:47 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:19:52 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:19:52 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:19:52 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:20:52 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:20:52 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:20:52 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:21:26 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:21:26 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:21:26 main.go:43: Listen and serve at 8080
+ERROR: 2016/07/04 02:21:45 profilecontroller.go:53: ERR_0031 Esta cuenta de usuario no se encuentra registrada.
+ERROR: 2016/07/04 02:22:05 profilecontroller.go:53: ERR_0031 Esta cuenta de usuario no se encuentra registrada.
+INFO: 2016/07/04 02:26:00 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:26:00 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:26:00 main.go:43: Listen and serve at 8081
+ERROR: 2016/07/04 02:27:55 profilecontroller.go:53: ERR_0031 Esta cuenta de usuario no se encuentra registrada.
+ERROR: 2016/07/04 02:28:01 profilecontroller.go:53: ERR_0031 Esta cuenta de usuario no se encuentra registrada.
+ERROR: 2016/07/04 02:28:17 profilecontroller.go:53: ERR_0031 Esta cuenta de usuario no se encuentra registrada.
+INFO: 2016/07/04 02:47:12 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:47:12 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:47:12 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:59:17 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:59:17 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:59:17 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 02:59:59 main.go:22: Log information load correctly.
+INFO: 2016/07/04 02:59:59 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 02:59:59 main.go:43: Listen and serve at 8081
+INFO: 2016/07/04 03:03:52 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:03:52 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:03:52 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:03:52 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:03:52 main.go:43: Listen and serve at 8081
+INFO: 2016/07/04 03:03:52 main.go:43: Listen and serve at 8081
+INFO: 2016/07/04 03:08:01 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:08:01 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:08:01 main.go:43: Listen and serve at 8081
+INFO: 2016/07/04 03:08:01 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:08:01 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:08:01 main.go:43: Listen and serve at 8081
+INFO: 2016/07/04 03:11:13 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:11:13 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:11:13 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:11:13 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:11:13 main.go:43: Listen and serve at 8081
+INFO: 2016/07/04 03:11:13 main.go:43: Listen and serve at 8081
+INFO: 2016/07/04 03:14:04 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:14:04 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:14:04 main.go:43: Listen and serve at 8081
+INFO: 2016/07/04 03:14:04 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:14:04 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:14:04 main.go:43: Listen and serve at 8081
+INFO: 2016/07/04 03:14:22 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:14:22 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:14:22 main.go:43: Listen and serve at 8080
+ERROR: 2016/07/04 03:15:00 profilecontroller.go:53: ERR_0031 Esta cuenta de usuario no se encuentra registrada.
+INFO: 2016/07/04 03:15:36 registercontroller.go:48: Record attempt [{Username:testuser, Email:test@test.com, Password:test1234, FirstName:Test, SecondName:User, LastName:Name, BirthDate:2000-02-03, Gender:male, TermsAndConditions:agree}]
+ERROR: 2016/07/04 03:17:16 profilecontroller.go:53: ERR_0031 Esta cuenta de usuario no se encuentra registrada.
+INFO: 2016/07/04 03:19:08 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:19:08 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:19:08 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:19:08 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:19:08 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:19:08 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:26:48 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:26:48 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:26:48 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:26:49 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:26:49 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:26:49 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:31:36 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:31:36 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:31:36 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:31:36 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:31:36 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:31:36 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:31:46 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:31:46 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:31:46 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:31:46 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:31:46 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:31:46 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:32:04 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:32:04 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:32:04 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:32:04 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:32:04 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:32:04 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:32:19 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:32:19 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:32:19 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:32:19 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:32:19 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:32:19 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:32:40 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:32:40 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:32:40 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:32:40 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:32:40 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:32:40 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:33:06 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:33:06 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:33:06 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:33:06 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:33:06 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:33:06 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:34:32 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:34:32 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:34:32 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:34:32 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:34:32 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:34:32 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:35:51 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:35:51 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:35:51 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:35:51 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:35:51 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:35:51 main.go:43: Listen and serve at 8080
+ERROR: 2016/07/04 03:39:48 sessioncontroller.go:52: ERR_0022 Nombre de usuario incorrecto. Si no posees una cuenta registrate.sql: no rows in result set
+ERROR: 2016/07/04 03:39:52 sessioncontroller.go:52: ERR_0022 Nombre de usuario incorrecto. Si no posees una cuenta registrate.sql: no rows in result set
+ERROR: 2016/07/04 03:40:55 collectioncontroller.go:179: ERR_0053 La pelicula ya se encuentra añadida a la lista.pq: insert or update on table "user_nextviews_movies" violates foreign key constraint "useraccount_user_nextviews_movies_fk"
+INFO: 2016/07/04 03:44:17 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:44:17 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:44:17 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:44:17 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:44:17 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:44:17 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:48:33 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:48:33 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:48:33 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:48:33 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:48:33 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:48:33 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:58:12 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:58:12 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:58:12 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 03:58:13 main.go:22: Log information load correctly.
+INFO: 2016/07/04 03:58:13 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 03:58:13 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 14:25:08 main.go:22: Log information load correctly.
+INFO: 2016/07/04 14:25:08 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 14:25:08 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 14:43:39 main.go:22: Log information load correctly.
+INFO: 2016/07/04 14:43:39 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 14:43:39 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 14:46:03 main.go:22: Log information load correctly.
+INFO: 2016/07/04 14:46:03 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 14:46:03 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 14:56:07 main.go:22: Log information load correctly.
+INFO: 2016/07/04 14:56:07 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 14:56:07 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 14:56:48 main.go:22: Log information load correctly.
+INFO: 2016/07/04 14:56:48 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 14:56:48 main.go:43: Listen and serve at 8080
+ERROR: 2016/07/04 15:06:26 moviecontroller.go:54: ERR_0040 Error al obtener resultados para la busqueda.
+INFO: 2016/07/04 15:08:33 main.go:22: Log information load correctly.
+INFO: 2016/07/04 15:08:33 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 15:08:33 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 15:08:45 main.go:22: Log information load correctly.
+INFO: 2016/07/04 15:08:45 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 15:08:45 main.go:43: Listen and serve at 8080
+ERROR: 2016/07/04 15:28:09 collectioncontroller.go:178: ERR_0053 La pelicula ya se encuentra añadida a la lista.pq: insert or update on table "user_nextviews_movies" violates foreign key constraint "useraccount_user_nextviews_movies_fk"
+ERROR: 2016/07/04 15:29:50 collectioncontroller.go:178: ERR_0053 La pelicula ya se encuentra añadida a la lista.pq: insert or update on table "user_nextviews_movies" violates foreign key constraint "useraccount_user_nextviews_movies_fk"
+INFO: 2016/07/04 15:30:51 main.go:22: Log information load correctly.
+INFO: 2016/07/04 15:30:51 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 15:30:51 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 15:30:55 main.go:22: Log information load correctly.
+INFO: 2016/07/04 15:30:55 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 15:30:55 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 15:36:37 main.go:22: Log information load correctly.
+INFO: 2016/07/04 15:36:37 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 15:36:37 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 15:37:52 main.go:22: Log information load correctly.
+INFO: 2016/07/04 15:37:52 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 15:37:52 main.go:43: Listen and serve at 8080

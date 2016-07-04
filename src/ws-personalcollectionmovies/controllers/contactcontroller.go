@@ -12,9 +12,6 @@ import (
 	"ws-personalcollectionmovies/model/wsinterface"
 )
 
-const CONTACT = "contact.tpl"
-const CONTACT_TITLE ="Contactanos"
-
 type ContactController struct {
 	beego.Controller
 }

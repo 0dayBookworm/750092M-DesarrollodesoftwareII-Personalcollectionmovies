@@ -105,3 +105,31 @@ Inputs
   background: transparent;
 }
 
+
+.media,
+.media-body {
+    overflow: hidden;
+    zoom: 1;
+}
+
+.media {
+    margin-top: 15px;
+}
+
+.media-object {
+    width: 50%;
+    height: 50%;
+    display: block;
+}
+.media-heading {
+    margin-bottom: 5px;
+}
+
+.media-list {
+    padding-left: 0;
+    list-style: none;
+}
+
+tr:hover {
+    cursor: pointer;
+}

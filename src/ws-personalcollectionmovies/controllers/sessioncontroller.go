@@ -42,16 +42,14 @@ func (pController *SessionController) Login() {
         	errorMessage += `
         	`+err.Key+":"+err.Message+". "
         }
-        log.Error("registercontroller.go: "+errorMessage) 
+        log.Error(errorMessage) 
         pController.ServeMessage(error_.KO, errorMessage)
     	pController.StopRun()
     }
 	
-	// Verificamos que el usuario no haya sido registrado.
-    rootVerification, err := domain.RootByUsername(connection.OpenDataBase(), request.Username)
-    // En caso de que el usuario ya exista.
+    rootVerification, err := domain.RootByUsername(connection.GetConn(), request.Username)
 	if err != nil || rootVerification.Username == "" {
-		log.Error("SessionController.go: "+error_.ERR_0022+err.Error())
+		log.Error(error_.ERR_0022+err.Error())
 	    pController.ServeMessage(error_.KO, error_.ERR_0022)
 	 	pController.StopRun() 
 	}
@@ -60,16 +58,34 @@ func (pController *SessionController) Login() {
 	encryptedPass := util.EncryptMD5(request.Password)
 	// Verificamos que se trate de la misma contraseña.
 	if rootVerification.Pass != encryptedPass {
-	    log.Error("registercontroller.go: "+error_.ERR_0023)
+	    log.Error(error_.ERR_0023+rootVerification.Pass+"|"+encryptedPass+"|"+request.Password)
 		pController.ServeMessage(error_.KO, error_.ERR_0023)
 	 	pController.StopRun()
+	}
+	// Creamos la variable de sessión.
+	newSessionVal := session.UserSession{}
+	newSessionVal.Username = rootVerification.Username
+	
+	// Obtenemos otros datos necesarios para el manejo de sesión.
+	useraccount, err := domain.UseraccountByUsername(connection.GetConn(), request.Username)
+	if err != nil {
+		// Verificamos que sea entonces un auditor.
+		// Obtenemos los datos del auditor.
+		_, err := domain.AuditorByUsername(connection.GetConn(), request.Username)
+		if err != nil {
+			log.Error(error_.ERR_0023)
+			pController.ServeMessage(error_.KO, error_.ERR_0023)
+			pController.StopRun()
+		} 
+	} else {
+		newSessionVal.Email = useraccount.Email
+		newSessionVal.Gender = useraccount.Gender
 	}
 	
 	// Se realiza el inicio de sesión almacenando el username en memoria.
  	sessionVal := pController.GetSession(session.USERSESSION)
  	// Si es nulo significa que no esta en una sesión activa e iniciamos la sesión.
     if sessionVal == nil {
-    	newSessionVal := session.UserSession{rootVerification.Username}
         pController.SetSession(session.USERSESSION, newSessionVal)
     }
 	// Si el proceso se llevo a cabo respondemos con el mensaje de exito asociado

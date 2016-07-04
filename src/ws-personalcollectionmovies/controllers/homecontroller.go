@@ -5,9 +5,6 @@ import (
 	"ws-personalcollectionmovies/model/session"
 )
 
-const INDEX = "index.tpl"
-const INDEX_TITLE ="Inicio"
-
 type HomeController struct {
 	beego.Controller
 }

@@ -2,14 +2,11 @@ package main
 
 import (
 	"ws-personalcollectionmovies/log"
+	"ws-personalcollectionmovies/model/database/connection"
 	"ws-personalcollectionmovies/model/tmdb"
 	_ "ws-personalcollectionmovies/routers"
 	"github.com/astaxie/beego"
 )
-
-// Variable utilizada para guardar el nombre del archivo de configuracion
-// del servicio que se le pasa como parametro al iniciar la instancia
-//var fileConfig = flag.String("fileconfig", "", "The configuration file")
 
 func main() {
 	// A este nivel debemos cargar el contexto de la aplicación
@@ -26,6 +23,14 @@ func main() {
 	
 	// Aviso de que se ha configurado el contexto correctamente.
 	log.Info("The system is set up correctly.")
+	
+	// Iniciamos las conexiones con la base de datos.
+	Driver := beego.AppConfig.String("DataBase::Driver")
+	User := beego.AppConfig.String("DataBase::User")
+	Pass := beego.AppConfig.String("DataBase::Pass")
+	Host := beego.AppConfig.String("DataBase::Host")
+	Name := beego.AppConfig.String("DataBase::Name")
+	connection.Init(Driver, User, Pass, Host, Name)
 	
 	// Inicializamos la TMDb Api.
 	ApiKey := beego.AppConfig.String("TMDb::ApiKey")

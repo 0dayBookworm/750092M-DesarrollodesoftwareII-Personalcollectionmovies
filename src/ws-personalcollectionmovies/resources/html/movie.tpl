@@ -18,7 +18,7 @@
                    ({{.Year}})
                 </strong>
             </small>
-        </h2> 
+        </h2>
         <h4>
             {{.OriginalTitle}}
         </h4>
@@ -42,14 +42,12 @@
                                     <i class="dropdown-toggle glyphicon glyphicon-plus" data-toggle="dropdown"></i>
                                     <ul class="dropdown-menu" aria-labelledby="dLabel">
                                         <li>
-                                            <a href="#">
-                                                <small> <i class="glyphicon glyphicon-eye-close"></i>  Añadir a vistas</small>
+                                            <a id="ViewListAdd">
+                                                <small> <i class="glyphicon glyphicon-eye-close"></i>  Añadir a Vistas </small>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
-                                                <small> <i class="glyphicon glyphicon-eye-open"></i>  Añadir a películas por ver</small>
-                                            </a>
+                                            {{str2html .WatchListContent}}
                                         </li>
                                         <li>
                                             <a href="#">
@@ -58,8 +56,15 @@
                                         </li>
                                     </ul>
                                 </button>
-                                <button type="button" class="btn">
-                                    <i class="glyphicon glyphicon-share-alt"></i>
+                                <button type="button" class="btn dropdown">
+                                    <i class="dropdown-toggle fa fa-share-alt" data-toggle="dropdown"></i>
+                                    <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                        <li>
+                                            <a href="http://www.facebook.com/sharer.php?u={{.PageUrl}}" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false">
+                                                <small> <i class="fa fa-facebook fa-2"></i>  Compartir en Facebook</small>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </button>
                             </div>
                             <!-- End controls -->
@@ -67,21 +72,20 @@
                         <div class="col-md-8">
                             <h3>FICHA TECNICA </h3>
                             <p>
-                                <strong>DURACIÓN: </strong> 
+                                <strong>DURACIÓN: </strong>
                                 <br>
                                 <strong> {{.Runtime}} </strong>
-                                <br>
-                                mn
+                                <br> mn
                             </p>
                             <p>
-                                <strong>FECHA DE ESTRENO: </strong> 
+                                <strong>FECHA DE ESTRENO: </strong>
                             </p>
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="meta-date text-center">
-        								<p><span class="date">{{.Released}}{{.Day}}</span><span>{{.Month}}</span><span>{{.Year}}</span></p>
-        							</div>
-							    </div>
+                                        <p><span class="date">{{.Released}}{{.Day}}</span><span>{{.Month}}</span><span>{{.Year}}</span></p>
+                                    </div>
+                                </div>
                             </div>
                             <p><strong>COMPAÑIAS PRODUCTORAS: </strong> {{str2html .ProductionCompanies}}</p>
                             <p><strong>GENEROS: </strong>{{str2html .Genres}}</p>
@@ -117,7 +121,7 @@
                         <!-- Formulario de comentario -->
                         <form class="form-horizontal" id="CommentForm" name="CommentForm">
                             <div class="form-group">
-                                <div class="col-xs-9">
+                                <div class="col-xs-11">
                                     <textarea type="text" id="Comment" name="Comment" class="form-control" placeholder="¿Que te parecio la pelicula?" row="2" cols="70"></textarea>
                                 </div>
                             </div>
@@ -134,42 +138,14 @@
                     <div class="container">
                         <h3>COMENTARIOS</h3>
                         <!-- Comentarios -->
-                        <ul>
-                            <li class="col-xs-9">
-                                <div class="panel ">
-                                    <div class="panel-heading comment-header">
-                                        <strong>
-                                            Otro usuario
-                                        </strong>
-                                        <p>
-                                            <small>
-                                            Hace 10 minutos.
-                                            </small>
-                                        </p>
-                                    </div>
-                                    <div class="panel-body">
-                                        <p>Un comentario.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-xs-9">
-                                <div class="panel ">
-                                    <div class="panel-heading comment-header">
-                                        <strong>
-                                            Otro usuario
-                                        </strong>
-                                        <p>
-                                            <small>
-                                            Hace 10 minutos.
-                                            </small>
-                                        </p>
-                                    </div>
-                                    <div class="panel-body">
-                                        <p>Otro comentario.</p>
-                                    </div>
+                        <ul class="media-list">
+                            <li class="media">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Un usuario</h4> Un comentario.
                                 </div>
                             </li>
                         </ul>
+
                     </div>
                 </div>
             </div>

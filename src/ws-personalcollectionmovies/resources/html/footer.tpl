@@ -7,8 +7,8 @@
                         <a href="//personalcollectionmovies-alobaton.c9users.io/">INICIO</a> ·
                         <a href="//personalcollectionmovies-alobaton.c9users.io/movie/nowplaying?Page=1">CARTELERA</a> ·
                         <a href="//personalcollectionmovies-alobaton.c9users.io/movie/upcoming?Page=1">ESTRENOS</a> ·
-                        <a href="#">POPULARES</a> ·
-                        <a href="#">CONOCENOS</a> .
+                        <a href="//personalcollectionmovies-alobaton.c9users.io/movie/popular?Page=1">POPULARES</a> ·
+                        <a href="#">CONOCENOS</a> ·
                         <a href="//personalcollectionmovies-alobaton.c9users.io/contact">CONTACTENOS</a>
                 </p>
                 <p class="footer-company-name">PersonalCollectionMovies &copy; 2016. Todos los derechos reservados.</p>
@@ -21,8 +21,10 @@
                                 <small>Síguenos</small>
                                 <ul class="social">
                                         <li><a href="https://www.facebook.com/personalcollectionmovies" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                        <!--
                                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        -->
                                 </ul>
                         </div>
                 </div>
@@ -55,6 +57,11 @@
 <script type="text/javascript" src="//personalcollectionmovies-alobaton.c9users.io/public/js/collection.js"></script>
 <script type="text/javascript" src="//personalcollectionmovies-alobaton.c9users.io/public/js/search.js"></script>
 <script type="text/javascript" src="//personalcollectionmovies-alobaton.c9users.io/public/js/movies.js"></script>
+<!-- Paginator JPages -->
+<script type="text/javascript" src="//personalcollectionmovies-alobaton.c9users.io/public/js/jPages/jPages.js"></script>
+<script type="text/javascript" src="//personalcollectionmovies-alobaton.c9users.io/public/js/jPages/customJPages.js"></script>
+
+
 </body>
 
 </html>

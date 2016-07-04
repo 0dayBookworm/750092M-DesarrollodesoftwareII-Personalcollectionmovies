@@ -6,7 +6,7 @@ import (
 	"crypto/md5"
 	"io"
 	"bytes"
-	// "fmt"
+	"fmt"
 	"ws-personalcollectionmovies/log"
 	)
 	
@@ -19,7 +19,7 @@ func ParseDate (pDate string) time.Time {
 	const shortForm = "2006-01-02"
 	t, err := time.Parse(shortForm, pDate)
 	if err != nil {
-		log.Error("ParseDate(): Error occurs while try parsing date.")
+		log.Error("ParseDate(): Error occurs while try parsing date:"+pDate)
 	}
 	return t
 }
@@ -33,6 +33,7 @@ func EncryptMD5 (pData string) string {
 	md5Data := md5.New()
     io.WriteString(md5Data, pData)
     buffer := bytes.NewBuffer(nil)
+    fmt.Fprintf(buffer, "%x", md5Data.Sum(nil))
     return buffer.String()
 }
 

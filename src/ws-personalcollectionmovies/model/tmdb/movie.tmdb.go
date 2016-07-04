@@ -44,3 +44,10 @@ func GetMovieNowPlaying(pPage string) (*tmdb.MovieDatedResults, error) {
 	options["language"]=language
 	return TMDb.GetMovieNowPlaying(options)
 }
+
+func GetMoviePopular(pPage string) (*tmdb.MoviePagedResults, error) {
+	var options = make(map[string]string)
+	options["page"] = pPage
+	options["language"]=language
+	return TMDb.GetMoviePopular(options)
+}

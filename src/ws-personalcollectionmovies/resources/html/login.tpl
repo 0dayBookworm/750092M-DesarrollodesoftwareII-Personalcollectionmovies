@@ -7,19 +7,19 @@
                 <h4 class="modal-title" id="LoginModalTitle">INICIAR SESIÓN</h4>
             </div>
             <div class="modal-body">
-                <form class="login-form" id="LoginForm" name="LoginForm">
+                <form class="login-form" id="LoginForm" name="LoginForm" onkeypress="return checkEnter(event)">
                     <div class="form-group ">
-                        <input type="text" id="Username" name="Username" class="form-control text-lowercase" placeholder="username">
+                        <input type="text" id="Username" name="Username" class="form-control" placeholder="username">
                         <i class="glyphicon glyphicon-user"></i>
                     </div>
                     <div class="form-group">
-                        <input type="password" id="Password" name="Password" class="form-control" placeholder="Contraseña" >
+                        <input type="password" id="Password" name="Password" class="form-control" placeholder="Contraseña">
                         <i class="glyphicon glyphicon-lock"></i>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit" id="LoginButton" name="LoginButton" class="btn btn-primary" data-dismiss="modal" aria-label="Left Align">
+                <button type="button" id="LoginButton" name="LoginButton" class="btn btn-primary" data-dismiss="modal" aria-label="Left Align">
                     <i class="glyphicon glyphicon-ok"></i>
                     Iniciar
                 </button>
