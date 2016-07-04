@@ -6,3 +6,9 @@ function checkCookies(){
         
     }
 }
+
+// $(window).load(function() {
+// 	'use strict';
+// 	$('.loading-icon').delay(100).fadeOut();
+// 	$('#Preloader').delay(200).fadeOut('slow');
+// });

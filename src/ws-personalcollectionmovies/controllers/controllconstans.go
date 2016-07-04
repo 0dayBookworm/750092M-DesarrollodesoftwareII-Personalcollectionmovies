@@ -2,6 +2,7 @@ package controllers
 
 // Templates
 const INDEX = "index.tpl"
+const TERMS ="termsandconditions.tpl"
 const REGISTER = "register.tpl"
 const ACCOUNT = "account.tpl"
 const PROFILE = "profile.tpl"
@@ -29,6 +30,7 @@ const NOW_PLAYING_HEAD_TITLE = "EN CARTELERA HOY"
 const POPULAR = "Populares"
 const POPULAR_HEAD_TITLE = "PELÍCULAS POPULARES"
 const CONTACT_TITLE ="Contactanos"
+const TERMS_TITLE ="Términos y Condicones"
 // Peliculas por ver.
 const WATCHLIST_TITLE ="PELÍCULAS POR VER"
 // Paginas

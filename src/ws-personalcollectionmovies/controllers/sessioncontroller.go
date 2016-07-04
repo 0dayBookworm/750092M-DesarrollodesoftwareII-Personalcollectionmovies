@@ -65,6 +65,7 @@ func (pController *SessionController) Login() {
 	// Creamos la variable de sessión.
 	newSessionVal := session.UserSession{}
 	newSessionVal.Username = rootVerification.Username
+	newSessionVal.Email = rootVerification.Email
 	
 	// Obtenemos otros datos necesarios para el manejo de sesión.
 	useraccount, err := domain.UseraccountByUsername(connection.GetConn(), request.Username)
@@ -78,7 +79,6 @@ func (pController *SessionController) Login() {
 			pController.StopRun()
 		} 
 	} else {
-		newSessionVal.Email = useraccount.Email
 		newSessionVal.Gender = useraccount.Gender
 	}
 	

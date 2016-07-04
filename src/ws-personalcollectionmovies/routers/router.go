@@ -10,9 +10,12 @@ import (
 
 // Aquí inicializamos todas las rutas del servicio.
 func init() {
+    // ErrorHandler
     beego.ErrorHandler("404", page_not_found)
     // Index or home.
     beego.Router("/", &controllers.HomeController{})
+    // Terminos y condiciones.
+    beego.Router("/terms", &controllers.TermsController{})
     // Modulo: Registro de cuentas de usuario.
     initRegistrationModule()
     // Modulo: Perfil de usuario.
@@ -25,7 +28,7 @@ func init() {
     initCollectionsModule()
     // Modulo: Contacto.
     initContactModule()
-    // ErrorHandler
+    
    
 }
 // Modulo: Registro de cuentas de usuario.
@@ -83,6 +86,7 @@ func initCollectionsModule() {
 func initContactModule() {
     beego.Router("/contact", &controllers.ContactController{})
 }
+
 // page_not_found Sobreescribimos este método para que beego muestre la pagina de error 404 personalizada.
 func page_not_found(rw http.ResponseWriter, r *http.Request) {
     t, _ := template.ParseFiles(beego.BConfig.WebConfig.ViewsPath + "404.tpl")

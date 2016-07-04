@@ -9,6 +9,7 @@ import "errors"
 type Root struct {
 	Username string // username
 	Pass     string // pass
+	Email    string // email
 
 	// xo fields
 	_exists, _deleted bool
@@ -35,14 +36,14 @@ func (r *Root) Insert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.root (` +
-		`pass` +
+		`pass, email` +
 		`) VALUES (` +
-		`$1` +
+		`$1, $2` +
 		`) RETURNING username`
 
 	// run query
-	XOLog(sqlstr, r.Pass)
-	err = db.QueryRow(sqlstr, r.Pass).Scan(&r.Username)
+	XOLog(sqlstr, r.Pass, r.Email)
+	err = db.QueryRow(sqlstr, r.Pass, r.Email).Scan(&r.Username)
 	if err != nil {
 		return err
 	}
@@ -69,14 +70,14 @@ func (r *Root) Update(db XODB) error {
 
 	// sql query
 	const sqlstr = `UPDATE public.root SET (` +
-		`pass` +
+		`pass, email` +
 		`) = ( ` +
-		`$1` +
-		`) WHERE username = $2`
+		`$1, $2` +
+		`) WHERE username = $3`
 
 	// run query
-	XOLog(sqlstr, r.Pass, r.Username)
-	_, err = db.Exec(sqlstr, r.Pass, r.Username)
+	XOLog(sqlstr, r.Pass, r.Email, r.Username)
+	_, err = db.Exec(sqlstr, r.Pass, r.Email, r.Username)
 	return err
 }
 
@@ -102,18 +103,18 @@ func (r *Root) Upsert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.root (` +
-		`username, pass` +
+		`username, pass, email` +
 		`) VALUES (` +
-		`$1, $2` +
+		`$1, $2, $3` +
 		`) ON CONFLICT (username) DO UPDATE SET (` +
-		`username, pass` +
+		`username, pass, email` +
 		`) = (` +
-		`EXCLUDED.username, EXCLUDED.pass` +
+		`EXCLUDED.username, EXCLUDED.pass, EXCLUDED.email` +
 		`)`
 
 	// run query
-	XOLog(sqlstr, r.Username, r.Pass)
-	_, err = db.Exec(sqlstr, r.Username, r.Pass)
+	XOLog(sqlstr, r.Username, r.Pass, r.Email)
+	_, err = db.Exec(sqlstr, r.Username, r.Pass, r.Email)
 	if err != nil {
 		return err
 	}
@@ -162,7 +163,7 @@ func RootByUsername(db XODB, username string) (*Root, error) {
 
 	// sql query
 	const sqlstr = `SELECT ` +
-		`username, pass ` +
+		`username, pass, email ` +
 		`FROM public.root ` +
 		`WHERE username = $1`
 
@@ -172,7 +173,7 @@ func RootByUsername(db XODB, username string) (*Root, error) {
 		_exists: true,
 	}
 
-	err = db.QueryRow(sqlstr, username).Scan(&r.Username, &r.Pass)
+	err = db.QueryRow(sqlstr, username).Scan(&r.Username, &r.Pass, &r.Email)
 	if err != nil {
 		return nil, err
 	}

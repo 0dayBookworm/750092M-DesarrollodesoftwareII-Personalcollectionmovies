@@ -80,7 +80,8 @@ func (pController *RegisterController) CreateUseraccount() {
     // Dado el diseño debemos primero insertar el usuario en la tabla ROOT.
     root := domain.Root{
      	Username: strings.ToLower(request.Username),
-     	Pass: util.EncryptMD5(request.Password)}
+     	Pass: util.EncryptMD5(request.Password),
+    	Email: strings.ToLower(request.Email)}
      	
 	err = root.Insert(connection.GetConn())
 	if err != nil {
@@ -97,7 +98,6 @@ func (pController *RegisterController) CreateUseraccount() {
 	 	LastName: request.LastName, 
 	 	BirthDate: request.BirthDate, 
 	 	Gender: request.Gender,
-	 	Email: strings.ToLower(request.Email), 
 	 	Erased: false}
 	
 	err = useraccount.Insert(connection.GetConn())

@@ -33,9 +33,11 @@
 </head>
 
 <body onload="checkCookies()">
-    <section id="preloader">
-        <div class="loading-circle fa-spin"></div>
-    </section>
+    <!--
+    <section id="Preloader">
+		<div class="loading-circle fa-spin"></div>
+	</section>
+	-->
     <!-- Barra de navegación estatica-->
     <!-- Debe contener inicio de seión y registro -->
     <nav class="navbar navbar-fixed-top navbar-inverse">
@@ -44,7 +46,9 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#NavbarCollapse" aria-expanded="true">
                         <i class="glyphicon glyphicon-menu-hamburger"></i>
                     </button>
-                <a href="//personalcollectionmovies-alobaton.c9users.io/" class="navbar-brand"><strong>PersonalCollectionMovies</strong></a>
+                <a href="//personalcollectionmovies-alobaton.c9users.io/" class="navbar-brand">
+                    <strong>PersonalCollectionMovies</strong>
+                </a>
             </div>
             <div id="NavbarCollapse" name="NavbarCollapse" class="collapse navbar-collapse">
                 <!-- Definimos una variable que nos permita cambiar los controles de inicio y cierre de sesión -->

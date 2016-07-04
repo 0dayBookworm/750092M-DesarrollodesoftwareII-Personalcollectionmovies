@@ -93,7 +93,7 @@
         <div class="form-group">
             <div class="col-xs-offset-3 col-xs-9">
                 <label class="checkbox-inline">
-                    <input type="checkbox" id="TermsAndConditions" name="TermsAndConditions" value="agree"> Accepto <a href="#">Terminos y condiciones</a>.
+                    <input type="checkbox" id="TermsAndConditions" name="TermsAndConditions" value="agree"> Accepto <a href="//personalcollectionmovies-alobaton.c9users.io/terms">Terminos y condiciones</a>.
                 </label>
             </div>
         </div>

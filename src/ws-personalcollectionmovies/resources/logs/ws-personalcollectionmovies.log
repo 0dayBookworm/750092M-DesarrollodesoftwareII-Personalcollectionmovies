@@ -283,3 +283,40 @@ INFO: 2016/07/04 15:36:37 main.go:43: Listen and serve at 8080
 INFO: 2016/07/04 15:37:52 main.go:22: Log information load correctly.
 INFO: 2016/07/04 15:37:52 main.go:25: The system is set up correctly.
 INFO: 2016/07/04 15:37:52 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 16:06:53 main.go:22: Log information load correctly.
+INFO: 2016/07/04 16:06:53 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 16:06:53 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 16:45:29 main.go:22: Log information load correctly.
+INFO: 2016/07/04 16:45:29 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 16:45:29 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 17:39:17 main.go:22: Log information load correctly.
+INFO: 2016/07/04 17:39:17 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 17:39:17 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 17:39:46 main.go:22: Log information load correctly.
+INFO: 2016/07/04 17:39:46 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 17:39:46 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 17:41:11 registercontroller.go:48: Record attempt [{Username:testuser, Email:test@test.com, Password:test1234, FirstName:Test, SecondName:, LastName:User, BirthDate:2000-02-01, Gender:male, TermsAndConditions:agree}]
+ERROR: 2016/07/04 17:41:11 registercontroller.go:88: ERR_0010 Root could not be created.pq: null value in column "username" violates not-null constraint
+INFO: 2016/07/04 17:42:29 registercontroller.go:48: Record attempt [{Username:testuser, Email:test@test.com, Password:test1234, FirstName:Test, SecondName:User, LastName:Name, BirthDate:2000-02-01, Gender:male, TermsAndConditions:agree}]
+ERROR: 2016/07/04 17:42:29 registercontroller.go:88: ERR_0010 Root could not be created.pq: null value in column "username" violates not-null constraint
+INFO: 2016/07/04 17:44:47 registercontroller.go:48: Record attempt [{Username:testuser, Email:test@test.com, Password:test1234, FirstName:Test, SecondName:User, LastName:Name, BirthDate:2000-02-01, Gender:male, TermsAndConditions:agree}]
+ERROR: 2016/07/04 17:44:47 registercontroller.go:88: ERR_0010 Root could not be created.pq: null value in column "username" violates not-null constraint
+INFO: 2016/07/04 17:46:06 main.go:22: Log information load correctly.
+INFO: 2016/07/04 17:46:06 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 17:46:06 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 17:47:03 main.go:22: Log information load correctly.
+INFO: 2016/07/04 17:47:03 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 17:47:03 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 17:47:25 main.go:22: Log information load correctly.
+INFO: 2016/07/04 17:47:25 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 17:47:25 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 17:48:59 registercontroller.go:48: Record attempt [{Username:testuser, Email:test@test.com, Password:test1234, FirstName:Test, SecondName:User, LastName:Name, BirthDate:2000-02-01, Gender:male, TermsAndConditions:agree}]
+INFO: 2016/07/04 17:50:17 profilecontroller.go:219: &{auditor d26bb5254cff94ad35edac87b78044d8 alobaton.restrepo@gmail.com true false}
+INFO: 2016/07/04 17:52:49 main.go:22: Log information load correctly.
+INFO: 2016/07/04 17:52:49 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 17:52:49 main.go:43: Listen and serve at 8080
+INFO: 2016/07/04 17:55:01 main.go:22: Log information load correctly.
+INFO: 2016/07/04 17:55:01 main.go:25: The system is set up correctly.
+INFO: 2016/07/04 17:55:01 main.go:43: Listen and serve at 8080
+ERROR: 2016/07/04 17:55:18 sessioncontroller.go:52: ERR_0022 Nombre de usuario incorrecto. Si no posees una cuenta registrate.sql: no rows in result set
+INFO: 2016/07/04 17:57:07 registercontroller.go:48: Record attempt [{Username:testuser, Email:test@test.com, Password:test1234, FirstName:Test, SecondName:, LastName:User, BirthDate:2000-02-01, Gender:male, TermsAndConditions:agree}]

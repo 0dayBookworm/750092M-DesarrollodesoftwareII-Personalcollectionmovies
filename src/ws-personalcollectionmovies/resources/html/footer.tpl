@@ -12,7 +12,7 @@
                         <a href="//personalcollectionmovies-alobaton.c9users.io/contact">CONTACTENOS</a>
                 </p>
                 <p class="footer-company-name">PersonalCollectionMovies &copy; 2016. Todos los derechos reservados.</p>
-                <a href="#"><small>Terminos y condiciones.</small></a>
+                <a href="//personalcollectionmovies-alobaton.c9users.io/terms"><small>Terminos y condiciones.</small></a>
         </div>
 
         <div class="footer" id="Footer">

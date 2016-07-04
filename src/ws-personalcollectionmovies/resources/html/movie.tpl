@@ -99,7 +99,7 @@
                         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{.Trailer}}" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <br>
-                    <p align="justify">
+                    <p class="justify">
                         <strong>SINOPSIS: </strong>
                         <br> {{.Plot}}
                     </p>

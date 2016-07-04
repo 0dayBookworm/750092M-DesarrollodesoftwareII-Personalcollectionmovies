@@ -46,8 +46,8 @@ func (pController *ProfileController) Get() {
 				pController.Redirect("/error", 302)
 			}
 			// Actualizamos los datos del formulario de registro.
-			pController.Data["Username"] = useraccount.Username
-			pController.Data["Email"] = useraccount.Email
+			pController.Data["Username"] = sessionVal.(session.UserSession).Username
+			pController.Data["Email"] = sessionVal.(session.UserSession).Email
 			pController.Data["FirstName"] = useraccount.FirstName
 			pController.Data["SecondName"] = useraccount.SecondName
 			pController.Data["LastName"] = useraccount.LastName
@@ -86,16 +86,17 @@ func (pController *ProfileController) Security() {
     		// Inertamos el titulo a la pagina.
 		pController.Data["Title"] = sessionVal.(session.UserSession).Username
 		pController.LayoutSections["AccountContent"] = SECURITY
-		
-		auditor, err := domain.AuditorByUsername(connection.GetConn(), sessionVal.(session.UserSession).Username)
+		pController.Data["Username"] = sessionVal.(session.UserSession).Username
+		pController.Data["Email"] = sessionVal.(session.UserSession).Email
+			
+		_, err := domain.AuditorByUsername(connection.GetConn(), sessionVal.(session.UserSession).Username)
 		if err != nil {
 	    	// Actualizamos el layout de control de cuenta.
 			pController.LayoutSections["AccountControl"] = COMMON_ACCOUNT_CONTROL
 			// Actualizamos la sección de reportes.
 			pController.LayoutSections["Reports"] = COMMON_NAV
 	    	// Actualizamos los datos del formulario de registro.
-			pController.Data["Username"] = sessionVal.(session.UserSession).Username
-			pController.Data["Email"] = sessionVal.(session.UserSession).Email
+			
 			// Actualizamos el avatar.
 			if (sessionVal.(session.UserSession).Gender == "male") {
 				pController.Data["Avatar"]="https://personalcollectionmovies-alobaton.c9users.io/public/images/avatar_male.jpg"
@@ -109,7 +110,6 @@ func (pController *ProfileController) Security() {
     		pController.LayoutSections["AccountContent"] = SECURITY
     		// Actualizamos la sección de reportes.
     		// Actualizamos los datos del formulario de registro.
-			pController.Data["Username"] = auditor.Username
 			pController.Data["Avatar"]="https://personalcollectionmovies-alobaton.c9users.io/public/images/avatar_audit.jpg"
 			
 			pController.Data["EnableSecutiry"]=false
@@ -172,7 +172,6 @@ func (pController *ProfileController) Update() {
 	 	LastName: request.LastName, 
 	 	BirthDate: request.BirthDate, 
 	 	Gender: request.Gender,
-	 	Email: request.Email, 
 	 	Erased: false}
 	 	
 	err = useraccount.Update(connection.GetConn())

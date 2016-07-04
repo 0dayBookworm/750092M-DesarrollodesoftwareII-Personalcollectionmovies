@@ -15,7 +15,7 @@
     <div class="form-group">
         <label class="control-label col-md-3">Email:</label>
         <div class="col-md-9">
-            <input type="email" id="Email" name="Email" class="form-control text-lowercase" value={{.Email}}>
+            <input type="email" id="Email" name="Email" class="form-control text-lowercase" value={{.Email}} readonly>
         </div>
     </div>
     <!-- Fin username and mail -->
