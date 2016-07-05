@@ -39,3 +39,7 @@ xo pgsql://sotilstfjbrplf:pr-JQDyUOTCcm8FzQRmpm8a_g0@ec2-54-243-62-211.compute-1
 # Algunos métodos JS utiles #
 
 $("html").html("Texto html");
+
+# Kill a Process on specific port #
+
+fuser -k 8080/tcp

@@ -7,7 +7,7 @@ $(document).ready(function() {
         // alert(URLactual);
         // Estructura de la peticion: Contiene el ID de la pelicula.
         var busqueda = window.location.search;
-        var title ="Peliculas por ver"
+        var title ="PELÍCULAS POR VER"
         // Send data to back-end
         $.ajax({
             url: 'https://personalcollectionmovies-alobaton.c9users.io/account/watchlist/add'+busqueda

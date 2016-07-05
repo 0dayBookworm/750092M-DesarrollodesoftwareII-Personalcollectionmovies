@@ -152,5 +152,7 @@
         </div>
         <!-- Fin sección de comentarios. -->
     </div>
+    <!-- Inclusión del modal de busqueda de lugares -->
+     {{template "places" .}}
 </div>
 {{template "footer" .}}

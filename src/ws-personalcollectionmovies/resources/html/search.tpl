@@ -8,7 +8,7 @@
             </div>
             <div class="modal-body">
                 <!-- Mostramos la lista de peliculas -->
-                <ul class="list-group" id="SearchResult" name="SearchResult">
+                <ul class="list-group" id="SearchResult" name="SearchResult"  style="width: 100%; height: 400px; overflow: auto">
                     
                 </ul>
             </div>

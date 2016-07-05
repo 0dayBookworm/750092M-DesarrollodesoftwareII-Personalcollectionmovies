@@ -4,6 +4,7 @@ import (
 	"ws-personalcollectionmovies/log"
 	"ws-personalcollectionmovies/model/database/connection"
 	"ws-personalcollectionmovies/model/tmdb"
+	"ws-personalcollectionmovies/model/google"
 	_ "ws-personalcollectionmovies/routers"
 	"github.com/astaxie/beego"
 )
@@ -36,6 +37,11 @@ func main() {
 	ApiKey := beego.AppConfig.String("TMDb::ApiKey")
 	Language := beego.AppConfig.String("TMDb::Language")
 	tmdb.Init(ApiKey, Language)
+	
+	// Inicializamos la API de google
+	GoogleKey := beego.AppConfig.String("Google::ApiKey")
+	GoogleUri := beego.AppConfig.String("Google::ApiUri")
+	google.Init(GoogleKey, GoogleUri)
 	
 	// Necesario para levantar el servidor de arvhivos en la ruta public.
 	beego.SetStaticPath("/public", "/home/ubuntu/workspace/src/ws-personalcollectionmovies/resources/public")

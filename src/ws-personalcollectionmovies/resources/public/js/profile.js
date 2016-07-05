@@ -58,7 +58,7 @@ $(document).ready(function() {
         event.preventDefault();
         // Estructura de la peticion.
         var UpdateProfileRequest = $('#ProfileForm').serialize();
-        var title ="Perfil";
+        var title ="PERFIL";
         // Send data to back-end
         $.ajax({
             type: 'post',
@@ -104,7 +104,7 @@ $(document).ready(function() {
         event.preventDefault();
         // Estructura de la peticion.
         var ChangePasswordRequest = $('#ChangePasswordForm').serialize();
-        var Title ="Cambiar Contraseña";
+        var Title ="CAMBIAR CONTRASEÑA";
         // Send data to back-end
         $.ajax({
             type: 'post',

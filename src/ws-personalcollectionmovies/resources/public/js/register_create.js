@@ -97,7 +97,7 @@ $(document).ready(function() {
         event.preventDefault();
         // Estructura de la peticion.
         var RegistrationRequest = $('#RegisterForm').serialize();
-        var Title ="Registro";
+        var Title ="RREGISTRO";
         // Send data to back-end
         $.ajax({
             type: 'post',

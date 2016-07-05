@@ -57,6 +57,7 @@
 <script type="text/javascript" src="//personalcollectionmovies-alobaton.c9users.io/public/js/collection.js"></script>
 <script type="text/javascript" src="//personalcollectionmovies-alobaton.c9users.io/public/js/search.js"></script>
 <script type="text/javascript" src="//personalcollectionmovies-alobaton.c9users.io/public/js/movies.js"></script>
+<script type="text/javascript" src="//personalcollectionmovies-alobaton.c9users.io/public/js/places.js"></script>
 <!-- Paginator JPages -->
 <script type="text/javascript" src="//personalcollectionmovies-alobaton.c9users.io/public/js/jPages/jPages.js"></script>
 <script type="text/javascript" src="//personalcollectionmovies-alobaton.c9users.io/public/js/jPages/customJPages.js"></script>

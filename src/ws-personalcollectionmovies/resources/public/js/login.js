@@ -32,7 +32,7 @@ function login() {
     event.preventDefault();
     // Obtenemos los datos del usuario.
     var LoginRequest = $('#LoginForm').serialize();
-    var Title = "Inicio de sesión"
+    var Title = "INICIO DE SESIÓN"
     $.ajax({
         type: 'post',
         url: 'https://personalcollectionmovies-alobaton.c9users.io/login',
@@ -58,7 +58,7 @@ function login() {
             // Mensaje de alerta de pruebas, debera ser removido antes de exponer el demo.
             alert("Iniciaste sesión correctamente.");
             // Redireccionamos a la pagina en la que se encontraba. Exccepto si se encontraba en registro.
-            if(window.location.href.indexOf("/register")) {
+            if(window.location.href.indexOf("/register") > -1) {
                 location.href = 'https://personalcollectionmovies-alobaton.c9users.io/';
             } else {
                 location.href = window.location; 

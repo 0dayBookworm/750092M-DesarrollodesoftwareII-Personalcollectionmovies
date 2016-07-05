@@ -74,6 +74,10 @@ func initMovieModule() {
 // Modulo: Colecciones.
 func initCollectionsModule() {
     // Peliculas vistas.
+    
+    beego.Router("/account/viewlist/add", &controllers.CollectionController{}, "post:ViewListAdd")
+    // Obtener lugares.
+    beego.Router("/places", &controllers.PlacesController{}, "post:GetPlaces")
     // Peliculas por Ver.
     beego.Router("/account/watchlist", &controllers.CollectionController{}, "get:Watchlist")
     // Añadir y remover de peliculas por ver.

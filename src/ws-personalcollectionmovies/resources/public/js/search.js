@@ -8,7 +8,7 @@ $('#Search').click(function() {
         ul.removeChild(ul.firstChild);
     }
     // Obtenemos los datos que pondremos. ($body)
-    var title = "Busqueda";
+    var title = "BÚSQUEDA";
     var searchFormData = $('#SearchForm').serialize();
     $.ajax({
         type: 'get',
@@ -16,6 +16,7 @@ $('#Search').click(function() {
         data: searchFormData,
         dataType: 'json'
     }).success(function(response) {
+        document.getElementById("Search").disabled = false;
         // Validamos que se obtuvo respuesta.
         // Así se accede a los campos del JSon: response.Response
         if (response.total_results > 0) {
@@ -61,11 +62,9 @@ $('#Search').click(function() {
                 ul.appendChild(li);
             });
             //alert("Llega aquí");
-            document.getElementById("Search").disabled = false;
             $('#SearchModal').modal('show');
         }
         else {
-            document.getElementById("Search").disabled = false;
             bootbox.dialog({
                 message: response.Message,
                 title: title,

@@ -134,13 +134,80 @@ func (pController *CollectionController) WatchListAdd() {
     	pController.StopRun()
 	}
 	pController.ValidateAuditor(sessionVal.(session.UserSession).Username)
+	// REALIZAMOS MAPEO.
+	pController.DoMovieMapping(request.ID)
+ 	// Si se encuentra asociamos el usuario a esa pelicula.
+ 	userWatchList := domain.UserNextviewsMovie{
+ 		Username: sessionVal.(session.UserSession).Username,
+ 		ID: request.ID,
+ 		Dateandtime: "NOW()",
+ 		Erased: false}
+ 	err := userWatchList.Insert(connection.GetConn())
+ 	if err != nil {
+ 		// Si ocurre un error quiere decir que la pelicula ya se encuentra añadida a la lista de peliculas por ver.
+	 	pController.ServeMessage(error_.KO, error_.ERR_0053)
+	    pController.StopRun()
+ 	}
+ 	pController.ServeMessage(error_.OK, "Añadida a lista de Películas por ver.")
+}
+
+
+
+func (pController *CollectionController) ViewListAdd() {
+	// Obtenemos la pagina solicitada.
+	request := wsinterface.AddRequest{}
+	pController.ParseForm(&request)
+	// Validaciones
+	// Primero se verifica la sesión, ya que de ahi se obtendran los datos del usuario.
+	sessionVal := pController.GetSession(session.USERSESSION)
+	if(sessionVal == nil) {
+		pController.ServeMessage(error_.KO, error_.ERR_0050)
+    	pController.StopRun()
+	}
+	pController.ValidateAuditor(sessionVal.(session.UserSession).Username)
+	
+	pController.DoMovieMapping(request.ID)
+ 	// Si se encuentra asociamos el usuario a esa pelicula.
+ 	userViewList := domain.UserViewMovie {
+ 		Username: sessionVal.(session.UserSession).Username,
+ 		ID: request.ID,
+ 		Place: request.Place,
+ 		Dateandtime: "NOW()",
+ 		Erased: false}
+ 	err := userViewList.Insert(connection.GetConn())
+ 	if err != nil {
+ 		log.Error(err.Error())
+ 		// Si ocurre un error quiere decir que la pelicula ya se encuentra añadida a la lista de peliculas por ver.
+	 	pController.ServeMessage(error_.KO, error_.ERR_0053)
+	    pController.StopRun()
+ 	}
+	pController.ServeMessage(error_.OK, "Añadida a lista de Películas vistas.")
+}
+
+
+
+func (pController *CollectionController) ServeMessage(pErrorCode, pErrorMessage string) {
+	collectionResponse := wsinterface.CollectionResponse{pErrorCode, pErrorMessage}
+    pController.Data["json"] = &collectionResponse
+    pController.ServeJSON()
+}
+
+func (pController *CollectionController) ValidateAuditor(pUsername string) {
+	_, err := domain.AuditorByUsername(connection.GetConn(), pUsername)
+	if err == nil {
+		pController.ServeMessage(error_.KO, error_.ERR_0054)
+	    pController.StopRun()
+	}
+}
+
+func (pController *CollectionController) DoMovieMapping(pID string) {
 	// Verificamos si se encuentra ya en BD la pelicula.
- 	_, err := domain.MovieMappingByID(connection.GetConn(), request.ID)
+ 	_, err := domain.MovieMappingByID(connection.GetConn(), pID)
  	if err != nil {
  		// Si no se encuentra debemos generar el registo en nuestra BD.
  		// Realizamos el mapping de la pelicula a nuestra BD.
 		// Convertimos el ID a int
-		idInt, _ := strconv.Atoi(request.ID)
+		idInt, _ := strconv.Atoi(pID)
 		// Realizamos la busqueda en la API.
 	 	res, err := tmdb.GetMovieInfo(idInt)
 	 	// Si no hay resultados para la pelicula informamos el error.
@@ -167,33 +234,6 @@ func (pController *CollectionController) WatchListAdd() {
  		}
  		// Añadimos a la lista de peliculas por ver del usuario.
  	} 
- 	// Si se encuentra asociamos el usuario a esa pelicula.
- 	userWatchList := domain.UserNextviewsMovie{
- 		Username: sessionVal.(session.UserSession).Username,
- 		ID: request.ID,
- 		Dateandtime: "NOW()",
- 		Erased: false}
- 	err = userWatchList.Insert(connection.GetConn())
- 	if err != nil {
- 		// Si ocurre un error quiere decir que la pelicula ya se encuentra añadida a la lista de peliculas por ver.
-	 	pController.ServeMessage(error_.KO, error_.ERR_0053)
-	    pController.StopRun()
- 	}
- 	pController.ServeMessage(error_.OK, "Añadida a lista de Películas por ver.")
-}
-
-func (pController *CollectionController) ServeMessage(pErrorCode, pErrorMessage string) {
-	collectionResponse := wsinterface.CollectionResponse{pErrorCode, pErrorMessage}
-    pController.Data["json"] = &collectionResponse
-    pController.ServeJSON()
-}
-
-func (pController *CollectionController) ValidateAuditor(pUsername string) {
-	_, err := domain.AuditorByUsername(connection.GetConn(), pUsername)
-	if err == nil {
-		pController.ServeMessage(error_.KO, error_.ERR_0054)
-	    pController.StopRun()
-	}
 }
 
 

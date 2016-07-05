@@ -38,5 +38,6 @@ func GetStringFrom(pUrl string, pParams []Param) (string, error) {
 
 func GetJSONFrom (pUrl string, pParams []Param, pStore interface{}) error {
     req := get(pUrl, pParams)
+    // fmt.Println(req.String())
     return req.ToJSON(pStore)
 }

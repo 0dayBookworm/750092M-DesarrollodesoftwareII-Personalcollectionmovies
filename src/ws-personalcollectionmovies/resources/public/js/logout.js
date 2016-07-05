@@ -4,7 +4,7 @@ $(document).ready(function() {
         event.preventDefault();
         // Obtenemos los datos del usuario.
         var LogoutRequest = "";
-        var Title ="Cierre de sesión"
+        var Title ="CIERRE DE SESIÓN"
         $.ajax({
             type: 'post',
             url: 'https://personalcollectionmovies-alobaton.c9users.io/logout',

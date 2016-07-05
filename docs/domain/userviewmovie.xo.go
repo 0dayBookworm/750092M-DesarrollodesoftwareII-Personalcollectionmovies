@@ -9,6 +9,7 @@ import "errors"
 type UserViewMovie struct {
 	Username    string // username
 	ID          string // id
+	Place       string // place
 	Dateandtime int64  // dateandtime
 	Erased      bool   // erased
 
@@ -37,14 +38,14 @@ func (uvm *UserViewMovie) Insert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.user_view_movie (` +
-		`username, dateandtime, erased` +
+		`username, place, dateandtime, erased` +
 		`) VALUES (` +
-		`$1, $2, $3` +
+		`$1, $2, $3, $4` +
 		`) RETURNING id`
 
 	// run query
-	XOLog(sqlstr, uvm.Username, uvm.Dateandtime, uvm.Erased)
-	err = db.QueryRow(sqlstr, uvm.Username, uvm.Dateandtime, uvm.Erased).Scan(&uvm.ID)
+	XOLog(sqlstr, uvm.Username, uvm.Place, uvm.Dateandtime, uvm.Erased)
+	err = db.QueryRow(sqlstr, uvm.Username, uvm.Place, uvm.Dateandtime, uvm.Erased).Scan(&uvm.ID)
 	if err != nil {
 		return err
 	}
@@ -71,14 +72,14 @@ func (uvm *UserViewMovie) Update(db XODB) error {
 
 	// sql query
 	const sqlstr = `UPDATE public.user_view_movie SET (` +
-		`username, dateandtime, erased` +
+		`username, place, dateandtime, erased` +
 		`) = ( ` +
-		`$1, $2, $3` +
-		`) WHERE id = $4`
+		`$1, $2, $3, $4` +
+		`) WHERE id = $5`
 
 	// run query
-	XOLog(sqlstr, uvm.Username, uvm.Dateandtime, uvm.Erased, uvm.ID)
-	_, err = db.Exec(sqlstr, uvm.Username, uvm.Dateandtime, uvm.Erased, uvm.ID)
+	XOLog(sqlstr, uvm.Username, uvm.Place, uvm.Dateandtime, uvm.Erased, uvm.ID)
+	_, err = db.Exec(sqlstr, uvm.Username, uvm.Place, uvm.Dateandtime, uvm.Erased, uvm.ID)
 	return err
 }
 
@@ -104,18 +105,18 @@ func (uvm *UserViewMovie) Upsert(db XODB) error {
 
 	// sql query
 	const sqlstr = `INSERT INTO public.user_view_movie (` +
-		`username, id, dateandtime, erased` +
+		`username, id, place, dateandtime, erased` +
 		`) VALUES (` +
-		`$1, $2, $3, $4` +
+		`$1, $2, $3, $4, $5` +
 		`) ON CONFLICT (id) DO UPDATE SET (` +
-		`username, id, dateandtime, erased` +
+		`username, id, place, dateandtime, erased` +
 		`) = (` +
-		`EXCLUDED.username, EXCLUDED.id, EXCLUDED.dateandtime, EXCLUDED.erased` +
+		`EXCLUDED.username, EXCLUDED.id, EXCLUDED.place, EXCLUDED.dateandtime, EXCLUDED.erased` +
 		`)`
 
 	// run query
-	XOLog(sqlstr, uvm.Username, uvm.ID, uvm.Dateandtime, uvm.Erased)
-	_, err = db.Exec(sqlstr, uvm.Username, uvm.ID, uvm.Dateandtime, uvm.Erased)
+	XOLog(sqlstr, uvm.Username, uvm.ID, uvm.Place, uvm.Dateandtime, uvm.Erased)
+	_, err = db.Exec(sqlstr, uvm.Username, uvm.ID, uvm.Place, uvm.Dateandtime, uvm.Erased)
 	if err != nil {
 		return err
 	}
@@ -178,7 +179,7 @@ func UserViewMovieByUsernameID(db XODB, username string, id string) (*UserViewMo
 
 	// sql query
 	const sqlstr = `SELECT ` +
-		`username, id, dateandtime, erased ` +
+		`username, id, place, dateandtime, erased ` +
 		`FROM public.user_view_movie ` +
 		`WHERE username = $1 AND id = $2`
 
@@ -188,7 +189,7 @@ func UserViewMovieByUsernameID(db XODB, username string, id string) (*UserViewMo
 		_exists: true,
 	}
 
-	err = db.QueryRow(sqlstr, username, id).Scan(&uvm.Username, &uvm.ID, &uvm.Dateandtime, &uvm.Erased)
+	err = db.QueryRow(sqlstr, username, id).Scan(&uvm.Username, &uvm.ID, &uvm.Place, &uvm.Dateandtime, &uvm.Erased)
 	if err != nil {
 		return nil, err
 	}

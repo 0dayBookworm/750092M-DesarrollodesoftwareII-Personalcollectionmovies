@@ -114,17 +114,9 @@
     <!-- Fin barra de navegacion paginas -->
     <!-- Buscar pelicula -->
     <div class="container">
-        <!--
-            <form class="form-horizontal" action="https://personalcollectionmovies-alobaton.c9users.io/movie/search" method="get">
-            -->
         <form class="form-horizontal" id="SearchForm" name="SearchForm">
             <div class="input-group">
                 <span class="input-group-btn">
-                        <!--
-                        <button class="btn btn-primary" type="submit" id="Search" name="Search">
-                        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#SearchModal">
-                        <button class="btn btn-primary" type="button" id="Search" name="Search">
-                        -->
                         <button class="btn btn-primary" type="button" id="Search" name="Search">
                            <i class="glyphicon glyphicon-search"></i>
                            BUSCAR PELíCULA

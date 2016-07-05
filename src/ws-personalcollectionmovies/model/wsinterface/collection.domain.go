@@ -2,6 +2,7 @@ package wsinterface
 
 type AddRequest struct {
     ID string
+    Place string
 }
 
 type CollectionResponse struct {

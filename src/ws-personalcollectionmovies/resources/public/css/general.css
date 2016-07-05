@@ -35,15 +35,11 @@ ul {
 }
 
 
-/**
-a {
-    color: #FFFFFF;
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
 }
 
-a:hover {
-    color: #FFFFFF;
-}
-*/
 
 a:link {
     text-decoration: none;
