@@ -28,6 +28,8 @@ func init() {
     initCollectionsModule()
     // Modulo: Contacto.
     initContactModule()
+    // Reportes
+    initReportsModule()
     
    
 }
@@ -74,6 +76,7 @@ func initMovieModule() {
 // Modulo: Colecciones.
 func initCollectionsModule() {
     // Peliculas vistas.
+    beego.Router("/account/viewlist", & controllers.CollectionController{}, "get:Viewlist")
     
     beego.Router("/account/viewlist/add", &controllers.CollectionController{}, "post:ViewListAdd")
     // Obtener lugares.
@@ -89,6 +92,12 @@ func initCollectionsModule() {
 // Modulo: Contacto.
 func initContactModule() {
     beego.Router("/contact", &controllers.ContactController{})
+}
+
+func initReportsModule() {
+    beego.Router("/account/reports/viewlistlastmonth", &controllers.ReportsController{}, "get:ViewListInLast30Days")
+
+    beego.Router("/account/reports/viewlistbycinema", &controllers.ReportsController{}, "get:ViewListOrderByCinema")
 }
 
 // page_not_found Sobreescribimos este método para que beego muestre la pagina de error 404 personalizada.

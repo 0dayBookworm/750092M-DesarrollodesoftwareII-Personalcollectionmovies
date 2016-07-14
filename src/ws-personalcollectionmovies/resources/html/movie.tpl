@@ -42,9 +42,7 @@
                                     <i class="dropdown-toggle glyphicon glyphicon-plus" data-toggle="dropdown"></i>
                                     <ul class="dropdown-menu" aria-labelledby="dLabel">
                                         <li>
-                                            <a id="ViewListAdd">
-                                                <small> <i class="glyphicon glyphicon-eye-close"></i>  Añadir a Vistas </small>
-                                            </a>
+                                            {{str2html .ViewListContent}}
                                         </li>
                                         <li>
                                             {{str2html .WatchListContent}}
@@ -107,52 +105,67 @@
             </div>
         </div>
         <!-- Fin informacion de la pelicula -->
-        <!-- Seccion de comentarios. -->
-        <div class="panel-footer">
-            <!-- Realizar un comentario -->
+    </div>
+    <!-- Inclusión del modal de busqueda de lugares -->
+    {{template "places" .}}
+</div>
+<!-- Seccion de comentarios. -->
+<div class="panel-footer">
+    <!-- Realizar un comentario -->
+    <div class="container">
+        <p id="CommentSection" class="dropdown-toggle" data-toggle="collapse" data-target="#CommentCollapse">
+            <i class="glyphicon glyphicon-comment"></i>
+            <strong>  Comentar  </strong>
+            <i class="glyphicon glyphicon-chevron-down"></i>
+        </p>
+        <div id="CommentCollapse" class="collapse">
             <div class="container">
-                <p id="CommentSection" class="dropdown-toggle" data-toggle="collapse" data-target="#CommentCollapse">
-                    <i class="glyphicon glyphicon-comment"></i>
-                    <strong>  Comentar  </strong>
-                    <i class="glyphicon glyphicon-chevron-down"></i>
-                </p>
-                <div id="CommentCollapse" class="collapse">
-                    <div class="container">
-                        <!-- Formulario de comentario -->
-                        <form class="form-horizontal" id="CommentForm" name="CommentForm">
-                            <div class="form-group">
-                                <div class="col-xs-11">
-                                    <textarea type="text" id="Comment" name="Comment" class="form-control" placeholder="¿Que te parecio la pelicula?" row="2" cols="70"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-xs-3">
-                                    <button type="button" id="CommentButton" class="btn btn-primary" aria-label="Left Align">
+                <!-- Formulario de comentario -->
+                <form class="form-horizontal" id="CommentForm" name="CommentForm">
+                    <div class="form-group">
+                        <div class="col-xs-11">
+                            <textarea type="text" id="Comment" name="Comment" class="form-control" placeholder="¿Que te parecio la pelicula?" row="2" cols="70"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-3">
+                            <button type="button" id="CommentButton" class="btn btn-primary" aria-label="Left Align">
                                         <i class="glyphicon glyphicon-ok"></i>
                                         Comentar
                                     </button>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                    <div class="container">
-                        <h3>COMENTARIOS</h3>
-                        <!-- Comentarios -->
-                        <ul class="media-list">
-                            <li class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Un usuario</h4> Un comentario.
-                                </div>
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>
+                </form>
+            </div>
+            <div class="container">
+                <h3>COMENTARIOS</h3>
+                <!-- Comentarios -->
+                <ul class="media-list">
+                    <li class="media">
+                        <div class="media-body">
+                            <h4 class="media-heading">Un usuario</h4> Un comentario.
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
-        <!-- Fin sección de comentarios. -->
     </div>
-    <!-- Inclusión del modal de busqueda de lugares -->
-     {{template "places" .}}
 </div>
+<!-- Fin sección de comentarios. -->
+<!-- Mapa de ubicación vista -->
+{{if .WasView}}
+    <div style="background-color: #292c2f">
+        <div id="PlaceTitle" class="container">
+            <i class="glyphicon glyphicon-map-marker" style="color: #A40724"></i>
+            <strong style="color: #FFFFFF">{{.PlaceDescription}}</strong>
+        </div>
+    </div>
+    <div id="MapPreloader">
+        <div class="loading-circle fa-spin"></div>
+    </div>
+    <div id="MapContainer">
+        {{str2html .CinemaIframe}} 
+    </div>
+    
+{{end}} 
 {{template "footer" .}}

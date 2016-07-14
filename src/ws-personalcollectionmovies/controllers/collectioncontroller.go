@@ -1,14 +1,11 @@
 package controllers
 
 import (
-	"fmt"
 	"strconv"
-	"strings"
 	"github.com/astaxie/beego"
 	"ws-personalcollectionmovies/log"
 	"ws-personalcollectionmovies/error_"
 	"ws-personalcollectionmovies/model/session"
-	
 	"ws-personalcollectionmovies/model/wsinterface"
 	"ws-personalcollectionmovies/model/database/connection"
 	"ws-personalcollectionmovies/model/database/domain"
@@ -72,8 +69,8 @@ func (pController *CollectionController) Watchlist() {
 		pController.LayoutSections["AccountControl"] = COMMON_ACCOUNT_CONTROL
 		// Actualizamos la sección de reportes.
 		pController.LayoutSections["Reports"] = COMMON_NAV
-		
-    	pController.LayoutSections["AccountContent"] = COLLECTIONS
+		// Actualizamos el cuerpo.
+    	pController.LayoutSections["AccountContent"]=COLLECTION
     	
     	_username := sessionVal.(session.UserSession).Username
     	email := sessionVal.(session.UserSession).Email
@@ -89,8 +86,7 @@ func (pController *CollectionController) Watchlist() {
 		}
 		// Inertamos el titulo a la pagina.
 		pController.Data["Title"] = WATCHLIST_TITLE
-		// Actualizamos el cuerpo.
-    	pController.LayoutSections["AccountContent"]=COLLECTION
+	
     	// Traemos de BD la infformación necesaría para el cuerpo.
     	
         watchList, err := domain.WatchListByUsername(connection.GetConn(), _username)
@@ -103,7 +99,6 @@ func (pController *CollectionController) Watchlist() {
 			// log.Info(item)
 			// Parseamos a un MovieShort personalizado con el fin de reutilizar código.
 			myMovieShort := wsinterface.MyMovieShort{
-				Username : item.Username,
 				ID: item.ID,
 				Title: item.Title,
 				OriginalTitle: item.OriginalTitle,
@@ -115,7 +110,69 @@ func (pController *CollectionController) Watchlist() {
 		}
 		// Ponemos los resultados en la pagina.
 		pController.Data["MovieShorts"]=movieShortsContent
+    	pController.Data["Total"]=len(*watchList)
+    	// Servimos la pagina.
+		pController.TplName = ACCOUNT
+    } else{
+    	pController.Redirect("/", 302)
+    }
+}
+
+func (pController *CollectionController) Viewlist() {
+	pController.Layout = ACCOUNT
+    pController.LayoutSections = make(map[string]string)
+    pController.LayoutSections["SessionControl"] = LOGIN_CONTROL
+    // Se realiza el inicio de sesión almacenando el username en memoria.
+ 	sessionVal := pController.GetSession(session.USERSESSION)
+ 	// Si es nulo significa que no esta en una sesión activa e iniciamos la sesión.
+    if sessionVal != nil {
+    	// Actualizamos información general del perfil.
+    	pController.LayoutSections["SessionControl"]=LOGOUT_CONTROL
+    	// Actualizamos el layout de control de cuenta.
+		pController.LayoutSections["AccountControl"] = COMMON_ACCOUNT_CONTROL
+		// Actualizamos la sección de reportes.
+		pController.LayoutSections["Reports"] = COMMON_NAV
+		// Actualizamos el cuerpo.
+    	pController.LayoutSections["AccountContent"]=COLLECTION
     	
+    	_username := sessionVal.(session.UserSession).Username
+    	email := sessionVal.(session.UserSession).Email
+    	gender := sessionVal.(session.UserSession).Gender
+		// Actualizamos los datos del formulario de registro.
+		pController.Data["Username"] = _username
+		pController.Data["Email"] = email
+		// Actualizamos el avatar.
+		if (gender == "male") {
+			pController.Data["Avatar"]="https://personalcollectionmovies-alobaton.c9users.io/public/images/avatar_male.jpg"
+		} else {
+			pController.Data["Avatar"]="https://personalcollectionmovies-alobaton.c9users.io/public/images/avatar_female.jpg"
+		}
+		// Inertamos el titulo a la pagina.
+		pController.Data["Title"] = VIEWLIST_TITLE
+		// Traemos de BD la infformación necesaría para el cuerpo.
+    	
+        viewList, err := domain.ViewListByUsername(connection.GetConn(), _username)
+        if err != nil {
+			log.Error("No funciona la vista")
+			pController.Redirect("/error", 302)
+		}
+		movieShortsContent := ""
+		for _, item := range *viewList {
+			// log.Info(item)
+			// Parseamos a un MovieShort personalizado con el fin de reutilizar código.
+			myMovieShort := wsinterface.MyMovieShort{
+				ID: item.ID,
+				Title: item.Title,
+				OriginalTitle: item.OriginalTitle,
+				ReleaseDate: item.ReleaseDate,
+				VoteAverage: item.VoteAverage,
+				PosterPath: item.PosterPath}
+			
+		    movieShortsContent += ConcatenateMovieShortResult(myMovieShort)
+		}
+		// Ponemos los resultados en la pagina.
+		pController.Data["MovieShorts"]=movieShortsContent
+    	pController.Data["Total"]=len(*viewList)
     	// Servimos la pagina.
 		pController.TplName = ACCOUNT
     } else{
@@ -135,7 +192,10 @@ func (pController *CollectionController) WatchListAdd() {
 	}
 	pController.ValidateAuditor(sessionVal.(session.UserSession).Username)
 	// REALIZAMOS MAPEO.
-	pController.DoMovieMapping(request.ID)
+	_, err := domain.MovieMappingByID(connection.GetConn(), request.ID)
+ 	if err != nil {
+		pController.DoMovieMapping(request.ID)
+ 	}
  	// Si se encuentra asociamos el usuario a esa pelicula.
  	userWatchList := domain.UserNextviewsMovie{
  		Username: sessionVal.(session.UserSession).Username,
@@ -166,7 +226,14 @@ func (pController *CollectionController) ViewListAdd() {
 	}
 	pController.ValidateAuditor(sessionVal.(session.UserSession).Username)
 	
-	pController.DoMovieMapping(request.ID)
+	// Verificamos si se encuentra ya en BD la pelicula.
+	movieMapping, err := domain.MovieMappingByID(connection.GetConn(), request.ID)
+ 	if err != nil {
+		pController.DoMovieMapping(request.ID)
+ 	}
+ 	// Validamos que la pelicula ya haya sido estrenada.
+ 	
+ 	
  	// Si se encuentra asociamos el usuario a esa pelicula.
  	userViewList := domain.UserViewMovie {
  		Username: sessionVal.(session.UserSession).Username,
@@ -201,70 +268,39 @@ func (pController *CollectionController) ValidateAuditor(pUsername string) {
 }
 
 func (pController *CollectionController) DoMovieMapping(pID string) {
-	// Verificamos si se encuentra ya en BD la pelicula.
- 	_, err := domain.MovieMappingByID(connection.GetConn(), pID)
- 	if err != nil {
- 		// Si no se encuentra debemos generar el registo en nuestra BD.
- 		// Realizamos el mapping de la pelicula a nuestra BD.
-		// Convertimos el ID a int
-		idInt, _ := strconv.Atoi(pID)
-		// Realizamos la busqueda en la API.
-	 	res, err := tmdb.GetMovieInfo(idInt)
-	 	// Si no hay resultados para la pelicula informamos el error.
-	 	if err != nil {
-	 		log.Error(error_.ERR_0040) 
-	 		pController.ServeMessage(error_.KO, error_.ERR_0040)
-	     	pController.StopRun()
-	 	}
-	 	// Creamos el objeto de dominio.
-	 	movieMapping := &domain.MovieMapping{
-	 		ID: strconv.Itoa(res.ID),
-	 		Title: res.Title,
-	 		OriginalTitle: res.OriginalTitle,
-	 		ReleaseDate: res.ReleaseDate,
-	 		VoteAverage: float64(res.VoteAverage),
-	 		PosterPath: res.PosterPath }
-	 	
- 		err = movieMapping.Insert(connection.GetConn())
- 		// Si no se pudo realizar el mapeo informamos el error.
- 		if err != nil {
- 			log.Error(error_.ERR_0052+err.Error()) 
-	 		pController.ServeMessage(error_.KO, error_.ERR_0051)
-	     	pController.StopRun()
- 		}
- 		// Añadimos a la lista de peliculas por ver del usuario.
- 	} 
-}
-
-
-func ConcatenateMovieShortResult(pMyMovieShort wsinterface.MyMovieShort) string{
-	// Parseamos a un MovieShort personalizado con el fin de reutilizar código.
-	item :=  `<a href="%s" class="item col-xs-6 col-lg-6"> %s </a>`
-	thumbnail := `<div class="thumbnail row"> %s </div>`
-	img := `<img class="pull-left" src="%s" alt="Generic placeholder thumbnail" />`
-	caption := `<div class="caption"> %s </div>`
-	title := `<h3 class="list-group-item-heading"> %s </h3>`
-	originalTitle := `<h5 class=""> %s </h5>`
-	releaseDate := `<p class="list-group-item-text"> %s <i class="glyphicon glyphicon-calendar"></i></p>`
-	voteAverage := `<p class=""> %g <i class="glyphicon glyphicon-star"></i> </p>`
 	
-	title = fmt.Sprintf(title, pMyMovieShort.Title)
-	originalTitle = fmt.Sprintf(originalTitle, pMyMovieShort.OriginalTitle)
-	releaseDate = fmt.Sprintf(releaseDate, pMyMovieShort.ReleaseDate[:10])
-	voteAverage = fmt.Sprintf(voteAverage, pMyMovieShort.VoteAverage)
-	
-	caption = fmt.Sprintf(caption, title+originalTitle+releaseDate+voteAverage)
-	    
-	if strings.Compare(pMyMovieShort.PosterPath, "") == 0 {
-		img = fmt.Sprintf(img, "https://personalcollectionmovies-alobaton.c9users.io/public/images/image_no_available.png")
-	} else {
-		img = fmt.Sprintf(img, "https://image.tmdb.org/t/p/w500"+pMyMovieShort.PosterPath)
+ 	// Si no se encuentra debemos generar el registo en nuestra BD.
+ 	// Realizamos el mapping de la pelicula a nuestra BD.
+	// Convertimos el ID a int
+	idInt, _ := strconv.Atoi(pID)
+	// Realizamos la busqueda en la API.
+	res, err := tmdb.GetMovieInfo(idInt)
+	// Si no hay resultados para la pelicula informamos el error.
+	if err != nil {
+		log.Error(error_.ERR_0040) 
+		pController.ServeMessage(error_.KO, error_.ERR_0040)
+	   	pController.StopRun()
 	}
-	 	
-	thumbnail = fmt.Sprintf(thumbnail, img+caption)
-	    
-	item = fmt.Sprintf(item, "https://personalcollectionmovies-alobaton.c9users.io/movie?ID="+pMyMovieShort.ID, thumbnail)
-	    
-	return item
+	// Creamos el objeto de dominio.
+	movieMapping := &domain.MovieMapping{
+		ID: strconv.Itoa(res.ID),
+		Title: res.Title,
+		OriginalTitle: res.OriginalTitle,
+		ReleaseDate: res.ReleaseDate,
+		VoteAverage: float64(res.VoteAverage),
+		PosterPath: res.PosterPath }
+		
+ 	err = movieMapping.Insert(connection.GetConn())
+ 	// Si no se pudo realizar el mapeo informamos el error.
+ 	if err != nil {
+ 		log.Error(error_.ERR_0052+err.Error()) 
+		pController.ServeMessage(error_.KO, error_.ERR_0051)
+	   	pController.StopRun()
+ 	}
+	// Añadimos a la lista de peliculas por ver del usuario.
+ 	
 }
+
+
+
 

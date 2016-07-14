@@ -1,5 +1,12 @@
 package controllers
 
+import(
+    "fmt"
+	"strings"
+	"ws-personalcollectionmovies/util"
+	"ws-personalcollectionmovies/model/wsinterface"
+    )
+
 // Templates
 const INDEX = "index.tpl"
 const TERMS ="termsandconditions.tpl"
@@ -18,6 +25,7 @@ const COMMON_NAV="commonnav.tpl"
 const AUDIT_NAV="auditnav.tpl"
 const LOGOUT_CONTROL="logoutcontrol.tpl"
 const LOGIN_CONTROL="logincontrol.tpl"
+const LIST ="list.tpl"
 // Titulos
 const INDEX_TITLE ="Inicio"
 const REGISTER_TITLE = "Registrate"
@@ -33,5 +41,39 @@ const CONTACT_TITLE ="Contactanos"
 const TERMS_TITLE ="Términos y Condicones"
 // Peliculas por ver.
 const WATCHLIST_TITLE ="PELÍCULAS POR VER"
+// Peliculas vistas
+const VIEWLIST_TITLE = "PELÍCULAS VISTAS"
 // Paginas
 const PAGE_URI = "https://personalcollectionmovies-alobaton.c9users.io/movie?ID="
+
+
+func ConcatenateMovieShortResult(pMyMovieShort wsinterface.MyMovieShort) string{
+	// Parseamos a un MovieShort personalizado con el fin de reutilizar código.
+	item :=  `<a href="%s" class="item col-xs-6 col-lg-6"> %s </a>`
+	thumbnail := `<div class="thumbnail row"> %s </div>`
+	img := `<img class="pull-left" src="%s" alt="Generic placeholder thumbnail" />`
+	caption := `<div class="caption"> %s </div>`
+	title := `<h3 class="list-group-item-heading"> %s </h3>`
+	originalTitle := `<h5 class=""> %s </h5>`
+	releaseDate := `<p class="list-group-item-text"> %s <i class="glyphicon glyphicon-calendar"></i></p>`
+	voteAverage := `<p class=""> %g <i class="glyphicon glyphicon-star"></i> </p>`
+	
+	title = fmt.Sprintf(title, pMyMovieShort.Title)
+	originalTitle = fmt.Sprintf(originalTitle, pMyMovieShort.OriginalTitle)
+	releaseDate = fmt.Sprintf(releaseDate, pMyMovieShort.ReleaseDate[:10])
+	voteAverage = fmt.Sprintf(voteAverage, util.Round(pMyMovieShort.VoteAverage, 2))
+	
+	caption = fmt.Sprintf(caption, title+originalTitle+releaseDate+voteAverage)
+	    
+	if strings.Compare(pMyMovieShort.PosterPath, "") == 0 {
+		img = fmt.Sprintf(img, "http://personalcollectionmovies-alobaton.c9users.io/public/images/image_no_available.png")
+	} else {
+		img = fmt.Sprintf(img, "https://image.tmdb.org/t/p/w500"+pMyMovieShort.PosterPath)
+	}
+	 	
+	thumbnail = fmt.Sprintf(thumbnail, img+caption)
+	    
+	item = fmt.Sprintf(item, "http://personalcollectionmovies-alobaton.c9users.io/movie?ID="+pMyMovieShort.ID, thumbnail)
+	    
+	return item
+}

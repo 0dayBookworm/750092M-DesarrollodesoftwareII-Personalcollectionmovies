@@ -1,0 +1,123 @@
+.main article {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 688px;
+	height: 448px;
+	outline: 4px solid #646c71;
+	background-color: #384248;
+	cursor: pointer;
+	transform: translate(-50%, -50%) scale(.25);
+	transition: transform .8s;
+}
+
+.main article:focus {
+	outline-color: #fff;
+}
+
+.main .area {
+	position: relative;
+	width: 560px;
+	height: 300px;
+	margin: 32px 64px 48px;
+	font-size: 1.1em;
+}
+
+.main .lines {
+	counter-reset: y-axis 120;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.main .lines div {
+	opacity: 0;
+	position: relative;
+	height: 20%;
+	border-top: 1px solid #646c71;
+	transition: opacity .8s;
+}
+
+.main .lines div::before {
+	counter-increment: y-axis -20;
+	content: counter(y-axis);
+	display: block;
+	position: absolute;
+	top: -10px;
+	left: -40px;
+	width: 40px;
+	padding-right: 8px;
+	text-align: right;
+}
+
+.main .data {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.main dl {
+	float: left;
+	position: relative;
+	width: 80px;
+	height: 300px;
+	margin: 0;
+	text-align: center;
+}
+
+.main dt {
+	opacity: 0;
+	position: absolute;
+	bottom: -28px;
+	left: 0;
+	right: 0;
+	transition: opacity .8s;
+}
+
+.main dd {
+	position: absolute;
+	bottom: 0;
+	width: 40px;
+	margin: 0 20px;
+	padding-top: 8px;
+	border-top: 1px solid #1c8ed6;
+	list-style: none;
+	color: #fff;
+	background-color: #125c8a;
+}
+
+.main dd::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #1c8ed6;
+	transition: opacity .8s;
+}
+
+.main .visits :nth-child(1) dd { height: 108px; }
+.main .visits :nth-child(2) dd { height: 132px; }
+.main .visits :nth-child(3) dd { height: 156px; }
+.main .visits :nth-child(4) dd { height: 96px; }
+.main .visits :nth-child(5) dd { height: 132px; }
+.main .visits :nth-child(6) dd { height: 204px; }
+.main .visits :nth-child(7) dd { height: 240px; }
+
+.main article h1 {
+	height: 52px;
+	margin: 16px;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	font-size: 2.8em;
+	font-weight: normal;
+	transform: translateY(-16px);
+	transition: transform .8s;
+}

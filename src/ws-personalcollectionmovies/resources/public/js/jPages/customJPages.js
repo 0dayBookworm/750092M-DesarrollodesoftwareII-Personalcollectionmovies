@@ -32,6 +32,23 @@ $('.pagination').jPages({
     }
 });
 
+$('.pagination').jPages({
+    containerID: 'ViewListByCinema',
+    first: false,
+    previous: 'Anterior',
+    next: 'Siguiente',
+    last: false,
+    perPage: 10,
+    startRange: 1,
+    midRange: 5,
+    endRange: 1,
+    delay: 0,
+    minHeight: false,
+    callback: function(pages, items) {
+        bootstrapPagination($('.pagination'));
+    }
+})
+
 function bootstrapPagination(element) {
     element.find('a,span').each(function() {
         if ($(this).parent('li').length) {

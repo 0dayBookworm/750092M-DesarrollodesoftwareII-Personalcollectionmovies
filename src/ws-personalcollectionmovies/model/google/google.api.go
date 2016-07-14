@@ -10,11 +10,13 @@ import (
 var (
 	ApiKey = ""
 	ApiUri =""
+	MapsUri =""
 	)
 
-func Init(pApiKey, pApiUri string) {
+func Init(pApiKey, pApiUri, pMapsUri string) {
 	ApiKey = pApiKey
 	ApiUri = pApiUri
+	MapsUri = pMapsUri
 }
 // Result for GetPlaces
 type AutocompleteResult struct {
@@ -53,4 +55,8 @@ func GetPlaces(pPlace string) (AutocompleteResult){
         log.Error(err.Error())
     }
     return res
+}
+
+func GetEmbedSource(pPlace string) string {
+    return MapsUri+"?q="+strings.Replace(pPlace, " ", "%20", -1)+"&key="+ApiKey
 }

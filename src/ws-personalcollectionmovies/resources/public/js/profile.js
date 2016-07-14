@@ -108,7 +108,7 @@ $(document).ready(function() {
         // Send data to back-end
         $.ajax({
             type: 'post',
-            url: 'https://personalcollectionmovies-alobaton.c9users.io/account/profile/password',
+            url: 'http://personalcollectionmovies-alobaton.c9users.io/account/profile/password',
             data: ChangePasswordRequest,
             dataType: 'json'
         }).success(function(response) {
@@ -137,7 +137,7 @@ $(document).ready(function() {
                             className: "btn-success",
                             callback: function() {
                                 // Si el proceso de registro se llevo a cabo correctamente redireccionamos a /.
-                                location.href = 'https://personalcollectionmovies-alobaton.c9users.io/account/profile';
+                                location.href = 'http://personalcollectionmovies-alobaton.c9users.io/account/profile';
                             }
                         }
                     }

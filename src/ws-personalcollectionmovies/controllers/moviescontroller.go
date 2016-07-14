@@ -195,14 +195,14 @@ func (pController *MoviesController) SetMovieDateResults(pMovieShorts []gotmdb.M
 	    caption = fmt.Sprintf(caption, title+originalTitle+releaseDate+voteAverage)
 	    
 	    if strings.Compare(pMovieShorts[i].PosterPath, "") == 0 {
-	    	img = fmt.Sprintf(img, "https://personalcollectionmovies-alobaton.c9users.io/public/images/image_no_available.png")
+	    	img = fmt.Sprintf(img, "http://personalcollectionmovies-alobaton.c9users.io/public/images/image_no_available.png")
 	 	} else {
 	 		img = fmt.Sprintf(img, "https://image.tmdb.org/t/p/w500"+pMovieShorts[i].PosterPath)
 	 	}
 	 	
 	    thumbnail = fmt.Sprintf(thumbnail, img+caption)
 	    
-	    item = fmt.Sprintf(item, "https://personalcollectionmovies-alobaton.c9users.io/movie?ID="+strconv.Itoa(pMovieShorts[i].ID), thumbnail)
+	    item = fmt.Sprintf(item, "http://personalcollectionmovies-alobaton.c9users.io/movie?ID="+strconv.Itoa(pMovieShorts[i].ID), thumbnail)
 	    
 	    movieShortsContent += item
 	}

@@ -24,7 +24,12 @@
         {{str2html .MovieShorts}}
     </div>
     <!-- Paginador -->
-    <div class="text-center">
-        <ul class="pagination"></ul>
+    <div class="row">
+        <div class="col-xs-1">
+            <p>({{.Total}} resultados)</p>
+        </div>
+        <div class="pull-right">
+            <ul class="pagination"></ul>
+        </div>
     </div>
 </div>

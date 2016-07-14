@@ -1,4 +1,4 @@
-<a href="#">
+<a href="//personalcollectionmovies-alobaton.c9users.io/account/viewlist">
     <strong>
         <i class="sidebar-icon glyphicon glyphicon-eye-close"></i>
         Películas vistas

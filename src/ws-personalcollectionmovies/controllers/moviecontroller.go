@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	// "fmt"
 	"strconv"
 	"strings"
 	"github.com/astaxie/beego"
@@ -13,6 +14,7 @@ import (
 	"ws-personalcollectionmovies/model/session"
 	"ws-personalcollectionmovies/model/wsinterface"
 	"ws-personalcollectionmovies/model/tmdb"
+	"ws-personalcollectionmovies/model/google"
 	"ws-personalcollectionmovies/model/database/domain"
 	"ws-personalcollectionmovies/model/database/connection"
 )
@@ -112,12 +114,24 @@ func (pController *MovieController) GetMovie() {
 		// Verificamos si la pelicula ya ha sido añadida a la lista de peliculas por ver.
 		_, err = domain.UserNextviewsMovieByUsernameID(connection.GetConn(), sessionVal.(session.UserSession).Username, strconv.Itoa(res.ID))
 		if err != nil {
-			pController.Data["WatchListContent"]=`<a id="WatchListAdd"> <small id="WatchListIndicator"> <i class="glyphicon glyphicon-eye-open"></i> Añadir a Peliculas por ver</small> </a>`
+			pController.Data["WatchListContent"]=`<a id="WatchListAdd"> <small> <i class="glyphicon glyphicon-eye-open"></i> Añadir a Peliculas por ver</small> </a>`
 		} else {
-			pController.Data["WatchListContent"]=`<a id="WatchListRemove"> <small id="WatchListIndicator" style="color: #3F81BF"> <i class="glyphicon glyphicon-eye-open"></i> Remover de Peliculas por ver</small> </a>`
+			pController.Data["WatchListContent"]=`<a id="WatchListRemove"> <small style="color: #3F81BF"> <i class="glyphicon glyphicon-eye-open"></i> Remover de Peliculas por ver</small> </a>`
+		}
+		// Verificamos si la pelicula ya ha sido añadida a la lista de películas vistas.
+		viewMovie, err := domain.UserViewMovieByUsernameID(connection.GetConn(), sessionVal.(session.UserSession).Username, strconv.Itoa(res.ID))
+		if err != nil {
+			pController.Data["WasView"]=false
+			pController.Data["ViewListContent"]=`<a id="ViewListAdd"> <small> <i class="glyphicon glyphicon-eye-close"></i>  Añadir a Vistas </small> </a>`
+		} else {
+			pController.Data["WasView"]=true
+			pController.Data["ViewListContent"]=`<a id="ViewListRemove"> <small style="color: #3F81BF"> <i class="glyphicon glyphicon-eye-close"></i>  Remover de Vistas </small> </a>`
+			pController.Data["PlaceDescription"]=viewMovie.Place
+			pController.Data["CinemaIframe"]=`<iframe id="CinemaIframe" width="100%" height="300px" frameborder="0" style="border:0" src="`+google.GetEmbedSource(viewMovie.Place)+`" allowfullscreen></iframe>`
 		}
 	} else {
 		pController.Data["WatchListContent"]=`<a id="WatchListAdd"> <small id="WatchListIndicator"> <i class="glyphicon glyphicon-eye-open"></i> Añadir a Peliculas por ver</small> </a>`
+		pController.Data["ViewListContent"]=`<a id="ViewListAdd"> <small> <i class="glyphicon glyphicon-eye-close"></i>  Añadir a Vistas </small> </a>`
 	}
 	
 	// Servimos la pagina.

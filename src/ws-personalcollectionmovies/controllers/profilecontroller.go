@@ -106,6 +106,8 @@ func (pController *ProfileController) Security() {
 			pController.Data["EnableSecutiry"]=true
 		} else {
 			pController.LayoutSections["AccountControl"] = AUDIT_ACCOUNT_CONTROL
+			// Actualizamos la sección de reportes.
+			pController.LayoutSections["Reports"] = AUDIT_NAV
     		// Actualizamos el contenido del perfil.
     		pController.LayoutSections["AccountContent"] = SECURITY
     		// Actualizamos la sección de reportes.

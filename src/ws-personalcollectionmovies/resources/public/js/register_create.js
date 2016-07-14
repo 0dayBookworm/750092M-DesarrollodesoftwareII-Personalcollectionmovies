@@ -101,7 +101,7 @@ $(document).ready(function() {
         // Send data to back-end
         $.ajax({
             type: 'post',
-            url: 'https://personalcollectionmovies-alobaton.c9users.io/register/create',
+            url: 'http://personalcollectionmovies-alobaton.c9users.io/register/create',
             data: RegistrationRequest,
             dataType: 'json'
         }).success(function(response) {
@@ -130,7 +130,7 @@ $(document).ready(function() {
                             className: "btn-success",
                             callback: function() {
                                 // Si el proceso de registro se llevo a cabo correctamente redireccionamos a /.
-                                location.href = 'https://personalcollectionmovies-alobaton.c9users.io/';
+                                location.href = 'http://personalcollectionmovies-alobaton.c9users.io/';
                             }
                         }
                     }

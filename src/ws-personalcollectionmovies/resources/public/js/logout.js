@@ -7,7 +7,7 @@ $(document).ready(function() {
         var Title ="CIERRE DE SESIÓN"
         $.ajax({
             type: 'post',
-            url: 'https://personalcollectionmovies-alobaton.c9users.io/logout',
+            url: 'http://personalcollectionmovies-alobaton.c9users.io/logout',
             data: LogoutRequest,
             dataType: 'json'
         }).success(function(response) {
@@ -30,7 +30,7 @@ $(document).ready(function() {
                 // Mensaje de alerta de pruebas, debera ser removido antes de exponer el demo.
                 alert("Se ha cerrado la sessión.");
                 // Redireccionamos a la pagina de inicio.
-                location.href = 'https://personalcollectionmovies-alobaton.c9users.io/';
+                location.href = 'http://personalcollectionmovies-alobaton.c9users.io/';
             }
         });
     });

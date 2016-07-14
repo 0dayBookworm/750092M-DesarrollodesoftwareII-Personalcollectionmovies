@@ -4,7 +4,9 @@
 
 <head>
     <meta charset="utf-8">
+    <!--
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    -->
     <title>{{.Title}} - PersonalCollectionMovies [WSPCM]</title>
     <!-- Estilos CSS vinculados -->
     <link href="//getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet">
@@ -13,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.min.css" />
     <link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rating/1.3.2/bootstrap-rating.css" rel="stylesheet" />
-    <link href="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
     <link href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -33,11 +35,6 @@
 </head>
 
 <body onload="checkCookies()">
-    <!--
-    <section id="Preloader">
-		<div class="loading-circle fa-spin"></div>
-	</section>
-	-->
     <!-- Barra de navegación estatica-->
     <!-- Debe contener inicio de seión y registro -->
     <nav class="navbar navbar-fixed-top navbar-inverse">
@@ -47,6 +44,13 @@
                         <i class="glyphicon glyphicon-menu-hamburger"></i>
                     </button>
                 <a href="//personalcollectionmovies-alobaton.c9users.io/" class="navbar-brand">
+                    <!--
+                    <ul class="social">
+                        <li>P</li>
+                        <li>C</li>
+                        <li>M</li>
+                    </ul>
+                    -->
                     <strong>PersonalCollectionMovies</strong>
                 </a>
             </div>

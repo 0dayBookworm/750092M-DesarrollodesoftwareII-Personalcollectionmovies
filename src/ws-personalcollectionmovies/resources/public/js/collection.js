@@ -10,7 +10,7 @@ $(document).ready(function() {
         var title ="PELÍCULAS POR VER"
         // Send data to back-end
         $.ajax({
-            url: 'https://personalcollectionmovies-alobaton.c9users.io/account/watchlist/add'+busqueda
+            url: 'http://personalcollectionmovies-alobaton.c9users.io/account/watchlist/add'+busqueda
         }).success(function(response) {
             if (response.Status === '999') {
                 bootbox.dialog({
@@ -37,7 +37,6 @@ $(document).ready(function() {
                             className: "btn-success",
                             callback: function() {
                                 window.location.replace(window.location);
-                                
                             }
                         }
                     }

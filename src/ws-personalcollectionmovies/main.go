@@ -40,8 +40,9 @@ func main() {
 	
 	// Inicializamos la API de google
 	GoogleKey := beego.AppConfig.String("Google::ApiKey")
-	GoogleUri := beego.AppConfig.String("Google::ApiUri")
-	google.Init(GoogleKey, GoogleUri)
+	GoogleUri := beego.AppConfig.String("Google::PlacesUri")
+	MapsUri := beego.AppConfig.String("Google::MapsUri")
+	google.Init(GoogleKey, GoogleUri, MapsUri)
 	
 	// Necesario para levantar el servidor de arvhivos en la ruta public.
 	beego.SetStaticPath("/public", "/home/ubuntu/workspace/src/ws-personalcollectionmovies/resources/public")

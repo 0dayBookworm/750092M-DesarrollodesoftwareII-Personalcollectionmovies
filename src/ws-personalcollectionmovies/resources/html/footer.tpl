@@ -1,5 +1,4 @@
 {{ define "footer" }}
-<!-- Creditos, terminos y condiciones -->
 <footer>
         <div class="footer-basic-centered" id="footer">
                 <p class="footer-company-motto">PersonalCollectionMovies</p>
@@ -32,16 +31,14 @@
         </div>
         </div>
 </footer>
-
 <!-- JavaScripts vinculados -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="//code.jquery.com/jquery-1.12.3.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/mandatoryIcon.js"></script>
 <script src="https://github.com/makeusabrew/bootbox/releases/download/v4.2.0/bootbox.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rating/1.3.2/bootstrap-rating.js"></script> 
 <script src="https://cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
@@ -61,9 +58,10 @@
 <!-- Paginator JPages -->
 <script type="text/javascript" src="//personalcollectionmovies-alobaton.c9users.io/public/js/jPages/jPages.js"></script>
 <script type="text/javascript" src="//personalcollectionmovies-alobaton.c9users.io/public/js/jPages/customJPages.js"></script>
+<!--
 
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/mandatoryIcon.js"></script>
+-->
 </body>
-
 </html>
 {{ end }}

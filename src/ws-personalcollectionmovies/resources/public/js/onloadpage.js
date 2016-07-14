@@ -6,9 +6,16 @@ function checkCookies(){
         
     }
 }
+$(window).load(function() {
+	'use strict';
+	$('.loading-icon').delay(200).fadeOut();
+	$('#MainPreloader').delay(400).fadeOut('slow');
+});
 
-// $(window).load(function() {
-// 	'use strict';
-// 	$('.loading-icon').delay(100).fadeOut();
-// 	$('#Preloader').delay(200).fadeOut('slow');
-// });
+$(window).load(function() {
+	'use strict';
+	$('.loading-icon').delay(200).fadeOut();
+	$('#MapPreloader').delay(200).fadeOut('slow');
+	$('#MapContainer').delay(800).fadeIn('slow');
+});
+

@@ -11,7 +11,6 @@ type CollectionResponse struct {
 }
 
 type MyMovieShort struct {
-    Username      string
     ID            string  
 	Title         string  
 	OriginalTitle string  

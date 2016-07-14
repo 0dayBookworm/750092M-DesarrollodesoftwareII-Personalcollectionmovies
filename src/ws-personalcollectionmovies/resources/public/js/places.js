@@ -1,6 +1,10 @@
 $('#ViewListAdd').click(function() {
    $('#PlacesModal').modal('show'); 
 });
+// Remove
+$('#ViewListRemove').click(function() {
+    alert("Non implemented yet");
+});
 $('#Places').click(function() {
     // Deshabilitamos el boton.
     document.getElementById("Places").disabled = true;
@@ -14,16 +18,16 @@ $('#Places').click(function() {
     var title = "SELECCONA UNA UBICACIÓN";
     var PlacesFormData = $('#PlacesForm').serialize();
     $.ajax({
-        type: 'post',
-        url: 'https://personalcollectionmovies-alobaton.c9users.io/places',
+        type: 'POST',
+        url: 'http://personalcollectionmovies-alobaton.c9users.io/places',
         data: PlacesFormData,
         dataType: 'json'
     }).success(function(response) {
         document.getElementById("Places").disabled = false;
          if (response.status === "OK") {
              
-             var searchResult = response.predictions;
-            $.each(searchResult, function(i, item) {
+            var searchResult = response.predictions;
+            $.each(searchResult, function(idA, item) {
                 var place = item;
                 
                 // Creamos el item de lista.
@@ -33,8 +37,12 @@ $('#Places').click(function() {
                 var a = document.createElement("a");
                 // Seteamos el enlace de busqueda.
                 var busqueda = window.location.search;
-                a.setAttribute("onclick", 'addViewListPost("'+busqueda+'", "'+place.description+'")');
-                
+                a.id = idA;
+                a.setAttribute("name", idA)
+                a.setAttribute("onclick", 'addViewListPost("'+busqueda+'", "'+place.description+ '","'+idA+'")');
+                // a.setAttribute("data-toggle", "popover");
+                // a.setAttribute("title", "PELÍCULAS VISTAS");
+                // a.setAttribute("data-content", "");
                  // Creamos el icono.
                 var i = document.createElement("i");
                 i.setAttribute("class", "col-sm-1 glyphicon glyphicon-map-marker");
@@ -74,7 +82,7 @@ $('#Places').click(function() {
 });
 
 
-function addViewListPost(pBusqueda, pPlace){
+function addViewListPost(pBusqueda, pPlace, pID){
     var queryDict = {}
     pBusqueda.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
     var json = '{"ID": "'+queryDict["ID"]+'", "Place":"'+pPlace+'"}'; 
@@ -82,19 +90,20 @@ function addViewListPost(pBusqueda, pPlace){
     var title = "PELÍCULAS VISTAS"
     $.ajax({
         type: 'post',
-        url: 'https://personalcollectionmovies-alobaton.c9users.io/account/viewlist/add',
+        url: 'http://personalcollectionmovies-alobaton.c9users.io/account/viewlist/add',
         data: request,
         dataType: 'json'
     }).success(function(response) {
         if (response.Status === '999') {
+            
             bootbox.dialog({
                 message: response.Message,
                 title: title,
                 buttons: {
                     close: {
-                        label: "Cerrar",
-                        className: "btn-default",
-                            callback: function() {
+                    label: "Cerrar",
+                    className: "btn-default",
+                        back: function() {
                         }
                     }
                 }
@@ -109,6 +118,7 @@ function addViewListPost(pBusqueda, pPlace){
                         label: "Cerrar",
                         className: "btn-success",
                         callback: function() {
+                            window.location.replace(window.location);
                         }
                     }
                 }
