@@ -1,10 +1,12 @@
 package controllers
 
 import (
+	"time"
 	"strconv"
 	"github.com/astaxie/beego"
 	"ws-personalcollectionmovies/log"
 	"ws-personalcollectionmovies/error_"
+	"ws-personalcollectionmovies/util"
 	"ws-personalcollectionmovies/model/session"
 	"ws-personalcollectionmovies/model/wsinterface"
 	"ws-personalcollectionmovies/model/database/connection"
@@ -202,7 +204,7 @@ func (pController *CollectionController) WatchListAdd() {
  		ID: request.ID,
  		Dateandtime: "NOW()",
  		Erased: false}
- 	err := userWatchList.Insert(connection.GetConn())
+ 	err = userWatchList.Insert(connection.GetConn())
  	if err != nil {
  		// Si ocurre un error quiere decir que la pelicula ya se encuentra añadida a la lista de peliculas por ver.
 	 	pController.ServeMessage(error_.KO, error_.ERR_0053)
@@ -232,7 +234,11 @@ func (pController *CollectionController) ViewListAdd() {
 		pController.DoMovieMapping(request.ID)
  	}
  	// Validamos que la pelicula ya haya sido estrenada.
- 	
+ 	t := time.Now()
+ 	if t.Before(util.ParseDate(movieMapping.ReleaseDate[:10])) {
+ 		pController.ServeMessage(error_.KO, error_.ERR_0055)
+    	pController.StopRun()
+ 	}
  	
  	// Si se encuentra asociamos el usuario a esa pelicula.
  	userViewList := domain.UserViewMovie {
@@ -241,7 +247,7 @@ func (pController *CollectionController) ViewListAdd() {
  		Place: request.Place,
  		Dateandtime: "NOW()",
  		Erased: false}
- 	err := userViewList.Insert(connection.GetConn())
+ 	err = userViewList.Insert(connection.GetConn())
  	if err != nil {
  		log.Error(err.Error())
  		// Si ocurre un error quiere decir que la pelicula ya se encuentra añadida a la lista de peliculas por ver.

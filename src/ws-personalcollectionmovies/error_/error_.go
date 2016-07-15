@@ -31,3 +31,4 @@ const ERR_0051 = "ERR_0051 La pelicula no pudo ser agregada a tu lista de Pelíc
 const ERR_0052 = "ERR_0052 La película no pudo ser mapeada a nuestro sistema."
 const ERR_0053 = "ERR_0053 La pelicula ya se encuentra añadida a la lista."
 const ERR_0054 = "ERR_0054 Esta opción dehabilitada para un usuario auditor."
+const ERR_0055 ="ERR_055 La pelicula debe haber sido estrenada para poder ser añadida a la lista de peliculas vistas."

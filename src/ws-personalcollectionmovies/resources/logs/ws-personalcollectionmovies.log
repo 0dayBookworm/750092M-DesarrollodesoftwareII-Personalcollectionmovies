@@ -615,3 +615,19 @@ INFO: 2016/07/13 19:25:04 main.go:50: Listen and serve at 8080
 INFO: 2016/07/13 22:15:53 main.go:23: Log information load correctly.
 INFO: 2016/07/13 22:15:53 main.go:26: The system is set up correctly.
 INFO: 2016/07/13 22:15:53 main.go:50: Listen and serve at 8080
+INFO: 2016/07/15 00:03:42 main.go:23: Log information load correctly.
+INFO: 2016/07/15 00:03:42 main.go:26: The system is set up correctly.
+INFO: 2016/07/15 00:03:42 main.go:50: Listen and serve at 8080
+INFO: 2016/07/15 00:07:20 main.go:23: Log information load correctly.
+INFO: 2016/07/15 00:07:20 main.go:26: The system is set up correctly.
+INFO: 2016/07/15 00:07:20 main.go:50: Listen and serve at 8080
+ERROR: 2016/07/15 00:07:37 util.go:22: ParseDate(): Error occurs while try parsing date:2016-07-24T00:00:00Z
+INFO: 2016/07/15 00:08:25 main.go:23: Log information load correctly.
+INFO: 2016/07/15 00:08:25 main.go:26: The system is set up correctly.
+INFO: 2016/07/15 00:08:25 main.go:50: Listen and serve at 8080
+INFO: 2016/07/15 00:10:42 main.go:23: Log information load correctly.
+INFO: 2016/07/15 00:10:42 main.go:26: The system is set up correctly.
+INFO: 2016/07/15 00:10:42 main.go:50: Listen and serve at 8080
+INFO: 2016/07/15 00:11:21 main.go:23: Log information load correctly.
+INFO: 2016/07/15 00:11:21 main.go:26: The system is set up correctly.
+INFO: 2016/07/15 00:11:21 main.go:50: Listen and serve at 8080
